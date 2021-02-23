@@ -1,2 +1,2 @@
-# ScarletSeries
+# Scarlet-Series
 C++ Game Engine
