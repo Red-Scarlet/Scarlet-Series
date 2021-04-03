@@ -1,7 +1,7 @@
 # Scarlet-Series
 C++ Framework written around Module-ResourceComponentSystem
 
-![Scarlet](/Scarlet-Resources/Scarlet.png?raw=true "Scarlet")
+![Scarlet](/Scarlet-Resources/Scarlet.png =250x250))
 
 ### Scarlet-Series
 This Framework allows developers to build classic applications such as GameEngines, CAD software and more.
