@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Core">
+      <UniqueIdentifier>{2EB4837C-1AEB-840D-C3D7-6A10AFED000F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\ResourceComponentSystem">
+      <UniqueIdentifier>{9D986112-8953-51BE-320B-CA081EA59B4E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utilities">
+      <UniqueIdentifier>{010A8043-6D74-34BA-B6B2-E55F225C120F}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\Core\Common.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Core\IdentifierComponent.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Core\InterfaceController.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Core\InterfaceModule.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Core\InterfaceObject.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Core\InterfacePackage.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Core\InterfaceUnit.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Core\ResourceComponentSystem\ResourceComponentArray.h">
+      <Filter>Core\ResourceComponentSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Core\ResourceComponentSystem\ResourceComponentManager.h">
+      <Filter>Core\ResourceComponentSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Core\ResourceComponentSystem\ResourceCoordinator.h">
+      <Filter>Core\ResourceComponentSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Core\ResourceComponentSystem\ResourceManager.h">
+      <Filter>Core\ResourceComponentSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Core\ResourceComponentSystem\ResourceSystem.h">
+      <Filter>Core\ResourceComponentSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Core\ResourceComponentSystem\ResourceSystemManager.h">
+      <Filter>Core\ResourceComponentSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Core\ResourceComponentSystem\ResourceTypes.h">
+      <Filter>Core\ResourceComponentSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ScarletInterface.h" />
+    <ClInclude Include="Source\Utilities\Log.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Events\Event.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\Core\InterfaceUnit.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Core\ResourceComponentSystem\ResourceCoordinator.cpp">
+      <Filter>Core\ResourceComponentSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Utilities\Log.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
