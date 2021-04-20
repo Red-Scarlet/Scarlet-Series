@@ -4,24 +4,6 @@
 
 namespace ScarletInterface {
 
-	//enum class EventType
-	//{
-	//	None = 0,
-	//	WindowClose, WindowResize, WindowFocus, WindowLostFocus, WindowMoved,
-	//	AppTick, AppUpdate, AppRender,
-	//	KeyPressed, KeyReleased, KeyTyped,
-	//	MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled
-	//};
-	//enum EventCategory
-	//{
-	//	None = 0,
-	//	EventCategoryApplication		= BIT(0),
-	//	EventCategoryInput				= BIT(1),
-	//	EventCategoryKeyboard			= BIT(2),
-	//	EventCategoryMouse				= BIT(4),
-	//	EventCategoryMouseButton		= BIT(4),
-	//};
-
 	typedef uint16 EventType;
 	typedef uint16 EventCategory;
 
@@ -33,7 +15,7 @@ namespace ScarletInterface {
 	#define EVENT_CLASS_CATEGORY(Category) \
 	virtual uint16 GetCategoryFlags() const override { return Category; }
 
-	class Event
+	class SCARLET_INTERFACE_API Event
 	{
 	public:
 		virtual ~Event() = default;
@@ -46,9 +28,19 @@ namespace ScarletInterface {
 
 		bool IsInCategory(EventCategory category)
 		{ return GetCategoryFlags() & category; }
+
+		template<typename T>
+		T* SetNext(T* _Event) { m_Event = _Event; return dynamic_cast<T*>(m_Event); }
+		Event* GetNext() const { return m_Event; }
+
+		void ResetEvent() { delete m_Event; m_Event = nullptr; }
+
+	private:
+		Event* m_Event = nullptr;
+
 	};
 
-	class EventDispatcher
+	class SCARLET_INTERFACE_API EventDispatcher
 	{
 	public:
 		EventDispatcher(Event& event)
@@ -56,7 +48,6 @@ namespace ScarletInterface {
 		{
 		}
 
-		// F will be deduced by the compiler
 		template<typename T, typename F>
 		bool Dispatch(const F& func)
 		{

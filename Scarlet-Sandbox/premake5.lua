@@ -22,17 +22,13 @@ project "Scarlet-Sandbox"
 		"%{wks.location}/Scarlet-Engine/Vendor/spdlog/include",
 
 		"%{wks.location}/Scarlet-Interface/Source",
-		"%{wks.location}/Scarlet-Interface/Vendor",
-
-		"%{wks.location}/Scarlet-Additions/Scarlet-OpenGL/Source",
-		"%{wks.location}/Scarlet-Additions/Scarlet-OpenGL/Vendor"
+		"%{wks.location}/Scarlet-Interface/Vendor"
 	}
 
 	links
 	{
 		"Scarlet-Engine",
-		"Scarlet-Interface",
-		"Scarlet-OpenGL"
+		"Scarlet-Interface"
 	}
 
 	filter "system:windows"

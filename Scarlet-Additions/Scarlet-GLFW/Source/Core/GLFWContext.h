@@ -3,18 +3,19 @@
 #pragma once
 
 #include <ScarletInterface.h>
+#include <Core/InterfaceEntrypoint.h>
 
-struct GLFWwindow;
+struct SCARLET_INTERFACE_API GLFWwindow;
 
 namespace GLFW {
 
 	using namespace ScarletInterface;
 
-	class GLFWContext
+	class SCARLET_INTERFACE_API GLFWContext
 	{
 	public:
 		GLFWContext(GLFWwindow* _WindowHandle);
-		~GLFWContext();
+		virtual ~GLFWContext();
 
 		void SetCurrentContext();
 		void SwapBuffers();

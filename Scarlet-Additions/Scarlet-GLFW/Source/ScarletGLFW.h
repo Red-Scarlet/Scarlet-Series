@@ -2,5 +2,5 @@
 // ScarletGLFW.h 02/04/2021 - Include Header.
 #pragma once
 
-#include "Core/InterfaceGLFW.h"
+#include "Core/GLFWContext.h"
 #include "Components/GLFWComponent.h"

@@ -2,15 +2,17 @@
 // WindowsWindow.h 02/04/2021 - Functional-Derived Class.
 #pragma once
 
-#include "Core/Window.h"
 #include <ScarletInterface.h>
-#include <GLFW/glfw3.h>
+#include <Core/InterfaceEntrypoint.h>
+#include "Core/Window.h"
+
+struct SCARLET_INTERFACE_API GLFWwindow;
 
 namespace GLFW {
 
 	using namespace ScarletInterface;
 
-	class WindowsWindow : public Window
+	class SCARLET_INTERFACE_API WindowsWindow : public Window
 	{
 	public:
 		WindowsWindow(const WindowProps& props);

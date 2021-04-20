@@ -4,6 +4,9 @@
     <Filter Include="Core">
       <UniqueIdentifier>{2EB4837C-1AEB-840D-C3D7-6A10AFED000F}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Interface">
+      <UniqueIdentifier>{764D2783-E2B7-DBF9-2BF6-8C9F979FB94E}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Utilities">
       <UniqueIdentifier>{010A8043-6D74-34BA-B6B2-E55F225C120F}</UniqueIdentifier>
     </Filter>
@@ -18,12 +21,21 @@
     <ClInclude Include="Source\Core\Entrypoint.h">
       <Filter>Core</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Interface\InterfaceHandler.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Interface\ModuleManager.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
     <ClInclude Include="Source\Scarlet.h" />
     <ClInclude Include="Source\Scarletpch.h" />
+    <ClInclude Include="Source\Utilities\Instrumentor.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
     <ClInclude Include="Source\Utilities\Log.h">
       <Filter>Utilities</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Utilities\Timestep.h">
+    <ClInclude Include="Source\Utilities\ThreadPool.h">
       <Filter>Utilities</Filter>
     </ClInclude>
   </ItemGroup>
@@ -31,8 +43,14 @@
     <ClCompile Include="Source\Core\Application.cpp">
       <Filter>Core</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Interface\InterfaceHandler.cpp">
+      <Filter>Interface</Filter>
+    </ClCompile>
     <ClCompile Include="Source\Scarletpch.cpp" />
     <ClCompile Include="Source\Utilities\Log.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Utilities\ThreadPool.cpp">
       <Filter>Utilities</Filter>
     </ClCompile>
   </ItemGroup>

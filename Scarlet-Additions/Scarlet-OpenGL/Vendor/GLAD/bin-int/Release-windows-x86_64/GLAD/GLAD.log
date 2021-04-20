@@ -1,1 +1,2 @@
-﻿  GLAD.vcxproj -> B:\Projects\Visual Studio\Concealing-Engine\Concealing-Core\Vendor\GLAD\bin\Release-windows-x86_64\GLAD\GLAD.lib
+﻿  glad.c
+  GLAD.vcxproj -> B:\Projects\Visual Studio\Scarlet-Series\Scarlet-Additions\Scarlet-OpenGL\Vendor\GLAD\bin\Release-windows-x86_64\GLAD\GLAD.lib

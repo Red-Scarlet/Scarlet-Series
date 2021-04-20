@@ -3,12 +3,13 @@
 #pragma once
 
 #include <ScarletInterface.h>
+#include <Core/InterfaceEntrypoint.h>
 
 namespace GLFW {
 
 	using namespace ScarletInterface;
 
-	struct WindowProps
+	struct SCARLET_INTERFACE_API WindowProps
 	{
 	public:
 		String Title;
@@ -20,7 +21,7 @@ namespace GLFW {
 		}
 	};
 
-	class Window
+	class SCARLET_INTERFACE_API Window
 	{
 	public:
 		using EventCallbackFn = std::function<void(Event&)>;

@@ -1,13 +1,16 @@
 // Copyright 2016-2021 Scarlet-GLFW / Red-Scarlet. All rights reserved.
 // WindowsWindow.cpp 02/04/2021 - Functional-Derived Class.
 #include "WindowsWindow.h"
-
 #include "Events/WindowEvent.h"
+
+#include <GLFW/glfw3.h>
+
+//#pragma comment(lib, "glfw3.lib")
 
 namespace GLFW {
 
 	static bool s_GLFWInitialized = false;
-
+	
 	static void GLFWErrorCallback(int error, const char* description)
 	{
 		SCARLET_INTERFACE_ERROR("GLFW Error ({0}): {1}", error, description);
@@ -28,20 +31,20 @@ namespace GLFW {
 		m_Data.Title = props.Title;
 		m_Data.Width = props.Width;
 		m_Data.Height = props.Height;
-
-		SCARLET_INTERFACE_INFO("{0}, Creating Window: ({1} x {2})", props.Title, props.Width, props.Height);
-
-		if (!s_GLFWInitialized)
+		
+		//SCARLET_INTERFACE_INFO("{0}, Creating Window: ({1} x {2})", props.Title, props.Width, props.Height);
+		//
+		if (true)
 		{
 			int32 success = glfwInit();
-			SCARLET_INTERFACE_ASSERT(success, "Could not intialize GLFW!");
+			//SCARLET_INTERFACE_ASSERT(success, "Could not intialize GLFW!");
 			glfwSetErrorCallback(GLFWErrorCallback);
 			s_GLFWInitialized = true;
 		}
-
+		
 		// CHECK FOR API
 		glfwWindowHint(GLFW_VISIBLE, GLFW_TRUE);
-
+		
 		m_MainWindow = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 		glfwSetWindowUserPointer(m_MainWindow, &m_Data);
 
@@ -68,7 +71,7 @@ namespace GLFW {
 		
 			data.EventCallback(event);
 		});
-		//
+		
 		//glfwSetKeyCallback(m_MainWindow, [](GLFWwindow* window, int key, int scancode, int action, int mods)
 		//{
 		//	WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);

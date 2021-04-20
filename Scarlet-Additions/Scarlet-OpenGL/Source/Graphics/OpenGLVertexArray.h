@@ -2,6 +2,7 @@
 // OpenGLVertexArray.h 03/04/2021 - Functional Class.
 #pragma once
 
+#define SCARLET_INTERFACE_BUILD_DLL
 #include <ScarletInterface.h>
 #include "OpenGLVertexBuffer.h"
 #include "OpenGLIndexBuffer.h"
@@ -10,8 +11,11 @@ namespace OpenGL {
 
 	using namespace ScarletInterface;
 
-	class OpenGLVertexArray
+	class SCARLET_INTERFACE_API OpenGLVertexArray
 	{
+	public:
+		friend class OpenGLCommand;
+
 	public:
 		OpenGLVertexArray();
 		virtual ~OpenGLVertexArray();

@@ -1,5 +1,5 @@
 project "Scarlet-GLFW"
-	kind "StaticLib"
+	kind "SharedLib"
 	language "C++"
 	cppdialect "C++17"
 	staticruntime "on"
@@ -16,7 +16,9 @@ project "Scarlet-GLFW"
 	defines
 	{
 		"_CRT_SECURE_NO_WARNINGS",
-		"GLFW_INCLUDE_NONE"
+		"GLFW_DLL",
+		"GLFW_INCLUDE_NONE",
+		"SCARLET_INTERFACE_EXPORT"
 	}
 
 	includedirs
@@ -29,10 +31,16 @@ project "Scarlet-GLFW"
 		"%{wks.location}/Scarlet-Additions/Scarlet-GLFW/Vendor/GLFW/include"
 	}
 
+	libdirs 
+	{ 
+		"%{wks.location}/Scarlet-Additions/Scarlet-GLFW/Vendor/GLFW/lib-vc2019"
+	}
+
 	links
 	{
 		"Scarlet-Interface",
-		"GLFW"
+		"glfw3",
+		"glfw3dll"
 	}
 
 	filter "system:windows"

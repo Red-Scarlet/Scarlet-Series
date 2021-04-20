@@ -20,6 +20,7 @@ project "Scarlet-Engine"
 	{
 		"Source",
 		"Vendor/spdlog/include",
+		"Vendor/asio/include",
 
 		"%{wks.location}/Scarlet-Interface/Source",
 		"%{wks.location}/Scarlet-Interface/Vendor"
@@ -32,7 +33,8 @@ project "Scarlet-Engine"
 
 	defines
 	{
-		"_CRT_SECURE_NO_WARNINGS"
+		"_CRT_SECURE_NO_WARNINGS",
+		"SCARLET_INTERFACE_EXPORT"
 	}
 
 	filter "system:windows"

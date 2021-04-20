@@ -1,5 +1,5 @@
 project "Scarlet-OpenGL"
-	kind "StaticLib"
+	kind "SharedLib"
 	language "C++"
 	cppdialect "C++17"
 	staticruntime "on"
@@ -33,6 +33,12 @@ project "Scarlet-OpenGL"
 
 		"GLAD",
 		"opengl32.lib"
+	}
+
+	defines
+	{		
+		"_CRT_SECURE_NO_WARNINGS",
+		"SCARLET_INTERFACE_EXPORT"
 	}
 
 	filter "system:windows"

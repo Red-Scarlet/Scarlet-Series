@@ -7,39 +7,70 @@
     <Filter Include="Core">
       <UniqueIdentifier>{2EB4837C-1AEB-840D-C3D7-6A10AFED000F}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Graphics">
+      <UniqueIdentifier>{1653CE33-0220-293F-2B39-17E717655ECD}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Components\OpenGLComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Core\InterfaceGL.h">
+    <ClInclude Include="Source\Core\InterfaceOpenGL.h">
       <Filter>Core</Filter>
     </ClInclude>
     <ClInclude Include="Source\Core\OpenGLContext.h">
       <Filter>Core</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Graphics\OpenGLCommand.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\OpenGLFrameBuffer.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\OpenGLIndexBuffer.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\OpenGLShader.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\OpenGLTextureBuffer.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\OpenGLVertexArray.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\OpenGLVertexBuffer.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
     <ClInclude Include="Source\ScarletOpenGL.h" />
-    <ClInclude Include="Source\Graphics\OpenGLCommand.h" />
-    <ClInclude Include="Source\Graphics\OpenGLFrameBuffer.h" />
-    <ClInclude Include="Source\Graphics\OpenGLIndexBuffer.h" />
-    <ClInclude Include="Source\Graphics\OpenGLShader.h" />
-    <ClInclude Include="Source\Graphics\OpenGLTextureBuffer.h" />
-    <ClInclude Include="Source\Graphics\OpenGLVertexArray.h" />
-    <ClInclude Include="Source\Graphics\OpenGLVertexBuffer.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\Core\InterfaceGL.cpp">
+    <ClCompile Include="Source\Core\InterfaceOpenGL.cpp">
       <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="Source\Core\OpenGLContext.cpp">
       <Filter>Core</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Graphics\OpenGLCommand.cpp" />
-    <ClCompile Include="Source\Graphics\OpenGLFrameBuffer.cpp" />
-    <ClCompile Include="Source\Graphics\OpenGLIndexBuffer.cpp" />
-    <ClCompile Include="Source\Graphics\OpenGLShader.cpp" />
-    <ClCompile Include="Source\Graphics\OpenGLTextureBuffer.cpp" />
-    <ClCompile Include="Source\Graphics\OpenGLVertexArray.cpp" />
-    <ClCompile Include="Source\Graphics\OpenGLVertexBuffer.cpp" />
+    <ClCompile Include="Source\Graphics\OpenGLCommand.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\OpenGLFrameBuffer.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\OpenGLIndexBuffer.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\OpenGLShader.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\OpenGLTextureBuffer.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\OpenGLVertexArray.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\OpenGLVertexBuffer.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

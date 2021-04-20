@@ -11,17 +11,21 @@ project "Scarlet-Interface"
 	{
 		"Source/**.h",
 		"Source/**.cpp",
+		"Vendor/glm/glm/**.hpp",
+		"Vendor/glm/glm/**.inl"
 	}
 
 	includedirs
 	{ 
 		"Source",
-		"Vendor/spdlog/include"
+		"Vendor/spdlog/include",
+		"Vendor/glm"
 	}
 
 	defines
 	{
-		"_CRT_SECURE_NO_WARNINGS"
+		"_CRT_SECURE_NO_WARNINGS",
+		"SCARLET_INTERFACE_EXPORT"
 	}
 
 	filter "system:windows"

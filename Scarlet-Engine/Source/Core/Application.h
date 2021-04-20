@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Core/Common.h"
-
+#include "Interface/ModuleManager.h"
 #include <ScarletInterface.h>
 
 #ifdef SCARLET_DIST
@@ -17,31 +17,26 @@ namespace Scarlet {
 	class Application
 	{
 	public:
+		using EventCallbackFn = std::function<void(Event&)>;
+
+	public:
 		Application(const String& _ApplicationTitle = "ScarletApplication");
 		virtual ~Application() = default;
 
 		void Run();
 		void Stop();
-
-		template<typename T>
-		void PushModule()
-		{
-			m_InterfaceController.PushModule<T>();
-		}
-		template<typename T>
-		void PopModule()
-		{
-			m_InterfaceController.PopModule<T>();
-		}
-		template<typename T>
-		bool HasModule()
-		{
-			return m_InterfaceController.HasModule<T>();
-		}
+		void OnEvent(Event& e);
+		void SetEventCallback(const EventCallbackFn& _Callback) { m_EventCallback = _Callback; }
 
 	private:
-		InterfaceController m_InterfaceController;
+		bool OnAppUpdate(AppUpdateEvent& _Event);
+
+	private:
+		EventCallbackFn m_EventCallback;
+		Ref<ModuleManager> m_ModuleManager;
+
 		String m_Title;
+		uint32 m_NumThreads;
 		float32 m_LastFrameTime;
 		bool m_Running;
 

@@ -2,8 +2,8 @@
 // OpenGLComponent.h 03/04/2021 - Component Struct.
 #pragma once
 
-#include "Core/OpenGLContext.h"
 #include <ScarletInterface.h>
+#include "Core/OpenGLContext.h"
 
 namespace OpenGL {
 

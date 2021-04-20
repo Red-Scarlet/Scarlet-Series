@@ -21,10 +21,14 @@
 
 #include "Utilities/Log.h"
 
-#define SCARLET_INTERFACE_ASSERTS
+#ifdef SCARLET_INTERFACE_EXPORT
+#define SCARLET_INTERFACE_API __declspec(dllexport)
+#else
+#define SCARLET_INTERFACE_API __declspec(dllimport)
+#endif
 
 #define SCARLET_ERROR false
-
+#define SCARLET_INTERFACE_ASSERTS
 #ifdef SCARLET_INTERFACE_ASSERTS
 #define SCARLET_INTERFACE_ASSERT(x, ...) { if(!(x)) { SCARLET_INTERFACE_ERROR(__VA_ARGS__); __debugbreak(); }}
 #else
@@ -62,43 +66,32 @@ namespace ScarletInterface {
 
 	template<typename T>
 	constexpr inline T operator~ (T a) { return static_cast<T>(~static_cast<std::underlying_type<T>::type>(a)); }
-
 	template<typename T>
 	constexpr inline T operator| (T a, T b) { return static_cast<T>(static_cast<std::underlying_type<T>::type>(a) | static_cast<std::underlying_type<T>::type>(b)); }
-
 	template<typename T>
 	constexpr inline T operator& (T a, T b) { return static_cast<T>(static_cast<std::underlying_type<T>::type>(a) & static_cast<std::underlying_type<T>::type>(b)); }
-
 	template<typename T>
 	constexpr inline T operator^ (T a, T b) { return static_cast<T>(static_cast<std::underlying_type<T>::type>(a) ^ static_cast<std::underlying_type<T>::type>(b)); }
-
 	template<typename T>
 	constexpr inline T& operator|= (T& a, T b) { return reinterpret_cast<T&>(reinterpret_cast<std::underlying_type<T>::type&>(a) |= static_cast<std::underlying_type<T>::type>(b)); }
-
 	template<typename T>
 	constexpr inline T& operator&= (T& a, T b) { return reinterpret_cast<T&>(reinterpret_cast<std::underlying_type<T>::type&>(a) &= static_cast<std::underlying_type<T>::type>(b)); }
-
 	template<typename T>
 	constexpr inline T& operator^= (T& a, T b) { return reinterpret_cast<T&>(reinterpret_cast<std::underlying_type<T>::type&>(a) ^= static_cast<std::underlying_type<T>::type>(b)); }
 
 	template<typename T>
 	using Function = std::function<T>;
-
 	template<typename T>
 	using List = std::list<T>;
-
 	template<typename T>
 	using InitializerList = std::initializer_list<T>;
-
 	template<typename T>
 	using Vector = std::vector<T>;
-
 	template<typename K, typename T>
 	using Map = std::map<K, T>;
-
 	template<typename... Types>
 	using Tuple = std::tuple<Types...>;
-
+	
 	template <typename T>
 	Vector<T> operator+(const Vector<T>& A, const Vector<T>& B)
 	{
@@ -119,31 +112,22 @@ namespace ScarletInterface {
 
 	template<typename T, std::size_t length>
 	using Array = std::array<T, length>;
-
 	template<std::size_t S>
 	using Bitset = std::bitset<S>;
-
 	template<typename T>
 	using Queue = std::queue<T>;
-
 	template<typename T>
 	using Vector2D = Vector<Vector<T>>;
-
 	template<typename T>
 	using Optional = std::optional<T>;
-
 	template<typename T>
 	using Variant = std::variant<T>;
-
 	template<typename T, typename R>
 	using Pair = std::pair<T, R>;
-
 	template<typename T, typename R>
 	using UnorderedMap = std::unordered_map<T, R>;
-
 	template<typename T>
 	using Set = std::set<T>;
-
 	using String = std::string;
 	using Ostream = std::ostream;
 
@@ -171,6 +155,9 @@ namespace ScarletInterface {
 	typedef float64** pfloat64;
 	typedef float32** pfloat32;
 
+	typedef char* char_ptr;
+	typedef const char* cchar_ptr;
+
 	template<typename Args>
 	constexpr String ReadAddress(Args&& args)
 	{
@@ -191,3 +178,4 @@ namespace ScarletInterface {
 #define uint32_max std::numeric_limits<ScarletInterface::uint32>::max()
 #define uint16_max std::numeric_limits<ScarletInterface::uint16>::max()
 #define uint8_max std::numeric_limits<ScarletInterface::uint8>::max()
+

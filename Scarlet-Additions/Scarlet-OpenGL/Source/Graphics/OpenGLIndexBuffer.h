@@ -2,18 +2,20 @@
 // OpenGLIndexBuffer.h 03/04/2021 - Functional Class.
 #pragma once
 
+#define SCARLET_INTERFACE_BUILD_DLL
 #include <ScarletInterface.h>
 
 namespace OpenGL {
 
 	using namespace ScarletInterface;
 
-	class OpenGLIndexBuffer
+	class SCARLET_INTERFACE_API OpenGLIndexBuffer
 	{
 	public:
 		friend class OpenGLVertexArray;
 
 	public:
+		OpenGLIndexBuffer(const Vector<uint32>& _Indices);
 		OpenGLIndexBuffer(uint32* _Indices, const uint32& _Count);
 		virtual ~OpenGLIndexBuffer();
 
@@ -27,6 +29,9 @@ namespace OpenGL {
 		uint32 m_Count;
 
 	public:
+		static Ref<OpenGLIndexBuffer> Create(const Vector<uint32>& _Indices)
+		{ return CreateRef<OpenGLIndexBuffer>(_Indices); }
+
 		static Ref<OpenGLIndexBuffer> Create(uint32* _Indices, const uint32& _Count)
 		{ return CreateRef<OpenGLIndexBuffer>(_Indices, _Count); }
 

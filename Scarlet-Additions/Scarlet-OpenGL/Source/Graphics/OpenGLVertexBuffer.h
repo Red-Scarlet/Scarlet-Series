@@ -2,6 +2,7 @@
 // OpenGLVertexBuffer.h 03/04/2021 - Functional Class.
 #pragma once
 
+#define SCARLET_INTERFACE_BUILD_DLL
 #include <ScarletInterface.h>
 
 namespace OpenGL {
@@ -33,7 +34,7 @@ namespace OpenGL {
 	}
 
 
-	struct BufferElement
+	struct SCARLET_INTERFACE_API BufferElement
 	{
 	public:
 		VertexAttributeTypes Type;
@@ -70,7 +71,7 @@ namespace OpenGL {
 		}
 	};
 
-	class BufferLayout
+	class SCARLET_INTERFACE_API BufferLayout
 	{
 	public:
 		BufferLayout() = default;
@@ -106,14 +107,31 @@ namespace OpenGL {
 		uint32 m_Stride = 0;
 	};
 
-	class OpenGLVertexBuffer
+	struct SCARLET_INTERFACE_API MeshVertex
+	{
+	public:
+		Mathematics::Vector3 Position;
+		Mathematics::Vector3 Normal;
+		Mathematics::Vector2 TxtCoord;
+
+		MeshVertex(const Mathematics::Vector3& _Position = { 0.0f, 0.0f, 0.0f }, const Mathematics::Vector3& _Normal = { 0.0f, 0.0f, 0.0f },
+			const Mathematics::Vector2& _TexCoord = { 0.0f, 0.0f })
+			: Position(_Position), Normal(_Normal), TxtCoord(_TexCoord)
+		{
+		}
+
+	};
+
+	class SCARLET_INTERFACE_API OpenGLVertexBuffer
 	{
 	public:
 		friend class OpenGLVertexArray;
 
 	public:
 		OpenGLVertexBuffer(const uint32& _Size);
+		OpenGLVertexBuffer(const Vector<MeshVertex>& _Vertices);
 		OpenGLVertexBuffer(float32* _Vertices, const uint32& _Size);
+
 		virtual ~OpenGLVertexBuffer();
 
 		void SetData(const void* _Data, const uint32& _Size);
@@ -129,6 +147,9 @@ namespace OpenGL {
 	public:
 		static Ref<OpenGLVertexBuffer> Create(const uint32& _Size)
 		{ return CreateRef<OpenGLVertexBuffer>(_Size); }
+
+		static Ref<OpenGLVertexBuffer> Create(const Vector<MeshVertex>& _Vertices)
+		{ return CreateRef<OpenGLVertexBuffer>(_Vertices); }
 
 		static Ref<OpenGLVertexBuffer> Create(float32* _Vertices, const uint32& _Size)
 		{ return CreateRef<OpenGLVertexBuffer>(_Vertices, _Size); }
