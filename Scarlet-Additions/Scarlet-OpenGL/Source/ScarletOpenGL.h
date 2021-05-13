@@ -2,7 +2,7 @@
 // ScarletOpenGL.h 03/04/2021 - Include Header.
 #pragma once
 
-#include "Core/InterfaceGL.h"
+#include "Components/OpenGLComponent.h"
 
 #include "Graphics/OpenGLCommand.h"
 #include "Graphics/OpenGLShader.h"

@@ -2,9 +2,7 @@
 // OpenGLContext.h 03/04/2021 - Functional Class.
 #pragma once
 
-#define SCARLET_INTERFACE_BUILD_DLL
 #include <ScarletInterface.h>
-#include <glad/glad.h>
 
 namespace OpenGL {
 

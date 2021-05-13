@@ -2,7 +2,6 @@
 // OpenGLShader.h 04/04/2021 - Functional Class.
 #pragma once
 
-#define SCARLET_INTERFACE_BUILD_DLL
 #include <ScarletInterface.h>
 
 typedef std::uint32_t GLenum;
@@ -26,8 +25,8 @@ namespace OpenGL {
 
 		const String& GetName() const { return m_Name; }
 
-		void Bind() const;
-		void Unbind() const;
+		void Bind();
+		void Unbind();
 
 	private:
 		UnorderedMap<GLenum, String> PreProcess(const String& _Source);

@@ -13,8 +13,11 @@ namespace ScarletInterface {
 		void RegisterComponent()
 		{
 			const char* typeName = typeid(T).name();
-			m_ComponentTypes.insert({ typeName, m_NextComponentType });
-			m_ComponentArrays.insert({ typeName, CreateRef<ComponentArray<T>>() });
+
+			std::cout << "Registered: " << typeName << ", ID: " << (int)m_NextComponentType << std::endl;
+
+			m_ComponentTypes.insert({ String(typeName), m_NextComponentType });
+			m_ComponentArrays.insert({ String(typeName), CreateRef<ComponentArray<T>>() });
 			m_NextComponentType++;
 		}
 
@@ -22,14 +25,14 @@ namespace ScarletInterface {
 		bool HasRegisterComponent()
 		{
 			const char* typeName = typeid(T).name();
-			return m_ComponentTypes.find(typeName) != m_ComponentTypes.end();
+			return m_ComponentTypes.find(String(typeName)) != m_ComponentTypes.end();
 		}
 
 		template<typename T>
 		InterfaceComponent GetComponentType()
 		{
 			const char* typeName = typeid(T).name();
-			return m_ComponentTypes[typeName];
+			return m_ComponentTypes[String(typeName)];
 		}
 
 		template<typename T>
@@ -65,17 +68,20 @@ namespace ScarletInterface {
 		}
 
 	private:
-		UnorderedMap<const char*, InterfaceComponent> m_ComponentTypes = {};
-		UnorderedMap<const char*, Ref<IComponentArray>> m_ComponentArrays = {};
+		UnorderedMap<String, InterfaceComponent> m_ComponentTypes = {};
+		UnorderedMap<String, Ref<IComponentArray>> m_ComponentArrays = {};
 		InterfaceComponent m_NextComponentType = {};
 					
 		template<typename T>
 		Ref<ComponentArray<T>> GetComponentArray()
 		{
 			const char* typeName = typeid(T).name();
-			return std::static_pointer_cast<ComponentArray<T>>(m_ComponentArrays[typeName]);
+			return std::static_pointer_cast<ComponentArray<T>>(m_ComponentArrays[String(typeName)]);
 		}
 			
+	public:
+		static Ref<ComponentManager> Create()
+		{ return CreateRef<ComponentManager>(); }
 	};
 
 }

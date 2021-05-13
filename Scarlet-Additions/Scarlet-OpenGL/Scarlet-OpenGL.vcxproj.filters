@@ -43,6 +43,7 @@
       <Filter>Graphics</Filter>
     </ClInclude>
     <ClInclude Include="Source\ScarletOpenGL.h" />
+    <ClInclude Include="Source\Graphics\OpenGLBufferLayout.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Core\InterfaceOpenGL.cpp">

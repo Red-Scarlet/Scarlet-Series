@@ -8,7 +8,8 @@ namespace ScarletInterface {
 	const Interface MaxInterface = 8192;
 
 	using InterfaceComponent = uint8;
-	const InterfaceComponent MaxInterfaceComponents = 1024;
-	using ModuleSignature = Bitset<MaxInterfaceComponents>;
+	const InterfaceComponent MaxInterfaceComponents = 128;
+
+	using InterfaceSignature = Bitset<MaxInterfaceComponents>;
 
 }

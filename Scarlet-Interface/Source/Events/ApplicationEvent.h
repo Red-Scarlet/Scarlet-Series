@@ -7,9 +7,9 @@
 
 namespace ScarletInterface {
 
-	#define AppStop uint16(0x00)
-	#define AppUpdate uint16(0x01)
-	#define EventCategoryApplication uint16(0x01)
+	#define AppStop uint16(0x0000)
+	#define AppUpdate uint16(0x0001)
+	#define EventCategoryApplication uint16(0x00)
 
 	class SCARLET_INTERFACE_API AppStopEvent : public Event
 	{

@@ -1,5 +1,5 @@
 project "GLAD"
-	kind "StaticLib"
+	kind "SharedLib"
 	language "C"
 	staticruntime "on"
 
@@ -11,6 +11,12 @@ project "GLAD"
 		"include/GLAD/glad.h",
 		"include/KHR/khrplatform.h",
 		"src/glad.c"
+	}
+
+	defines
+	{
+		"GLAD_GLAPI_EXPORT",
+		"GLAD_GLAPI_EXPORT_BUILD"
 	}
 
 	includedirs

@@ -98,19 +98,21 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;SCARLET_INTERFACE_EXPORT;SCARLET_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLAD_GLAPI_EXPORT;SCARLET_INTERFACE_EXPORT;SCARLET_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>Source;..\..\Scarlet-Interface\Source;..\..\Scarlet-Interface\Vendor;..\..\Scarlet-Interface\Vendor\spdlog\include;..\Scarlet-GLFW\Source;..\Scarlet-GLFW\Vendor;Vendor\GLAD\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <MinimalRebuild>false</MinimalRebuild>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalOptions>/MDd %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>Vendor\GLAD\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ImportLibrary>..\..\Scarlet-Bin\Debug-windows-x86_64\Scarlet-OpenGL\Scarlet-OpenGL.lib</ImportLibrary>
     </Link>
   </ItemDefinitionGroup>
@@ -118,19 +120,21 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;SCARLET_INTERFACE_EXPORT;SCARLET_DEBUG;SCARLET_PROFILE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLAD_GLAPI_EXPORT;SCARLET_INTERFACE_EXPORT;SCARLET_DEBUG;SCARLET_PROFILE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>Source;..\..\Scarlet-Interface\Source;..\..\Scarlet-Interface\Vendor;..\..\Scarlet-Interface\Vendor\spdlog\include;..\Scarlet-GLFW\Source;..\Scarlet-GLFW\Vendor;Vendor\GLAD\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <MinimalRebuild>false</MinimalRebuild>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalOptions>/MDd %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>Vendor\GLAD\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ImportLibrary>..\..\Scarlet-Bin\Profile-windows-x86_64\Scarlet-OpenGL\Scarlet-OpenGL.lib</ImportLibrary>
     </Link>
   </ItemDefinitionGroup>
@@ -138,7 +142,7 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;SCARLET_INTERFACE_EXPORT;SCARLET_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLAD_GLAPI_EXPORT;SCARLET_INTERFACE_EXPORT;SCARLET_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>Source;..\..\Scarlet-Interface\Source;..\..\Scarlet-Interface\Vendor;..\..\Scarlet-Interface\Vendor\spdlog\include;..\Scarlet-GLFW\Source;..\Scarlet-GLFW\Vendor;Vendor\GLAD\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -147,6 +151,7 @@
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -154,6 +159,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>Vendor\GLAD\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ImportLibrary>..\..\Scarlet-Bin\Release-windows-x86_64\Scarlet-OpenGL\Scarlet-OpenGL.lib</ImportLibrary>
     </Link>
   </ItemDefinitionGroup>
@@ -161,7 +167,7 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;SCARLET_INTERFACE_EXPORT;SCARLET_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLAD_GLAPI_EXPORT;SCARLET_INTERFACE_EXPORT;SCARLET_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>Source;..\..\Scarlet-Interface\Source;..\..\Scarlet-Interface\Vendor;..\..\Scarlet-Interface\Vendor\spdlog\include;..\Scarlet-GLFW\Source;..\Scarlet-GLFW\Vendor;Vendor\GLAD\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -170,6 +176,7 @@
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -177,6 +184,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>Vendor\GLAD\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ImportLibrary>..\..\Scarlet-Bin\Dist-windows-x86_64\Scarlet-OpenGL\Scarlet-OpenGL.lib</ImportLibrary>
     </Link>
   </ItemDefinitionGroup>
@@ -184,6 +192,7 @@
     <ClInclude Include="Source\Components\OpenGLComponent.h" />
     <ClInclude Include="Source\Core\InterfaceOpenGL.h" />
     <ClInclude Include="Source\Core\OpenGLContext.h" />
+    <ClInclude Include="Source\Graphics\OpenGLBufferLayout.h" />
     <ClInclude Include="Source\Graphics\OpenGLCommand.h" />
     <ClInclude Include="Source\Graphics\OpenGLFrameBuffer.h" />
     <ClInclude Include="Source\Graphics\OpenGLIndexBuffer.h" />

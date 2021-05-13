@@ -1,5 +1,5 @@
 project "Scarlet-Renderer"
-	kind "StaticLib"
+	kind "SharedLib"
 	language "C++"
 	cppdialect "C++17"
 	staticruntime "on"
@@ -11,6 +11,12 @@ project "Scarlet-Renderer"
 	{
 		"Source/**.h",
 		"Source/**.cpp"
+	}
+
+	defines
+	{		
+		"_CRT_SECURE_NO_WARNINGS",
+		"SCARLET_INTERFACE_EXPORT"
 	}
 
 	includedirs
@@ -37,10 +43,12 @@ project "Scarlet-Renderer"
 		runtime "Debug"
 		symbols "on"
 		defines "SCARLET_DEBUG"
+		buildoptions "/MDd"
 
 	filter "configurations:Profile"
 		runtime "Debug"
 		symbols "on"
+		buildoptions "/MDd"
 		defines
 		{ 
 			"SCARLET_DEBUG",
@@ -51,8 +59,10 @@ project "Scarlet-Renderer"
 		runtime "Release"
 		optimize "on"
 		defines "SCARLET_RELEASE"
+		buildoptions "/MD"
 
 	filter "configurations:Dist"
 		runtime "Release"
 		optimize "on"		
 		defines "SCARLET_DIST"
+		buildoptions "/MD"

@@ -5,21 +5,21 @@
 
 namespace OpenGL {
 
-	static const GLenum& ShaderDataTypeToOpenGLBaseType(const VertexAttributeTypes& _Type)
+	static const GLenum& ShaderDataTypeToOpenGLBaseType(const OpenGLVertexAttributeTypes& _Type)
 	{
 		switch (_Type)
 		{
-			case VertexAttributeTypes::Float:		return GL_FLOAT;
-			case VertexAttributeTypes::Float2:		return GL_FLOAT;
-			case VertexAttributeTypes::Float3:		return GL_FLOAT;
-			case VertexAttributeTypes::Float4:		return GL_FLOAT;
-			case VertexAttributeTypes::Mat3:		return GL_FLOAT;
-			case VertexAttributeTypes::Mat4:		return GL_FLOAT;
-			case VertexAttributeTypes::Int:			return GL_INT;
-			case VertexAttributeTypes::Int2:		return GL_INT;
-			case VertexAttributeTypes::Int3:		return GL_INT;
-			case VertexAttributeTypes::Int4:		return GL_INT;
-			case VertexAttributeTypes::Bool:		return GL_BOOL;
+			case OpenGLVertexAttributeTypes::Float:		return GL_FLOAT;
+			case OpenGLVertexAttributeTypes::Float2:	return GL_FLOAT;
+			case OpenGLVertexAttributeTypes::Float3:	return GL_FLOAT;
+			case OpenGLVertexAttributeTypes::Float4:	return GL_FLOAT;
+			case OpenGLVertexAttributeTypes::Mat3:		return GL_FLOAT;
+			case OpenGLVertexAttributeTypes::Mat4:		return GL_FLOAT;
+			case OpenGLVertexAttributeTypes::Int:		return GL_INT;
+			case OpenGLVertexAttributeTypes::Int2:		return GL_INT;
+			case OpenGLVertexAttributeTypes::Int3:		return GL_INT;
+			case OpenGLVertexAttributeTypes::Int4:		return GL_INT;
+			case OpenGLVertexAttributeTypes::Bool:		return GL_BOOL;
 		}
 
 		SCARLET_INTERFACE_ASSERT(SCARLET_ERROR, "Unknown VertexAttributeTypes!");
@@ -48,10 +48,10 @@ namespace OpenGL {
 		{
 			switch (element.Type)
 			{
-			case VertexAttributeTypes::Float:
-			case VertexAttributeTypes::Float2:
-			case VertexAttributeTypes::Float3:
-			case VertexAttributeTypes::Float4:
+			case OpenGLVertexAttributeTypes::Float:
+			case OpenGLVertexAttributeTypes::Float2:
+			case OpenGLVertexAttributeTypes::Float3:
+			case OpenGLVertexAttributeTypes::Float4:
 			{
 				glEnableVertexAttribArray(m_VertexBufferIndex);
 				glVertexAttribPointer(m_VertexBufferIndex,
@@ -63,11 +63,11 @@ namespace OpenGL {
 				m_VertexBufferIndex++;
 				break;
 			}
-			case VertexAttributeTypes::Int:
-			case VertexAttributeTypes::Int2:
-			case VertexAttributeTypes::Int3:
-			case VertexAttributeTypes::Int4:
-			case VertexAttributeTypes::Bool:
+			case OpenGLVertexAttributeTypes::Int:
+			case OpenGLVertexAttributeTypes::Int2:
+			case OpenGLVertexAttributeTypes::Int3:
+			case OpenGLVertexAttributeTypes::Int4:
+			case OpenGLVertexAttributeTypes::Bool:
 			{
 				glEnableVertexAttribArray(m_VertexBufferIndex);
 				glVertexAttribIPointer(m_VertexBufferIndex,
@@ -78,8 +78,8 @@ namespace OpenGL {
 				m_VertexBufferIndex++;
 				break;
 			}
-			case VertexAttributeTypes::Mat3:
-			case VertexAttributeTypes::Mat4:
+			case OpenGLVertexAttributeTypes::Mat3:
+			case OpenGLVertexAttributeTypes::Mat4:
 			{
 				uint8_t count = element.GetComponentCount();
 				for (uint8_t i = 0; i < count; i++)

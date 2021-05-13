@@ -2,15 +2,18 @@
 // OpenGLContext.cpp 03/04/2021 - Functional Class.
 #include "OpenGLContext.h"
 
+#include <glad/glad.h>
+
 namespace OpenGL {
 
 	OpenGLContext::OpenGLContext(void* _ProcAddress)
 	{
-		ScarletInterface::int32 status = gladLoadGLLoader((GLADloadproc)_ProcAddress);
-		SCARLET_INTERFACE_ASSERT(status, "Failed to initailize Glad!");
+		ScarletInterface::int32 status = 0;
+		if (_ProcAddress == nullptr)
+			status = gladLoadGL();
+		else status = gladLoadGLLoader((GLADloadproc)_ProcAddress);
 
-		SCARLET_INTERFACE_INFO("OpenGL Renderer: {0}", glGetString(GL_RENDERER));
-		SCARLET_INTERFACE_INFO("OpenGL Version: {0}", glGetString(GL_VERSION));
+		if(status == -1) std::cout << "Failed to initialize OpenGL context" << std::endl;
 	}
 
 	OpenGLContext::~OpenGLContext()

@@ -2,7 +2,6 @@
 // OpenGLCommand.h 03/04/2021 - Functional Class.
 #pragma once
 
-#define SCARLET_INTERFACE_BUILD_DLL
 #include <ScarletInterface.h>
 #include "OpenGLVertexArray.h"
 
@@ -10,14 +9,14 @@ namespace OpenGL {
 
 	using namespace ScarletInterface;
 	
-	enum class SCARLET_INTERFACE_API OpenGLEnableFlag : uint8
+	enum class OpenGLEnableFlag : uint8
 	{
 		OpenGLNone = 0x00,
 		OpenGLBlend = 0x01,
 		OpenGLDepthTest = 0x02,
 	};
 	
-	enum class SCARLET_INTERFACE_API OpenGLClearFlag : uint8
+	enum class OpenGLClearFlag : uint8
 	{
 		OpenGLNone = 0x00,
 		OpenGLColor = 0x01,
@@ -25,7 +24,7 @@ namespace OpenGL {
 		OpenGLStencil = 0x04
 	};
 	
-	enum class SCARLET_INTERFACE_API OpenGLPolygonFlag : uint8
+	enum class OpenGLPolygonFlag : uint8
 	{
 		OpenGLNone = 0x00,
 		OpenGLPoint = 0x01,
@@ -33,7 +32,7 @@ namespace OpenGL {
 		OpenGLFill = 0x04
 	};
 	
-	enum class SCARLET_INTERFACE_API OpenGLDrawingFlag : uint8
+	enum class OpenGLDrawingFlag : uint8
 	{
 		OpenGLNone = 0x00,
 		OpenGLPoints = 0x01,
@@ -41,7 +40,7 @@ namespace OpenGL {
 		OpenGLTriangles = 0x04
 	};
 
-	class SCARLET_INTERFACE_API OpenGLCommand
+	class OpenGLCommand
 	{
 	public:
 		static void Enable(const OpenGLEnableFlag& _Flag);

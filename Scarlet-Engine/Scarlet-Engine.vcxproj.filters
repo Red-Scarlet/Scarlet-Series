@@ -24,6 +24,9 @@
     <ClInclude Include="Source\Interface\InterfaceHandler.h">
       <Filter>Interface</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Interface\InterfaceManager.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
     <ClInclude Include="Source\Interface\ModuleManager.h">
       <Filter>Interface</Filter>
     </ClInclude>
@@ -44,6 +47,12 @@
       <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="Source\Interface\InterfaceHandler.cpp">
+      <Filter>Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Interface\InterfaceManager.cpp">
+      <Filter>Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Interface\ModuleManager.cpp">
       <Filter>Interface</Filter>
     </ClCompile>
     <ClCompile Include="Source\Scarletpch.cpp" />

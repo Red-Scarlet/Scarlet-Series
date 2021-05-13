@@ -9,7 +9,7 @@
 
 namespace GLFW {
 
-	struct GLFWComponent
+	struct SCARLET_INTERFACE_API GLFWComponent
 	{
 	public:
 		ScarletInterface::Ref<Window> Instance;

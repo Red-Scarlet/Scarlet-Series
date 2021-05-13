@@ -70,8 +70,8 @@ namespace Scarlet {
                     interfaceModule = CreateInterface();
                     if (interfaceModule != nullptr) {
                         interfaceModule->SetName(name);
-                        m_Implementation->m_Plugins.insert( PluginMap::value_type(name, interfaceModule) );
-                        m_Implementation->m_Libs.insert( LibraryMap::value_type(name, hModule ) );
+                        m_Implementation->m_Plugins.insert(PluginMap::value_type(name, interfaceModule));
+                        m_Implementation->m_Libs.insert(LibraryMap::value_type(name, hModule ));
                     } else FreeLibrary(hModule);
                 } else FreeLibrary(hModule);
             }

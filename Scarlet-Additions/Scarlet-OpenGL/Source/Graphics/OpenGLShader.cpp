@@ -23,7 +23,7 @@ namespace OpenGL {
 		auto shaderSources = PreProcess(_Source);
 		Compile(shaderSources);
 
-		SCARLET_INTERFACE_INFO("Shader: Compiled {0} !", m_Name);
+		//SCARLET_INTERFACE_INFO("Shader: Compiled {0} !", m_Name);
 	}
 
 	OpenGLShader::~OpenGLShader()
@@ -67,12 +67,14 @@ namespace OpenGL {
 		glUniformMatrix4fv(location, 1, GL_FALSE, Mathematics::MathFunction::ValuePtr(_Matrix4));
 	}
 
-	void OpenGLShader::Bind() const
+	void OpenGLShader::Bind()
 	{
 		glUseProgram(m_RendererID);
+
+		std::cout << "OPENGL SHADER BIND!" << std::endl;
 	}
 
-	void OpenGLShader::Unbind() const
+	void OpenGLShader::Unbind()
 	{
 		glUseProgram(0);
 	}

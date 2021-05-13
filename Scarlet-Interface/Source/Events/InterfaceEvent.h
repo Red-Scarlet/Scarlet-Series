@@ -11,37 +11,62 @@
 
 namespace ScarletInterface {
 
-	#define InterfaceSet uint16(0x02)
-	#define InterfacePush uint16(0x04)
-	#define InterfacePop uint16(0x08)
-	#define SignaturePush uint16(0x10)
-	#define SignaturePop uint16(0x20)
-	#define EventCategoryInterface uint16(0x02)
+	#define InterfaceRequest uint16(0x0002)
+	#define InterfacePush uint16(0x0004)
+	#define InterfacePop uint16(0x0008)
+	#define SignaturePush uint16(0x0010)
+	#define SignaturePop uint16(0x0020)
+	#define ComponentPush uint16(0x0040)
+	#define ComponentPop uint16(0x0080)
+	#define ComponentCompute uint16(0x0100)
 
-	class SCARLET_INTERFACE_API InterfaceSetEvent : public Event
+	#define EventCategoryInterface uint16(0x01)
+
+	class SCARLET_INTERFACE_API InterfaceRequestEvent : public Event
 	{
 	public:
-		InterfaceSetEvent() = default;
+		InterfaceRequestEvent(Interface* _Interface)
+		{
+			m_Interface = _Interface;
+		}
 
-		EVENT_CLASS_TYPE(InterfaceSet)
+		Interface* GetInterface() { return m_Interface; }
+
+		EVENT_CLASS_TYPE(InterfaceRequest)
 		EVENT_CLASS_CATEGORY(EventCategoryInterface)
+
+	private:
+		Interface* m_Interface = nullptr;
 	};
 
 	class SCARLET_INTERFACE_API InterfacePushEvent : public Event
 	{
 	public:
 		InterfacePushEvent(InterfaceModule* _Module)
-			: m_Module(_Module)
 		{
+			m_Module = _Module;
 		}
 
 		InterfaceModule* GetModule() { return m_Module; }
 
+		template<typename T>
+		void Bind(T* _Interface)
+		{
+			const char* typeName = typeid(T).name();
+
+			m_Name = String(typeName);
+			m_Data = (InterfaceModule*)_Interface;
+		}
+
 		EVENT_CLASS_TYPE(InterfacePush)
 		EVENT_CLASS_CATEGORY(EventCategoryInterface)
 
+		String m_Name;
+		InterfaceModule* m_Data;
+
 	private:
 		InterfaceModule* m_Module = nullptr;
+
 	};
 
 	class SCARLET_INTERFACE_API InterfacePopEvent : public Event
@@ -84,9 +109,10 @@ namespace ScarletInterface {
 		EVENT_CLASS_TYPE(SignaturePush)
 		EVENT_CLASS_CATEGORY(EventCategoryInterface)
 
+		Function<InterfaceComponent(const Ref<ComponentManager>& _ComponentManager)> m_Function;
+
 	private:
 		InterfaceModule* m_Module = nullptr;
-		Function<InterfaceComponent(const Ref<ComponentManager>& _ComponentManager)> m_Function;
 	};
 
 	class SCARLET_INTERFACE_API SignaturePopEvent : public Event
@@ -112,9 +138,128 @@ namespace ScarletInterface {
 		EVENT_CLASS_TYPE(SignaturePop)
 		EVENT_CLASS_CATEGORY(EventCategoryInterface)		
 	
+		Function<InterfaceComponent(const Ref<ComponentManager>& _ComponentManager)> m_Function;
+
 	private:
 		InterfaceModule* m_Module = nullptr;
-		Function<InterfaceComponent(const Ref<ComponentManager>& _ComponentManager)> m_Function;
+
+	};
+
+	class SCARLET_INTERFACE_API ComponentPushEvent : public Event
+	{
+	public:
+		ComponentPushEvent(InterfaceModule* _Module)
+		{
+			m_Interface = _Module->m_Interface;
+		}
+
+		ComponentPushEvent(const Interface& _Interface)
+		{
+			m_Interface = _Interface;
+		}
+
+		const Interface& GetInterface() { return m_Interface; }
+
+		template<typename T>
+		void Bind(T _Component)
+		{
+			m_Function = [](const Ref<ComponentManager>& _ComponentManager, const Interface& _Interface, AnyData _Component) {
+				if (!_ComponentManager->HasRegisterComponent<T>())
+					_ComponentManager->RegisterComponent<T>();
+				if (!_ComponentManager->HasComponent<T>(_Interface))
+					_ComponentManager->AddComponent<T>(_Interface, AnyCast<T>(_Component));
+
+				return _ComponentManager->GetComponentType<T>();
+			};
+
+			m_Component = _Component;
+		}
+
+		EVENT_CLASS_TYPE(ComponentPush)
+		EVENT_CLASS_CATEGORY(EventCategoryInterface)
+
+		Function<InterfaceComponent(const Ref<ComponentManager>& _ComponentManager, const Interface& _Interface, AnyData _Component)> m_Function;
+		AnyData m_Component;
+
+	private:
+		Interface m_Interface = uint64_max;
+	};
+
+	class SCARLET_INTERFACE_API ComponentPopEvent : public Event
+	{
+	public:
+		ComponentPopEvent(InterfaceModule* _Module)
+		{
+			m_Interface = _Module->m_Interface;
+		}
+
+		ComponentPopEvent(const Interface& _Interface)
+		{
+			m_Interface = _Interface;
+		}
+
+		const Interface& GetInterface() { return m_Interface; }
+
+		template<typename T>
+		void Bind()
+		{
+			m_Function = [](const Ref<ComponentManager>& _ComponentManager, const Interface& _Interface) {
+				if (!_ComponentManager->HasRegisterComponent<T>())
+					_ComponentManager->RegisterComponent<T>();
+				if (_ComponentManager->HasComponent<T>(_Interface))
+					_ComponentManager->RemoveComponent<T>(_Interface);
+				return _ComponentManager->GetComponentType<T>();
+			};
+		}
+
+		EVENT_CLASS_TYPE(ComponentPop)
+		EVENT_CLASS_CATEGORY(EventCategoryInterface)
+
+		Function<InterfaceComponent(const Ref<ComponentManager>& _ComponentManager, const Interface& _Interface)> m_Function;
+
+	private:
+		Interface m_Interface = uint64_max;
+	};
+
+	class SCARLET_INTERFACE_API ComponentComputeEvent : public Event
+	{
+	public:
+		using EventCallbackFn = std::function<void()>;
+
+		ComponentComputeEvent(InterfaceModule* _Module)
+		{
+			m_Interface = _Module->m_Interface;
+		}
+
+		ComponentComputeEvent(const Interface& _Interface)
+			: m_Interface(_Interface)
+		{
+		}
+
+		const Interface& GetInterface() { return m_Interface; }
+
+		template<typename T>
+		void Retrieve(T** _Component)
+		{
+			m_Function = [](const Ref<ComponentManager>& _ComponentManager, const Interface& _Interface) {
+				if (!_ComponentManager->HasRegisterComponent<T>())
+					_ComponentManager->RegisterComponent<T>();
+				if (_ComponentManager->HasComponent<T>(_Interface)) return (void*)(T*)&_ComponentManager->GetComponent<T>(_Interface);
+			};
+
+			m_Component = (void**)_Component;
+			*m_Component = &(*(T*)m_Data);
+		}
+
+		EVENT_CLASS_TYPE(ComponentCompute)
+		EVENT_CLASS_CATEGORY(EventCategoryInterface)
+
+		Function<void*(const Ref<ComponentManager>& _ComponentManager, const Interface& _Interface)> m_Function;
+		void** m_Component;
+		void* m_Data;
+
+	private:
+		Interface m_Interface = uint64_max;
 
 	};
 

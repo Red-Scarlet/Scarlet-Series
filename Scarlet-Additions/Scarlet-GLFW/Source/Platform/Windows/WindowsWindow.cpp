@@ -13,7 +13,7 @@ namespace GLFW {
 	
 	static void GLFWErrorCallback(int error, const char* description)
 	{
-		SCARLET_INTERFACE_ERROR("GLFW Error ({0}): {1}", error, description);
+		//SCARLET_INTERFACE_ERROR("GLFW Error ({0}): {1}", error, description);
 	}
 
 	WindowsWindow::WindowsWindow(const WindowProps& props)

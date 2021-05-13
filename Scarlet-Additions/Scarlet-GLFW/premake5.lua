@@ -50,10 +50,12 @@ project "Scarlet-GLFW"
 		runtime "Debug"
 		symbols "on"
 		defines "SCARLET_DEBUG"
+		buildoptions "/MDd"
 
 	filter "configurations:Profile"
 		runtime "Debug"
 		symbols "on"
+		buildoptions "/MDd"
 		defines
 		{ 
 			"SCARLET_DEBUG",
@@ -64,8 +66,10 @@ project "Scarlet-GLFW"
 		runtime "Release"
 		optimize "on"
 		defines "SCARLET_RELEASE"
+		buildoptions "/MD"
 
 	filter "configurations:Dist"
 		runtime "Release"
 		optimize "on"		
 		defines "SCARLET_DIST"
+		buildoptions "/MD"

@@ -42,6 +42,12 @@
     <ClInclude Include="Source\Core\Common.h">
       <Filter>Source\Core</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Core\ComponentArray.h">
+      <Filter>Source\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Core\ComponentManager.h">
+      <Filter>Source\Core</Filter>
+    </ClInclude>
     <ClInclude Include="Source\Core\InterfaceEntrypoint.h">
       <Filter>Source\Core</Filter>
     </ClInclude>
@@ -1242,8 +1248,6 @@
     <ClInclude Include="Vendor\glm\glm\vector_relational.hpp">
       <Filter>Vendor\glm\glm</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Core\ComponentManager.h" />
-    <ClInclude Include="Source\Core\ComponentArray.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Core\InterfaceModule.cpp">

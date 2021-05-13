@@ -13,6 +13,7 @@ int main(int argc, char** argv)
 #endif
 {
     Scarlet::Log::Init();
+    ScarletInterface::Log::Init();
     SCARLET_CORE_WARN("Initialized Log!");
     SCARLET_CORE_WARN("Entrypoint Initialized!");
 
@@ -29,5 +30,6 @@ int main(int argc, char** argv)
     SCARLET_PROFILE_END_SESSION();
 
     Scarlet::Log::Shutdown();
+    ScarletInterface::Log::Shutdown();
     delete app;
 }

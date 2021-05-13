@@ -15,22 +15,19 @@ namespace ScarletInterface {                                                \
                                                                             \
     extern "C" SCARLET_INTERFACE_API InterfaceModule* CreateInterface()     \
     {                                                                       \
-        assert(g_x == nullptr);                                             \
         g_x = new x();                                                      \
         return g_x;                                                         \
     }                                                                       \
                                                                             \
     extern "C" SCARLET_INTERFACE_API void DestroyInterface()                \
     {                                                                       \
-        assert(g_x);                                                        \
         delete g_x;                                                         \
         g_x = nullptr;                                                      \
     }                                                                       \
                                                                             \
     extern "C" SCARLET_INTERFACE_API void EventInterface(Event& _Event)     \
     {                                                                       \
-        assert(g_x);                                                        \
         g_x->OnGlobal(_Event);                                              \
     }                                                                       \
                                                                             \
-}
+}                                                                           

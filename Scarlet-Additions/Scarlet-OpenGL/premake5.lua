@@ -13,6 +13,13 @@ project "Scarlet-OpenGL"
 		"Source/**.cpp"
 	}
 
+	defines
+	{		
+		"_CRT_SECURE_NO_WARNINGS",
+		"GLAD_GLAPI_EXPORT",
+		"SCARLET_INTERFACE_EXPORT"
+	}
+
 	includedirs
 	{ 		
 		"Source",
@@ -26,6 +33,11 @@ project "Scarlet-OpenGL"
 		"%{wks.location}/Scarlet-Additions/Scarlet-OpenGL/Vendor/GLAD/include"
 	}
 
+	libdirs 
+	{ 
+		"%{wks.location}/Scarlet-Additions/Scarlet-OpenGL/Vendor/GLAD/lib"
+	}
+
 	links
 	{
 		"Scarlet-Interface",
@@ -35,12 +47,6 @@ project "Scarlet-OpenGL"
 		"opengl32.lib"
 	}
 
-	defines
-	{		
-		"_CRT_SECURE_NO_WARNINGS",
-		"SCARLET_INTERFACE_EXPORT"
-	}
-
 	filter "system:windows"
 		systemversion "latest"
 
@@ -48,10 +54,12 @@ project "Scarlet-OpenGL"
 		runtime "Debug"
 		symbols "on"
 		defines "SCARLET_DEBUG"
+		buildoptions "/MDd"
 
 	filter "configurations:Profile"
 		runtime "Debug"
 		symbols "on"
+		buildoptions "/MDd"
 		defines
 		{ 
 			"SCARLET_DEBUG",
@@ -62,8 +70,10 @@ project "Scarlet-OpenGL"
 		runtime "Release"
 		optimize "on"
 		defines "SCARLET_RELEASE"
+		buildoptions "/MD"
 
 	filter "configurations:Dist"
 		runtime "Release"
 		optimize "on"		
 		defines "SCARLET_DIST"
+		buildoptions "/MD"

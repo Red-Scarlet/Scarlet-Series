@@ -6,6 +6,11 @@ namespace ScarletInterface {
     {
     }
 
+    InterfaceModule::InterfaceModule(const String& _Name)
+        : m_Name(_Name)
+    {
+    }
+
     InterfaceModule::~InterfaceModule()
     {
     }
@@ -18,16 +23,6 @@ namespace ScarletInterface {
     const String& InterfaceModule::GetName() const
     {
         return m_Name;
-    }
-
-    void InterfaceModule::SetSignature(const ModuleSignature& _Signature)
-    {
-        m_Signature = _Signature;
-    }
-
-    const ModuleSignature& InterfaceModule::GetSignature() const
-    {
-        return m_Signature;
     }
 
 }

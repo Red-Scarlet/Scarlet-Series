@@ -1,14 +1,35 @@
 #include "InterfaceGLFW.h"
 
 #include <Events/InterfaceEvent.h>
+#include "Components/GLFWComponent.h"
 
 namespace GLFW {
 
     // Can Handle Engine/Module Manager Events.
     void InterfaceGLFW::OnGlobal(Event& _Event)
     {
+        if (!m_Initialized)
+        {
+            WindowProps WindowProperties;
+            WindowProperties.Title = "ScarletGLFW";
+
+            _Event.Push(new ComponentPushEvent(this))->Bind<GLFWComponent>(WindowProperties);
+            _Event.Push(new SignaturePushEvent(this))->Bind<GLFWComponent>();
+            _Event.Proceed(_Event);
+
+            GLFWComponent* component = {};
+            _Event.Push(new ComponentComputeEvent(this))->Retrieve<GLFWComponent>(&component);
+            _Event.Proceed(_Event);
+
+            component->Instance->SetEventCallback(SCARLET_INTERFACE_BIND_EVENT_FN(InterfaceGLFW::OnLocal));
+            component->Context->SwapInterval();
+
+            m_Initialized = true, m_Running = true;
+        }
+
         EventDispatcher dispatcher(_Event);
         dispatcher.Dispatch<AppUpdateEvent>(SCARLET_INTERFACE_BIND_EVENT_FN(InterfaceGLFW::OnAppUpdate));
+        if (!_Event.Handled) Sleep(1000); return;
     }
 
     void InterfaceGLFW::OnLocal(Event& _Event)
@@ -19,40 +40,34 @@ namespace GLFW {
 
     bool InterfaceGLFW::OnAppUpdate(AppUpdateEvent& _Event)
     {
-        if (!m_Initialized)
+        if (m_Running)
         {
-            WindowProps WindowProperties;
-            WindowProperties.Title = "ScarletGLFW";
-            m_Instance = Window::Create(WindowProperties);
-            m_Instance->SetEventCallback(SCARLET_INTERFACE_BIND_EVENT_FN(InterfaceGLFW::OnLocal));
-            m_Context = GLFWContext::Create((GLFWwindow*)m_Instance->GetNativeWindow());
-            m_Context->SwapInterval();
-            m_Running = true, m_Initialized = true;
-        }
+            GLFWComponent* component = {};
+            _Event.Push(new ComponentComputeEvent(this))->Retrieve<GLFWComponent>(&component);
+            _Event.Proceed(_Event);
 
-        if (m_Running && !m_Minimized)
-        {
-            m_Instance->OnUpdate();
-            m_Context->SwapBuffers();
+            component->Context->SwapBuffers();
+            component->Instance->OnUpdate();
         }
 
         if (!m_Running)
         {
-            m_Instance.reset();
-            m_Context.reset();
+            GLFWComponent* component = {};
+            _Event.Push(new ComponentComputeEvent(this))->Retrieve<GLFWComponent>(&component);
+            _Event.Proceed(_Event);
 
-            _Event.SetNext(new InterfacePopEvent(this));
+            component->Context.reset();
+            component->Instance.reset();
         }
 
-        return !m_Minimized;
+        return m_Running;
     }
 
     bool InterfaceGLFW::OnWindowClose(WindowCloseEvent& _Event)
     {
         m_Running = false;
-        m_Minimized = true;
 
-        return false;
+        return true;
     }
 
     bool InterfaceGLFW::OnWindowResize(WindowResizeEvent& _Event)
@@ -61,6 +76,6 @@ namespace GLFW {
         if (_Event.GetWidth() == 0 || _Event.GetHeight() == 0)
             m_Minimized = true;
 
-        return false;
+        return true;
     }
 }

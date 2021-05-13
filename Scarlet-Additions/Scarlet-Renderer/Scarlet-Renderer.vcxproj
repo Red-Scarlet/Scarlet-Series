@@ -27,25 +27,25 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v142</PlatformToolset>
@@ -67,70 +67,78 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
     <OutDir>..\..\Scarlet-Bin\Debug-windows-x86_64\Scarlet-Renderer\</OutDir>
     <IntDir>..\..\Scarlet-Bin-Int\Debug-windows-x86_64\Scarlet-Renderer\</IntDir>
     <TargetName>Scarlet-Renderer</TargetName>
-    <TargetExt>.lib</TargetExt>
+    <TargetExt>.dll</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
+    <LinkIncremental>true</LinkIncremental>
     <OutDir>..\..\Scarlet-Bin\Profile-windows-x86_64\Scarlet-Renderer\</OutDir>
     <IntDir>..\..\Scarlet-Bin-Int\Profile-windows-x86_64\Scarlet-Renderer\</IntDir>
     <TargetName>Scarlet-Renderer</TargetName>
-    <TargetExt>.lib</TargetExt>
+    <TargetExt>.dll</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
     <OutDir>..\..\Scarlet-Bin\Release-windows-x86_64\Scarlet-Renderer\</OutDir>
     <IntDir>..\..\Scarlet-Bin-Int\Release-windows-x86_64\Scarlet-Renderer\</IntDir>
     <TargetName>Scarlet-Renderer</TargetName>
-    <TargetExt>.lib</TargetExt>
+    <TargetExt>.dll</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
+    <LinkIncremental>false</LinkIncremental>
     <OutDir>..\..\Scarlet-Bin\Dist-windows-x86_64\Scarlet-Renderer\</OutDir>
     <IntDir>..\..\Scarlet-Bin-Int\Dist-windows-x86_64\Scarlet-Renderer\</IntDir>
     <TargetName>Scarlet-Renderer</TargetName>
-    <TargetExt>.lib</TargetExt>
+    <TargetExt>.dll</TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>SCARLET_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;SCARLET_INTERFACE_EXPORT;SCARLET_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>Source;..\..\Scarlet-Interface\Source;..\..\Scarlet-Interface\Vendor;..\..\Scarlet-Interface\Vendor\spdlog\include;..\Scarlet-OpenGL\Source;..\Scarlet-OpenGL\Vendor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <MinimalRebuild>false</MinimalRebuild>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalOptions>/MDd %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ImportLibrary>..\..\Scarlet-Bin\Debug-windows-x86_64\Scarlet-Renderer\Scarlet-Renderer.lib</ImportLibrary>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>SCARLET_DEBUG;SCARLET_PROFILE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;SCARLET_INTERFACE_EXPORT;SCARLET_DEBUG;SCARLET_PROFILE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>Source;..\..\Scarlet-Interface\Source;..\..\Scarlet-Interface\Vendor;..\..\Scarlet-Interface\Vendor\spdlog\include;..\Scarlet-OpenGL\Source;..\Scarlet-OpenGL\Vendor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <MinimalRebuild>false</MinimalRebuild>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalOptions>/MDd %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ImportLibrary>..\..\Scarlet-Bin\Profile-windows-x86_64\Scarlet-Renderer\Scarlet-Renderer.lib</ImportLibrary>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>SCARLET_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;SCARLET_INTERFACE_EXPORT;SCARLET_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>Source;..\..\Scarlet-Interface\Source;..\..\Scarlet-Interface\Vendor;..\..\Scarlet-Interface\Vendor\spdlog\include;..\Scarlet-OpenGL\Source;..\Scarlet-OpenGL\Vendor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -139,19 +147,21 @@
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <ImportLibrary>..\..\Scarlet-Bin\Release-windows-x86_64\Scarlet-Renderer\Scarlet-Renderer.lib</ImportLibrary>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>SCARLET_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;SCARLET_INTERFACE_EXPORT;SCARLET_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>Source;..\..\Scarlet-Interface\Source;..\..\Scarlet-Interface\Vendor;..\..\Scarlet-Interface\Vendor\spdlog\include;..\Scarlet-OpenGL\Source;..\Scarlet-OpenGL\Vendor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -160,18 +170,27 @@
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <ImportLibrary>..\..\Scarlet-Bin\Dist-windows-x86_64\Scarlet-Renderer\Scarlet-Renderer.lib</ImportLibrary>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Allocator\OpenGLAllocate.h" />
+    <ClInclude Include="Source\Components\MemoryComponent.h" />
+    <ClInclude Include="Source\Core\InterfaceAllocator.h" />
+    <ClInclude Include="Source\Core\CallbackTable.h" />
     <ClInclude Include="Source\Core\InterfaceRenderer.h" />
+    <ClInclude Include="Source\Core\RendererContext.h" />
+    <ClInclude Include="Source\Core\ResourceQueue.h" />
     <ClInclude Include="Source\Graphics\FrameBuffer.h" />
     <ClInclude Include="Source\Graphics\IndexBuffer.h" />
+    <ClInclude Include="Source\Graphics\BufferLayout.h" />
     <ClInclude Include="Source\Graphics\RenderCommand.h" />
     <ClInclude Include="Source\Graphics\Shader.h" />
     <ClInclude Include="Source\Graphics\TextureBuffer.h" />
@@ -180,7 +199,12 @@
     <ClInclude Include="Source\ScarletRenderer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Components\AllocateComponent.h" />
+    <ClCompile Include="Source\Components\RendererComponent.h" />
+    <ClCompile Include="Source\Core\InterfaceAllocator.cpp" />
     <ClCompile Include="Source\Core\InterfaceRenderer.cpp" />
+    <ClCompile Include="Source\Core\RendererContext.cpp" />
+    <ClCompile Include="Source\Core\ResourceQueue.cpp" />
     <ClCompile Include="Source\Graphics\FrameBuffer.cpp" />
     <ClCompile Include="Source\Graphics\IndexBuffer.cpp" />
     <ClCompile Include="Source\Graphics\RenderCommand.cpp" />

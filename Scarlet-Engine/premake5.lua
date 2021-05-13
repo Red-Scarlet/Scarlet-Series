@@ -40,14 +40,16 @@ project "Scarlet-Engine"
 	filter "system:windows"
 		systemversion "latest"
 
-	filter "configurations:Debug"
+	filter "configurations:Debug"		
 		runtime "Debug"
 		symbols "on"
 		defines "SCARLET_DEBUG"
+		buildoptions "/MDd"
 
 	filter "configurations:Profile"
 		runtime "Debug"
 		symbols "on"
+		buildoptions "/MDd"
 		defines
 		{ 
 			"SCARLET_DEBUG",
@@ -58,8 +60,10 @@ project "Scarlet-Engine"
 		runtime "Release"
 		optimize "on"
 		defines "SCARLET_RELEASE"
+		buildoptions "/MD"
 
 	filter "configurations:Dist"
 		runtime "Release"
-		optimize "on"
+		optimize "on"		
 		defines "SCARLET_DIST"
+		buildoptions "/MD"

@@ -34,16 +34,18 @@ project "Scarlet-Sandbox"
 	filter "system:windows"
 		systemversion "latest"
 
-	filter "configurations:Debug"		
-		kind "ConsoleApp"
+	filter "configurations:Debug"
+		kind "ConsoleApp"	
 		runtime "Debug"
 		symbols "on"
 		defines "SCARLET_DEBUG"
+		buildoptions "/MDd"
 
 	filter "configurations:Profile"
 		kind "ConsoleApp"
 		runtime "Debug"
 		symbols "on"
+		buildoptions "/MDd"
 		defines
 		{ 
 			"SCARLET_DEBUG",
@@ -51,13 +53,14 @@ project "Scarlet-Sandbox"
 		}
 
 	filter "configurations:Release"
-		kind "ConsoleApp"
 		runtime "Release"
 		optimize "on"
 		defines "SCARLET_RELEASE"
+		buildoptions "/MD"
 
 	filter "configurations:Dist"
 		kind "WindowedApp"
 		runtime "Release"
 		optimize "on"		
 		defines "SCARLET_DIST"
+		buildoptions "/MD"

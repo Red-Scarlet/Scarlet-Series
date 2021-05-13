@@ -22,8 +22,6 @@ namespace GLFW {
 		bool OnWindowResize(WindowResizeEvent& _Event);
 
 	private:
-		Ref<Window> m_Instance;
-		Ref<GLFWContext> m_Context;
 		bool m_Running = false, m_Initialized = false, m_Minimized = false;
 	};
 

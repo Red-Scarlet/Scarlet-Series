@@ -3,7 +3,7 @@
 
 //	ENTRYPOINT APPLICATION
 //	Utilize this to write code directly into the engine-
-//	-by passing the SharedLib (DLL, SO) interface.
+//	-by passing the Shared Lib (DLL, SO) interface.
 class SandboxApp : public Scarlet::Application
 {
 public:

@@ -9,7 +9,7 @@ namespace OpenGL {
 
 	using namespace ScarletInterface;
 
-	struct OpenGLComponent
+	struct SCARLET_INTERFACE_API OpenGLComponent
 	{
 	public:
 		Ref<OpenGLContext> Context;

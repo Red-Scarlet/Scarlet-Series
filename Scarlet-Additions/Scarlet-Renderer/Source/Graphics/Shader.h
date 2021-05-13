@@ -3,18 +3,21 @@
 #pragma once
 
 #include <ScarletInterface.h>
+#include "Core/CallbackTable.h"
 
-typedef std::uint32_t GLenum;
-
-namespace OpenGL {
+namespace Renderer {
 
 	using namespace ScarletInterface;
 
-	class OpenGLShader
+	class SCARLET_INTERFACE_API Shader
 	{
 	public:
-		OpenGLShader(const String& _Name, const String& _Source);
-		virtual ~OpenGLShader();
+		friend class InterfaceRenderer;
+		friend class InterfaceAllocator;
+
+	public:
+		Shader(const String& _Name, const String& _Source);
+		~Shader();
 
 		void SetInt(const String& _Name, const uint32& _Int);
 		void SetFloat(const String& _Name, const float32& _Float);
@@ -23,25 +26,18 @@ namespace OpenGL {
 		void SetFloat4(const String& _Name, const Mathematics::Vector4& _Float4);
 		void SetMat4(const String& _Name, const Mathematics::Matrix4& _Matrix3);
 
+		void Bind();
+		void Unbind();
+
 		const String& GetName() const { return m_Name; }
-
-		void Bind() const;
-		void Unbind() const;
+		const String& GetSource() const { return m_Source; }
 
 	private:
-		UnorderedMap<GLenum, String> PreProcess(const String& _Source);
-		void Compile(const UnorderedMap<GLenum, String>& _ShaderSources);
-		const uint32_t& GetUniformLocation(const String& _Name) const;
-
-	private:
-		uint32 m_RendererID;
+		Interface m_Interface = uint64_max;
 		String m_Name;
-		mutable UnorderedMap<String, uint32> m_UniformLocationCache;
+		String m_Source;
 
-	public:
-		static Ref<OpenGLShader> Create(const String& _Name, const String& _Source)
-		{ return CreateRef<OpenGLShader>(_Name, _Source); }
-
+		CallbackTable m_Table;
 	};
 
 }

@@ -34,6 +34,13 @@
       <Filter>Graphics</Filter>
     </ClInclude>
     <ClInclude Include="Source\ScarletRenderer.h" />
+    <ClInclude Include="Source\Core\RendererContext.h" />
+    <ClInclude Include="Source\Core\InterfaceAllocator.h" />
+    <ClInclude Include="Source\Core\ResourceQueue.h" />
+    <ClInclude Include="Source\Components\MemoryComponent.h" />
+    <ClInclude Include="Source\Core\CallbackTable.h" />
+    <ClInclude Include="Source\Allocator\OpenGLAllocate.h" />
+    <ClInclude Include="Source\Graphics\BufferLayout.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Core\InterfaceRenderer.cpp">
@@ -60,5 +67,10 @@
     <ClCompile Include="Source\Graphics\VertexBuffer.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Components\RendererComponent.h" />
+    <ClCompile Include="Source\Core\RendererContext.cpp" />
+    <ClCompile Include="Source\Components\AllocateComponent.h" />
+    <ClCompile Include="Source\Core\InterfaceAllocator.cpp" />
+    <ClCompile Include="Source\Core\ResourceQueue.cpp" />
   </ItemGroup>
 </Project>

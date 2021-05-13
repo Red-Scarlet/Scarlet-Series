@@ -1,6 +1,9 @@
 #pragma once
 
 #include "Core/Common.h"
+#include <iostream>
+
+//#include "Core/ComponentManager.h"
 
 namespace ScarletInterface {
 
@@ -18,6 +21,9 @@ namespace ScarletInterface {
 	class SCARLET_INTERFACE_API Event
 	{
 	public:
+		using EventCallbackFn = std::function<void(Event&)>;
+
+	public:
 		virtual ~Event() = default;
 		bool Handled = false;
 
@@ -30,14 +36,25 @@ namespace ScarletInterface {
 		{ return GetCategoryFlags() & category; }
 
 		template<typename T>
-		T* SetNext(T* _Event) { m_Event = _Event; return dynamic_cast<T*>(m_Event); }
-		Event* GetNext() const { return m_Event; }
+		T* Push(T* _Event) { m_Events.push_back(_Event); return dynamic_cast<T*>(m_Events.back()); }
+		Event* Back() { return m_Events.back(); }
+		void Pop() { delete m_Events.back(); m_Events.pop_back(); }
+		bool Empty() { return m_Events.empty(); }
 
-		void ResetEvent() { delete m_Event; m_Event = nullptr; }
+		void SetCallback(const EventCallbackFn& _Callback)
+		{ m_Callback = _Callback; m_CallbackSet = true; }
+
+		void Proceed(Event& _Event)
+		{
+			m_Callback(_Event);
+		}
+		
+		bool HasCallback() { return m_CallbackSet; }
 
 	private:
-		Event* m_Event = nullptr;
-
+		Vector<Event*> m_Events;
+		EventCallbackFn m_Callback;
+		bool m_CallbackSet = false;
 	};
 
 	class SCARLET_INTERFACE_API EventDispatcher
