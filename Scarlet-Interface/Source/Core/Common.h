@@ -62,7 +62,10 @@ namespace ScarletInterface {
 	using AnyData = std::any;
 	template<typename T, typename... Args>
 	constexpr T AnyCast(Args&&... args)
-	{ return std::any_cast<T>(std::forward<Args>(args)...); }
+	{ 
+		const char* typeName = typeid(T).name();
+		return std::any_cast<T>(std::forward<Args>(args)...);
+	}
 
 	template<typename T>
 	constexpr inline T operator~ (T a) { return static_cast<T>(~static_cast<std::underlying_type<T>::type>(a)); }
@@ -89,9 +92,13 @@ namespace ScarletInterface {
 	using Vector = std::vector<T>;
 	template<typename K, typename T>
 	using Map = std::map<K, T>;
+
 	template<typename... Types>
 	using Tuple = std::tuple<Types...>;
-	
+
+	template<typename... Types>
+	using Tuple = std::tuple<Types...>;
+
 	template <typename T>
 	Vector<T> operator+(const Vector<T>& A, const Vector<T>& B)
 	{

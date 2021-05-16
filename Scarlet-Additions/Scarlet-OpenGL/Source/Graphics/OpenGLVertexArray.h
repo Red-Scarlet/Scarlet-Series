@@ -10,7 +10,7 @@ namespace OpenGL {
 
 	using namespace ScarletInterface;
 
-	class OpenGLVertexArray
+	class SCARLET_INTERFACE_API OpenGLVertexArray
 	{
 	public:
 		friend class OpenGLCommand;
@@ -22,8 +22,8 @@ namespace OpenGL {
 		void AddVertexBuffer(const Ref<OpenGLVertexBuffer>& _VertexBuffer);
 		void SetIndexBuffer(const Ref<OpenGLIndexBuffer>& _IndexBuffer);
 
-		void Bind() const;
-		void Unbind() const;
+		void Bind();
+		void Unbind();
 
 	private:
 		uint32 m_RendererID;

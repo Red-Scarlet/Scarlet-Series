@@ -29,6 +29,10 @@ namespace Renderer {
 		void Bind();
 		void Unbind();
 
+		bool Ready() { return m_Interface != uint64_max && !m_Table.Empty(); }
+		const Interface& GetInterface() const { return m_Interface; }
+
+	private:
 		const String& GetName() const { return m_Name; }
 		const String& GetSource() const { return m_Source; }
 

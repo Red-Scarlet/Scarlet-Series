@@ -5,8 +5,8 @@
 #include <ScarletInterface.h>
 #include "Core/CallbackTable.h"
 
-class VertexBuffer;
-class IndexBuffer;
+#include "Graphics/VertexBuffer.h"
+#include "Graphics/IndexBuffer.h"
 
 namespace Renderer {
 
@@ -22,11 +22,14 @@ namespace Renderer {
 		VertexArray();
 		~VertexArray();
 
-		void AddVertexBuffer(const VertexBuffer* _VertexBuffer);
-		void SetIndexBuffer(const IndexBuffer* _IndexBuffer);
+		void AddVertexBuffer(const VertexBuffer& _VertexBuffer, Event& _Event);
+		void SetIndexBuffer(const IndexBuffer& _IndexBuffer, Event& _Event);
 
 		void Bind();
 		void Unbind();
+
+		bool Ready() { return m_Interface != uint64_max && !m_Table.Empty(); }
+		const Interface& GetInterface() const { return m_Interface; }
 
 	private:
 		Interface m_Interface = uint64_max;

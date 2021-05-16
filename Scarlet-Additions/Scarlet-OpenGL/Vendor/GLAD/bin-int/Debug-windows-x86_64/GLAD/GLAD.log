@@ -1,1 +1,3 @@
-﻿  GLAD.vcxproj -> C:\Users\Scarlet-Red\Projects\Visual Studio\Scarlet-Series\Scarlet-Additions\Scarlet-OpenGL\Vendor\GLAD\bin\Debug-windows-x86_64\GLAD\GLAD.dll
+﻿  glad.c
+     Creating library bin\Debug-windows-x86_64\GLAD\GLAD.lib and object bin\Debug-windows-x86_64\GLAD\GLAD.exp
+  GLAD.vcxproj -> C:\Users\Scarlet-Red\Projects\Visual Studio\Scarlet-Series\Scarlet-Additions\Scarlet-OpenGL\Vendor\GLAD\bin\Debug-windows-x86_64\GLAD\GLAD.dll

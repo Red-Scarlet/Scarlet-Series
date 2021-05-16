@@ -32,7 +32,6 @@ namespace OpenGL {
 		return 0;
 	}
 
-
 	struct SCARLET_INTERFACE_API OpenGLBufferElement
 	{
 	public:
@@ -74,6 +73,11 @@ namespace OpenGL {
 	{
 	public:
 		OpenGLBufferLayout() = default;
+		OpenGLBufferLayout(const Vector<OpenGLBufferElement>& _Element)
+			: m_Elements(_Element)
+		{
+			CalculateOffsetAndStride();
+		}
 		OpenGLBufferLayout(const InitializerList<OpenGLBufferElement>& _Element)
 			: m_Elements(_Element)
 		{

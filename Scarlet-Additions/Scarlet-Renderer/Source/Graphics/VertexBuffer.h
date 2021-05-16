@@ -1,12 +1,11 @@
-// Copyright 2016-2021 Scarlet-OpenGL / Red-Scarlet. All rights reserved.
-// OpenGLShader.h 04/04/2021 - Functional Class.
+// Copyright 2016-2021 Scarlet-Renderer / Red-Scarlet. All rights reserved.
+// VertexBuffer.h 13/05/2021 - Functional Class.
 #pragma once
 
 #include <ScarletInterface.h>
 #include "Core/CallbackTable.h"
 
-class VertexBuffer;
-class IndexBuffer;
+#include "BufferLayout.h"
 
 namespace Renderer {
 
@@ -19,7 +18,8 @@ namespace Renderer {
 		friend class InterfaceAllocator;
 
 	public:
-		VertexBuffer();
+		VertexBuffer(const uint32& _Size);
+		VertexBuffer(float32* _Data, const uint32& _Size);
 		~VertexBuffer();
 
 		void SetData(const void* _Data, const uint32& _Size);
@@ -28,9 +28,15 @@ namespace Renderer {
 		void Bind();
 		void Unbind();
 
+		bool Ready() { return m_Interface != uint64_max && !m_Table.Empty(); }
+		const Interface& GetInterface() const { return m_Interface; }
+
 	private:
 		Interface m_Interface = uint64_max;
 		CallbackTable m_Table;
+
+		void* m_Data = nullptr;
+		uint32 m_Size = 0;
 	};
 
 }

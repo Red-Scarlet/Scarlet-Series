@@ -9,14 +9,14 @@ namespace OpenGL {
 
 	using namespace ScarletInterface;
 	
-	enum class OpenGLEnableFlag : uint8
+	enum class SCARLET_INTERFACE_API OpenGLEnableFlag : uint8
 	{
 		OpenGLNone = 0x00,
 		OpenGLBlend = 0x01,
 		OpenGLDepthTest = 0x02,
 	};
 	
-	enum class OpenGLClearFlag : uint8
+	enum class SCARLET_INTERFACE_API OpenGLClearFlag : uint8
 	{
 		OpenGLNone = 0x00,
 		OpenGLColor = 0x01,
@@ -24,7 +24,7 @@ namespace OpenGL {
 		OpenGLStencil = 0x04
 	};
 	
-	enum class OpenGLPolygonFlag : uint8
+	enum class SCARLET_INTERFACE_API OpenGLPolygonFlag : uint8
 	{
 		OpenGLNone = 0x00,
 		OpenGLPoint = 0x01,
@@ -32,7 +32,7 @@ namespace OpenGL {
 		OpenGLFill = 0x04
 	};
 	
-	enum class OpenGLDrawingFlag : uint8
+	enum class SCARLET_INTERFACE_API OpenGLDrawingFlag : uint8
 	{
 		OpenGLNone = 0x00,
 		OpenGLPoints = 0x01,
@@ -40,19 +40,25 @@ namespace OpenGL {
 		OpenGLTriangles = 0x04
 	};
 
-	class OpenGLCommand
+	class SCARLET_INTERFACE_API OpenGLCommand
 	{
 	public:
-		static void Enable(const OpenGLEnableFlag& _Flag);
-		static void Disable(const OpenGLEnableFlag& _Flag);
+		OpenGLCommand();
+		virtual ~OpenGLCommand() = default;
 
-		static void SetViewport(const uint32& _X, const uint32& _Y, const uint32& _Width, const uint32& _Height);
-		static void SetClearColor(const float32& _R, const float32& _G, const float32& _B, const float32& _A);
-		static void SetClearBuffer(const OpenGLClearFlag& _Flag);
-		static void SetPolygonMode(const OpenGLPolygonFlag& _Flag);
+		void Enable(const OpenGLEnableFlag& _Flag);
+		void Disable(const OpenGLEnableFlag& _Flag);
 
-		static void DrawArrays(const OpenGLDrawingFlag& _Flag, const Ref<OpenGLVertexArray>& _VertexArray, const uint32& _IndexCount = 0);
-		static void DrawElements(const OpenGLDrawingFlag& _Flag, const Ref<OpenGLVertexArray>& _VertexArray, const uint32& _IndexCount = 0);
+		void SetViewport(const uint32& _X, const uint32& _Y, const uint32& _Width, const uint32& _Height);
+		void SetClearColor(const float32& _R, const float32& _G, const float32& _B, const float32& _A);
+		void SetClearBuffer(const OpenGLClearFlag& _Flag);
+		void SetPolygonMode(const OpenGLPolygonFlag& _Flag);
+
+		void DrawArrays(const OpenGLDrawingFlag& _Flag, const Ref<OpenGLVertexArray>& _VertexArray, const uint32& _IndexCount = 0);
+		void DrawElements(const OpenGLDrawingFlag& _Flag, const Ref<OpenGLVertexArray>& _VertexArray, const uint32& _IndexCount = 0);
+
+		static Ref<OpenGLCommand> Create()
+		{ return CreateRef<OpenGLCommand>(); }
 	};
 
 }

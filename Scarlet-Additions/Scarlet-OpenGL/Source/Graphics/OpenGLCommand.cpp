@@ -6,6 +6,10 @@
 
 namespace OpenGL {
 
+	OpenGLCommand::OpenGLCommand()
+	{
+	}
+
 	void OpenGLCommand::Enable(const OpenGLEnableFlag& _Flag)
 	{
 		if ((uint8)_Flag & (uint8)OpenGLEnableFlag::OpenGLBlend) {
@@ -69,8 +73,7 @@ namespace OpenGL {
 		if ((uint8)_Flag & (uint8)OpenGLDrawingFlag::OpenGLTriangles)
 			mode = GL_TRIANGLES;
 
-		uint32 count = _IndexCount == 0 ? _VertexArray->m_IndexBuffer->GetCount() : _IndexCount;
-		glDrawArrays(mode, GL_UNSIGNED_INT, count);
+		glDrawArrays(mode, GL_UNSIGNED_INT, 4);
 	}
 
 	void OpenGLCommand::DrawElements(const OpenGLDrawingFlag& _Flag, const Ref<OpenGLVertexArray>& _VertexArray, const uint32& _IndexCount)

@@ -16,14 +16,14 @@ namespace OpenGL {
 
 	public:
 		OpenGLVertexBuffer(const uint32& _Size);
-		OpenGLVertexBuffer(const void* _Data, const uint32& _Size);
+		OpenGLVertexBuffer(float32* _Vertices, const uint32& _Size);
 		virtual ~OpenGLVertexBuffer();
 
 		void SetData(const void* _Data, const uint32& _Size);
 		void SetLayout(const OpenGLBufferLayout& _Layout);
 		
-		void Bind() const;
-		void Unbind() const;
+		void Bind();
+		void Unbind();
 
 	private:
 		uint32 m_RendererID;
@@ -33,8 +33,8 @@ namespace OpenGL {
 		static Ref<OpenGLVertexBuffer> Create(const uint32& _Size)
 		{ return CreateRef<OpenGLVertexBuffer>(_Size); }
 
-		static Ref<OpenGLVertexBuffer> Create(const void* _Data, const uint32& _Size)
-		{ return CreateRef<OpenGLVertexBuffer>(_Data, _Size); }
+		static Ref<OpenGLVertexBuffer> Create(float32* _Vertices, const uint32& _Size)
+		{ return CreateRef<OpenGLVertexBuffer>(_Vertices, _Size); }
 	};
 
 }

@@ -22,9 +22,6 @@ namespace OpenGL {
 		virtual void OnGlobal(Event& _Event) override;
 
 	private:
-		bool OnAppUpdate(AppUpdateEvent& _Event);
-
-	private:
 
 		bool m_Running = false, m_Initialized = false;
 	};

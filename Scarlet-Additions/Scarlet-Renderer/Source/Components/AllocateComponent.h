@@ -9,23 +9,25 @@ namespace Renderer {
 
 	using namespace ScarletInterface;
 
+	using ResourceData = Tuple<void*, uint32>;
+
 	enum class ResourceType
 	{
-		None = 0, Shader, VertexArray, VertexBuffer, IndexBuffer, TextureBuffer, UniformBuffer, FrameBuffer
+		None = 0, RenderCommand, Shader, VertexArray, VertexBuffer, IndexBuffer, TextureBuffer, UniformBuffer, FrameBuffer
 	};
 
 	struct AllocateComponent
 	{
 	public:
 		ResourceType Type;
-		AnyData Data;
+		AnyData Resource;
 
 		AllocateComponent() = default;
 		AllocateComponent(const AllocateComponent&) = default;
 		AllocateComponent(const ResourceType& _Type)
 		{
 			Type = _Type;
-			Data = nullptr;
+			Resource = nullptr;
 		}
 	};
 

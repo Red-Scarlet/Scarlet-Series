@@ -5,7 +5,11 @@
 #include <ScarletInterface.h>
 #include <Core/InterfaceEntrypoint.h>
 
+#include "Graphics/RenderCommand.h"
 #include "Graphics/Shader.h"
+#include "Graphics/VertexBuffer.h"
+#include "Graphics/IndexBuffer.h"
+#include "Graphics/VertexArray.h"
 
 namespace Renderer {
 
@@ -21,8 +25,13 @@ namespace Renderer {
 		bool OnAppUpdate(AppUpdateEvent& _Event);
 
 	private:
-		Ref<Shader> m_Shader;
-		bool m_Running = false, m_Initialized = false;
+		RenderCommand* m_RenderCommand;
+		Shader* m_Shader;
+		VertexBuffer* m_VertexBuffer;
+		IndexBuffer* m_IndexBuffer;
+		VertexArray* m_VertexArray;
+
+		bool m_Running = false, m_Initialized = false, m_VertexArraySet = false, m_VertexBufferSet;
 	};
 
 }

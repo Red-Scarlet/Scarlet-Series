@@ -9,7 +9,7 @@ namespace Renderer {
 		: m_Name(_Name), m_Source(_Source)
 	{
 		AllocateComponent Allocate = { ResourceType::Shader };
-		Allocate.Data = this;
+		Allocate.Resource = this;
 
 		ResourceQueue::GetInstance()->Push(Allocate);
 	}

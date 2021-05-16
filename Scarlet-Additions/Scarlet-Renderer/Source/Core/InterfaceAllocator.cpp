@@ -6,8 +6,11 @@
 #include "Components/AllocateComponent.h"
 #include "Components/MemoryComponent.h"
 
+#include "Graphics/RenderCommand.h"
 #include "Graphics/Shader.h"
 #include "Graphics/VertexArray.h"
+#include "Graphics/VertexBuffer.h"
+#include "Graphics/IndexBuffer.h"
 
 #include <Events/InterfaceEvent.h>
 #include <ScarletOpenGL.h>
@@ -51,11 +54,34 @@ namespace Renderer {
 
 				switch (component->Type)
 				{
-				case ResourceType::None:
+				case ResourceType::RenderCommand:
+				{
+					RenderCommand* command = AnyCast<RenderCommand*>(component->Resource);
+					switch (m_API)
+					{
+					case RendererContext::API::None:
+						break;
+					case RendererContext::API::OpenGL:
+					{
+						Ref<OpenGL::OpenGLCommand> glCommand = OpenGL::OpenGLCommand::Create();
+						MemoryComponent mem = { glCommand };
+						_Event.Push(new ComponentPushEvent(command->GetInterface()))->Bind<MemoryComponent>(mem);
+						_Event.Proceed(_Event);
+						command->m_Table = OpenGLAllocate(component->Type, glCommand);
+					}
 					break;
+					case RendererContext::API::Vulkan:
+						break;
+					case RendererContext::API::Dx12:
+						break;
+					default:
+						break;
+					}
+				}
+				break;
 				case ResourceType::Shader:
 				{
-					Shader* shader = AnyCast<Shader*>(component->Data);
+					Shader* shader = AnyCast<Shader*>(component->Resource);
 					switch (m_API)	
 					{
 					case RendererContext::API::None:
@@ -64,7 +90,7 @@ namespace Renderer {
 					{
 						Ref<OpenGL::OpenGLShader> glShader = OpenGL::OpenGLShader::Create(shader->m_Name, shader->m_Source);
 						MemoryComponent mem = { glShader };
-						_Event.Push(new ComponentPushEvent(this))->Bind<MemoryComponent>(mem);
+						_Event.Push(new ComponentPushEvent(shader->GetInterface()))->Bind<MemoryComponent>(mem);
 						_Event.Proceed(_Event);
 						shader->m_Table = OpenGLAllocate(component->Type, glShader);
 					}
@@ -76,60 +102,50 @@ namespace Renderer {
 					default:
 						break;
 					}
-					break;
 				}
+				break;
 				case ResourceType::VertexArray:
-				//{
-				//	VertexArray* vertexArray = AnyCast<VertexArray*>(component->Data);
-				//	switch (m_API)
-				//	{
-				//	case RendererContext::API::None:
-				//		break;
-				//	case RendererContext::API::OpenGL:
-				//	{
-				//		Ref<OpenGL::OpenGLVertexArray> glVertexArray = OpenGL::OpenGLVertexArray::Create();
-				//		MemoryComponent mem = { glVertexArray };
-				//		_Event.Push(new ComponentPushEvent(this))->Bind<MemoryComponent>(mem);
-				//		_Event.Proceed(_Event);
-				//
-				//		CallbackTable callbackTable = {};
-				//		{
-				//			auto AddVertexBuffer = std::bind(&OpenGL::OpenGLVertexArray::AddVertexBuffer, glVertexArray, std::placeholders::_1);
-				//			CallbackWrapper wrapperAddVertexBuffer; wrapperAddVertexBuffer.Bind<decltype(AddVertexBuffer), Ref<OpenGL::OpenGLVertexBuffer>>(AddVertexBuffer);
-				//			callbackTable.Push("AddVertexBuffer", wrapperAddVertexBuffer);
-				//
-				//			auto SetIndexBuffer = std::bind(&OpenGL::OpenGLVertexArray::SetIndexBuffer, glVertexArray, std::placeholders::_1);
-				//			CallbackWrapper wrapperSetIndexBuffer; wrapperSetIndexBuffer.Bind<decltype(SetIndexBuffer), Ref<OpenGL::OpenGLIndexBuffer>>(SetIndexBuffer);
-				//			callbackTable.Push("SetIndexBuffer", wrapperSetIndexBuffer);
-				//
-				//			auto Bind = std::bind(&OpenGL::OpenGLVertexArray::Bind, glVertexArray);
-				//			CallbackWrapper wrapperBind; wrapperBind.Bind<decltype(Bind)>(Bind);
-				//			callbackTable.Push("Bind", wrapperBind);
-				//
-				//			auto Unbind = std::bind(&OpenGL::OpenGLVertexArray::Unbind, glVertexArray);
-				//			CallbackWrapper wrapperUnbind; wrapperUnbind.Bind<decltype(Unbind)>(Unbind);
-				//			callbackTable.Push("Unbind", wrapperUnbind);
-				//		}
-				//
-				//		vertexArray->m_Table = std::move(callbackTable);
-				//	}
-				//	break;
-				//	case RendererContext::API::Vulkan:
-				//		break;
-				//	case RendererContext::API::Dx12:
-				//		break;
-				//	default:
-				//		break;
-				//	}
-				//	break;
-				//}
+				{
+					VertexArray* vertexArray = AnyCast<VertexArray*>(component->Resource);
+					switch (m_API)
+					{
+					case RendererContext::API::None:
+						break;
+					case RendererContext::API::OpenGL:
+					{
+						Ref<OpenGL::OpenGLVertexArray> glArray = OpenGL::OpenGLVertexArray::Create();
+						MemoryComponent mem = { glArray };
+						_Event.Push(new ComponentPushEvent(vertexArray->GetInterface()))->Bind<MemoryComponent>(mem);
+						_Event.Proceed(_Event);
+						vertexArray->m_Table = OpenGLAllocate(component->Type, glArray);
+					}
+					break;
+					case RendererContext::API::Vulkan:
+						break;
+					case RendererContext::API::Dx12:
+						break;
+					default:
+						break;
+					}
+				}
+				break;
 				case ResourceType::VertexBuffer:
+				{
+					VertexBuffer* buffer = AnyCast<VertexBuffer*>(component->Resource);
 					switch (m_API)
 					{
 					case RendererContext::API::None:
 						break;
 					case RendererContext::API::OpenGL:
-						break;
+					{
+						float32* data = (float32*)buffer->m_Data;
+						Ref<OpenGL::OpenGLVertexBuffer> glBuffer = OpenGL::OpenGLVertexBuffer::Create(data, buffer->m_Size);
+						MemoryComponent mem = { glBuffer };
+						_Event.Push(new ComponentPushEvent(buffer->GetInterface()))->Bind<MemoryComponent>(mem);
+						_Event.Proceed(_Event);
+						buffer->m_Table = OpenGLAllocate(component->Type, glBuffer);
+					}
+					break;
 					case RendererContext::API::Vulkan:
 						break;
 					case RendererContext::API::Dx12:
@@ -137,14 +153,25 @@ namespace Renderer {
 					default:
 						break;
 					}
-					break;
+				}
+				break;
 				case ResourceType::IndexBuffer:
+				{
+					IndexBuffer* buffer = AnyCast<IndexBuffer*>(component->Resource);
 					switch (m_API)
 					{
 					case RendererContext::API::None:
 						break;
 					case RendererContext::API::OpenGL:
-						break;
+					{
+						uint32* data = (uint32*)buffer->m_Data;
+						Ref<OpenGL::OpenGLIndexBuffer> glBuffer = OpenGL::OpenGLIndexBuffer::Create(data, buffer->m_Size, buffer->GetCount());
+						MemoryComponent mem = { glBuffer };
+						_Event.Push(new ComponentPushEvent(buffer->GetInterface()))->Bind<MemoryComponent>(mem);
+						_Event.Proceed(_Event);
+						buffer->m_Table = OpenGLAllocate(component->Type, glBuffer);
+					}
+					break;
 					case RendererContext::API::Vulkan:
 						break;
 					case RendererContext::API::Dx12:
@@ -152,7 +179,8 @@ namespace Renderer {
 					default:
 						break;
 					}
-					break;
+				}
+				break;
 				case ResourceType::TextureBuffer:
 					switch (m_API)
 					{
@@ -199,6 +227,8 @@ namespace Renderer {
 					}
 					break;
 				}
+
+				std::cout << "Allocated: " << i << std::endl;
 
 				_Event.Push(new ComponentPopEvent(i))->Bind<AllocateComponent>();
 			}

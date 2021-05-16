@@ -28,7 +28,7 @@ namespace OpenGL {
 
 	OpenGLVertexArray::OpenGLVertexArray()
 	{
-		glCreateVertexArrays(1, &m_RendererID);
+		glGenVertexArrays(1, &m_RendererID);
 	}
 
 	OpenGLVertexArray::~OpenGLVertexArray()
@@ -38,7 +38,6 @@ namespace OpenGL {
 
 	void OpenGLVertexArray::AddVertexBuffer(const Ref<OpenGLVertexBuffer>& _VertexBuffer)
 	{
-		SCARLET_INTERFACE_ASSERT(_VertexBuffer->m_Layout.GetElements().size(), "VertexBuffer has no Layout!");
 		glBindVertexArray(m_RendererID);
 		_VertexBuffer->Bind();
 
@@ -111,12 +110,12 @@ namespace OpenGL {
 		m_IndexBuffer = _IndexBuffer;
 	}
 
-	void OpenGLVertexArray::Bind() const
+	void OpenGLVertexArray::Bind()
 	{
 		glBindVertexArray(m_RendererID);
 	}
 
-	void OpenGLVertexArray::Unbind() const
+	void OpenGLVertexArray::Unbind()
 	{
 		glBindVertexArray(0);
 	}

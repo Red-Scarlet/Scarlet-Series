@@ -17,20 +17,6 @@ namespace OpenGL {
 
             m_Initialized = true, m_Running = true;
         }
-
-        EventDispatcher dispatcher(_Event);
-        dispatcher.Dispatch<AppUpdateEvent>(SCARLET_INTERFACE_BIND_EVENT_FN(InterfaceOpenGL::OnAppUpdate));
-    }
-
-    bool InterfaceOpenGL::OnAppUpdate(AppUpdateEvent& _Event)
-    {
-        if (m_Running)
-        {
-            OpenGLCommand::SetClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-            OpenGLCommand::SetClearBuffer(OpenGLClearFlag::OpenGLColor | OpenGLClearFlag::OpenGLDepth);
-        }
-
-        return true;
     }
 
 }

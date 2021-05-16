@@ -7,8 +7,6 @@
 #include "InterfaceAllocator.h"
 #include "ResourceQueue.h"
 
-#include "Graphics/Shader.h"
-
 namespace Renderer {
 
 	void InterfaceRenderer::OnGlobal(Event& _Event)
@@ -22,8 +20,23 @@ namespace Renderer {
 			_Event.Push(new InterfacePushEvent(this))->Bind(new InterfaceAllocator());
 			_Event.Proceed(_Event);
 
+			m_RenderCommand = new RenderCommand();
+
 			String shaderSource = FileUtils::ReadFile("Assets/Shaders/FlatColor.glsl");
-			m_Shader = CreateRef<Shader>("FlatColor", shaderSource);
+			m_Shader = new Shader("FlatColor", shaderSource);
+
+			uint32 indices[] = { 0, 1, 2, 2, 3, 0 };
+			m_IndexBuffer = new IndexBuffer(indices, sizeof(indices), 6);
+
+			float32 vertices[] = {
+			   0.0f, 0.0f, 0.0f,
+			   0.5f, 0.0f, 0.0f,
+			   0.5f, 0.5f, 0.0f,
+			   0.0f, 0.5f, 0.0f
+			};
+			m_VertexBuffer = new VertexBuffer(vertices, sizeof(vertices));
+
+			m_VertexArray = new VertexArray();
 
 			m_Initialized = true, m_Running = true;
 		}
@@ -37,27 +50,93 @@ namespace Renderer {
 		if (m_Running)
 		{
 			ResourceQueue* queue = ResourceQueue::GetInstance();
-
 			while (!queue->Empty())
 			{
 				AllocateComponent& component = queue->Back();
 				
 				switch (component.Type)
 				{
+				case ResourceType::RenderCommand:
+				{
+					RenderCommand* renderCommand = AnyCast<RenderCommand*>(component.Resource);
+					_Event.Push(new InterfaceRequestEvent(&renderCommand->m_Interface));
+					_Event.Proceed(_Event);
+					_Event.Push(new ComponentPushEvent(renderCommand->m_Interface))->Bind<AllocateComponent>(component);
+					_Event.Proceed(_Event);
+				}
+				break;
 				case ResourceType::Shader:
-					Shader* shader = AnyCast<Shader*>(component.Data);
+				{
+					Shader* shader = AnyCast<Shader*>(component.Resource);
 					_Event.Push(new InterfaceRequestEvent(&shader->m_Interface));
 					_Event.Proceed(_Event);
 					_Event.Push(new ComponentPushEvent(shader->m_Interface))->Bind<AllocateComponent>(component);
 					_Event.Proceed(_Event);
-					break;
 				}
-
+				break;
+				case ResourceType::VertexArray:
+				{
+					VertexArray* vertexArray = AnyCast<VertexArray*>(component.Resource);
+					_Event.Push(new InterfaceRequestEvent(&vertexArray->m_Interface));
+					_Event.Proceed(_Event);
+					_Event.Push(new ComponentPushEvent(vertexArray->m_Interface))->Bind<AllocateComponent>(component);
+					_Event.Proceed(_Event);
+				}
+				break;
+				case ResourceType::VertexBuffer:
+				{
+					VertexBuffer* vertexBuffer = AnyCast<VertexBuffer*>(component.Resource);
+					_Event.Push(new InterfaceRequestEvent(&vertexBuffer->m_Interface));
+					_Event.Proceed(_Event);
+					_Event.Push(new ComponentPushEvent(vertexBuffer->m_Interface))->Bind<AllocateComponent>(component);
+					_Event.Proceed(_Event);
+				}
+				break;
+				case ResourceType::IndexBuffer:
+				{
+					IndexBuffer* indexBuffer = AnyCast<IndexBuffer*>(component.Resource);
+					_Event.Push(new InterfaceRequestEvent(&indexBuffer->m_Interface));
+					_Event.Proceed(_Event);
+					_Event.Push(new ComponentPushEvent(indexBuffer->m_Interface))->Bind<AllocateComponent>(component);
+					_Event.Proceed(_Event);
+				}
+				break;
+				}
 				queue->Pop();
 			}
 
-			if(m_Shader->m_Interface != uint64_max) 
-				m_Shader->Bind();
+			{
+				if (m_VertexBuffer->Ready() && m_VertexBufferSet == false) {
+					BufferLayout layout = {
+						{ VertexAttributeTypes::Float3, "a_Position" }
+					};
+					m_VertexBuffer->SetLayout(layout);
+					m_VertexBufferSet = true;
+				}
+
+				if (m_VertexArray->Ready() && m_VertexBuffer->Ready() && m_IndexBuffer->Ready() && m_VertexArraySet == false)
+				{
+					m_VertexArray->AddVertexBuffer(*m_VertexBuffer, _Event);
+					m_VertexArray->SetIndexBuffer(*m_IndexBuffer, _Event);
+					m_VertexArraySet = true;
+				}
+
+				if (m_Shader->Ready())
+					m_Shader->Bind();
+
+				if (m_VertexArray->Ready())
+					m_VertexArray->Bind();
+
+				if (m_RenderCommand->Ready()) 
+				{
+					m_RenderCommand->SetClearColor(0.10f, 0.10f, 0.10f, 1.00f);
+					m_RenderCommand->SetClearBuffer(RendererClearFlag::RendererColor | RendererClearFlag::RendererDepth);
+
+					m_RenderCommand->DrawElements(_Event, RendererDrawingFlag::RendererTriangles, *m_VertexArray);
+				}
+
+			}
+			
 		}
 
 		return true;

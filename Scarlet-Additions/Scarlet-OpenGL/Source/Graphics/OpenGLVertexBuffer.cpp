@@ -12,11 +12,11 @@ namespace OpenGL {
 		glBufferData(GL_ARRAY_BUFFER, _Size, nullptr, GL_STATIC_DRAW);
 	}
 
-	OpenGLVertexBuffer::OpenGLVertexBuffer(const void* _Data, const uint32& _Size)
+	OpenGLVertexBuffer::OpenGLVertexBuffer(float32* _Vertices, const uint32& _Size)
 	{
 		glCreateBuffers(1, &m_RendererID);
 		glBindBuffer(GL_ARRAY_BUFFER, m_RendererID);
-		glBufferData(GL_ARRAY_BUFFER, _Size, _Data, GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, _Size, _Vertices, GL_STATIC_DRAW);
 	}
 
 	OpenGLVertexBuffer::~OpenGLVertexBuffer()
@@ -35,12 +35,12 @@ namespace OpenGL {
 		m_Layout = _Layout;
 	}
 
-	void OpenGLVertexBuffer::Bind() const
+	void OpenGLVertexBuffer::Bind()
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, m_RendererID);
 	}
 
-	void OpenGLVertexBuffer::Unbind() const
+	void OpenGLVertexBuffer::Unbind()
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}

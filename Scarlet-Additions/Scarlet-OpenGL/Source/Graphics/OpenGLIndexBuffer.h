@@ -8,31 +8,31 @@ namespace OpenGL {
 
 	using namespace ScarletInterface;
 
-	class OpenGLIndexBuffer
+	class SCARLET_INTERFACE_API OpenGLIndexBuffer
 	{
 	public:
 		friend class OpenGLVertexArray;
 
 	public:
-		OpenGLIndexBuffer(const Vector<uint32>& _Indices);
-		OpenGLIndexBuffer(uint32* _Indices, const uint32& _Count);
+		OpenGLIndexBuffer(const uint32& _Size, const uint32& _Count);
+		OpenGLIndexBuffer(uint32* _Indices, const uint32& _Size, const uint32& _Count);
 		virtual ~OpenGLIndexBuffer();
 
 		const uint32& GetCount() const { return m_Count; }
 
-		void Bind() const;
-		void Unbind() const;
+		void Bind();
+		void Unbind();
 
 	private:
 		uint32 m_RendererID;
 		uint32 m_Count;
 
 	public:
-		static Ref<OpenGLIndexBuffer> Create(const Vector<uint32>& _Indices)
-		{ return CreateRef<OpenGLIndexBuffer>(_Indices); }
+		static Ref<OpenGLIndexBuffer> Create(const uint32& _Size, const uint32& _Count)
+		{ return CreateRef<OpenGLIndexBuffer>(_Size, _Count); }
 
-		static Ref<OpenGLIndexBuffer> Create(uint32* _Indices, const uint32& _Count)
-		{ return CreateRef<OpenGLIndexBuffer>(_Indices, _Count); }
+		static Ref<OpenGLIndexBuffer> Create(uint32* _Indices, const uint32& _Size, const uint32& _Count)
+		{ return CreateRef<OpenGLIndexBuffer>(_Indices, _Size, _Count); }
 
 	};
 

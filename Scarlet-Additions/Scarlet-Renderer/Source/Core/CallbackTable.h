@@ -16,8 +16,8 @@ namespace Renderer {
 		{
 			m_Data = t;
 
-			std::function<void(std::any _any, Args&&... args)> function = [](std::any _any, Args&&... args) {
-				T _t = std::any_cast<T>(_any);
+			Function<void(AnyData _Any, Args&&... args)> function = [](AnyData _Any, Args&&... args) {
+				T _t = AnyCast<T>(_Any);
 				_t(args...);
 			};
 
@@ -27,22 +27,22 @@ namespace Renderer {
 		template<typename... Args>
 		void Run(Args&&... args)
 		{
-			auto func = std::any_cast<std::function<void(std::any _any, Args&&... args)>>(m_RunFunc);
+			auto func = AnyCast<Function<void(AnyData _Any, Args&&... args)>>(m_RunFunc);
 			func(m_Data, args...);
 		}
 
 	private:
-		std::any m_Data;
-		std::any m_RunFunc;
+		AnyData m_Data;
+		AnyData m_RunFunc;
 	};
 
 	struct CallbackTable
 	{
 	public:
-		//using EventCallbackFn = std::function<void()>;
-
-		//template<typename... Types>
-		//using Tuple = std::tuple<Types...>;
+		bool Empty()
+		{
+			return m_Callbacks.empty();
+		}
 
 		template<typename... Args>
 		void Call(const String& _Name, Args&&... args)

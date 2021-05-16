@@ -70,8 +70,6 @@ namespace OpenGL {
 	void OpenGLShader::Bind()
 	{
 		glUseProgram(m_RendererID);
-
-		std::cout << "OPENGL SHADER BIND!" << std::endl;
 	}
 
 	void OpenGLShader::Unbind()
@@ -106,7 +104,7 @@ namespace OpenGL {
 	{
 		GLuint program = glCreateProgram();
 
-		Vector<GLenum> glShaderIDs(_ShaderSources.size());
+		Vector<GLenum> glShaderIDs;
 		for (auto& kv : _ShaderSources)
 		{
 			GLenum type = kv.first;
