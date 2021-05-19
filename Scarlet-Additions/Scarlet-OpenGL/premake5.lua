@@ -30,6 +30,9 @@ project "Scarlet-OpenGL"
 		"%{wks.location}/Scarlet-Additions/Scarlet-GLFW/Source",
 		"%{wks.location}/Scarlet-Additions/Scarlet-GLFW/Vendor",
 
+		"%{wks.location}/Scarlet-Additions/Scarlet-Renderer/Source",
+		"%{wks.location}/Scarlet-Additions/Scarlet-Renderer/Vendor",
+
 		"%{wks.location}/Scarlet-Additions/Scarlet-OpenGL/Vendor/GLAD/include"
 	}
 
@@ -42,6 +45,7 @@ project "Scarlet-OpenGL"
 	{
 		"Scarlet-Interface",
 		"Scarlet-GLFW",
+		"Scarlet-Renderer",
 
 		"GLAD",
 		"opengl32.lib"

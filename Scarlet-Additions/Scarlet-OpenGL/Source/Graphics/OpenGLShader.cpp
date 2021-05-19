@@ -22,13 +22,30 @@ namespace OpenGL {
 	{
 		auto shaderSources = PreProcess(_Source);
 		Compile(shaderSources);
+	}
 
-		//SCARLET_INTERFACE_INFO("Shader: Compiled {0} !", m_Name);
+	OpenGLShader::OpenGLShader(const String& _Name, const String& _Vertex, const String& _Fragment)
+		: m_Name(_Name)
+	{
+		UnorderedMap<GLenum, String> sources;
+		sources[GL_VERTEX_SHADER] = _Vertex;
+		sources[GL_FRAGMENT_SHADER] = _Fragment;
+		Compile(sources);
 	}
 
 	OpenGLShader::~OpenGLShader()
 	{
 		glDeleteProgram(m_RendererID);
+	}
+
+	void OpenGLShader::Bind() const
+	{
+		glUseProgram(m_RendererID);
+	}
+
+	void OpenGLShader::Unbind() const
+	{
+		glUseProgram(0);
 	}
 
 	void OpenGLShader::SetInt(const String& _Name, const uint32& _Int)
@@ -65,16 +82,6 @@ namespace OpenGL {
 	{
 		uint32 location = GetUniformLocation(_Name);
 		glUniformMatrix4fv(location, 1, GL_FALSE, Mathematics::MathFunction::ValuePtr(_Matrix4));
-	}
-
-	void OpenGLShader::Bind()
-	{
-		glUseProgram(m_RendererID);
-	}
-
-	void OpenGLShader::Unbind()
-	{
-		glUseProgram(0);
 	}
 
 	UnorderedMap<GLenum, String> OpenGLShader::PreProcess(const String& _Source)

@@ -1,9 +1,7 @@
-// Copyright 2016-2021 Scarlet-OpenGL / Red-Scarlet. All rights reserved.
-// OpenGLShader.h 04/04/2021 - Functional Class.
 #pragma once
 
 #include <ScarletInterface.h>
-#include "Core/CallbackTable.h"
+#include "CallbackTable.h"
 
 namespace Renderer {
 
@@ -12,36 +10,23 @@ namespace Renderer {
 	class SCARLET_INTERFACE_API Shader
 	{
 	public:
-		friend class InterfaceRenderer;
-		friend class InterfaceAllocator;
+		virtual ~Shader() = default;
 
-	public:
-		Shader(const String& _Name, const String& _Source);
-		~Shader();
+		virtual void Bind() const = 0;
+		virtual void Unbind() const = 0;
 
-		void SetInt(const String& _Name, const uint32& _Int);
-		void SetFloat(const String& _Name, const float32& _Float);
-		void SetFloat2(const String& _Name, const Mathematics::Vector2& _Float2);
-		void SetFloat3(const String& _Name, const Mathematics::Vector3& _Float3);
-		void SetFloat4(const String& _Name, const Mathematics::Vector4& _Float4);
-		void SetMat4(const String& _Name, const Mathematics::Matrix4& _Matrix3);
+		virtual void SetInt(const String& _Name, const uint32& _Value) = 0;
+		virtual void SetFloat(const String& _Name, const float32& _Value) = 0;
+		virtual void SetFloat2(const String& _Name, const Mathematics::Vector2& _Value) = 0;
+		virtual void SetFloat3(const String& _Name, const Mathematics::Vector3& _Value) = 0;
+		virtual void SetFloat4(const String& _Name, const Mathematics::Vector4& _Value) = 0;
+		virtual void SetMat4(const String& _Name, const Mathematics::Matrix4& _Matrix) = 0;
 
-		void Bind();
-		void Unbind();
+		virtual const String& GetName() const = 0;
 
-		bool Ready() { return m_Interface != uint64_max && !m_Table.Empty(); }
-		const Interface& GetInterface() const { return m_Interface; }
-
-	private:
-		const String& GetName() const { return m_Name; }
-		const String& GetSource() const { return m_Source; }
-
-	private:
-		Interface m_Interface = uint64_max;
-		String m_Name;
-		String m_Source;
-
-		CallbackTable m_Table;
+		static Ref<Shader> Create(const String& _FilePath);
+		static Ref<Shader> Create(const String& _Name, const String& _VertexPath, const String& _FragPath);
 	};
 
+	static Ref<CallbackTable<Shader>> ShaderCallback;
 }

@@ -22,16 +22,7 @@ namespace Renderer {
 		virtual void OnGlobal(Event& _Event) override;
 
 	private:
-		bool OnAppUpdate(AppUpdateEvent& _Event);
-
-	private:
-		RenderCommand* m_RenderCommand;
-		Shader* m_Shader;
-		VertexBuffer* m_VertexBuffer;
-		IndexBuffer* m_IndexBuffer;
-		VertexArray* m_VertexArray;
-
-		bool m_Running = false, m_Initialized = false, m_VertexArraySet = false, m_VertexBufferSet;
+		bool m_Running = false, m_Initialized = false;
 	};
 
 }

@@ -3,7 +3,6 @@
 #pragma once
 
 #include <ScarletInterface.h>
-#include "Core/RendererContext.h"
 
 namespace Renderer {
 
@@ -12,14 +11,8 @@ namespace Renderer {
 	struct RendererComponent
 	{
 	public:
-		Ref<RendererContext> Context;
-
 		RendererComponent() = default;
 		RendererComponent(const RendererComponent&) = default;
-		RendererComponent(const RendererContext::API& _API)
-		{
-			Context = RendererContext::Create(_API);
-		}
 	};
 
 }

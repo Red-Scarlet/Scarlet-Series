@@ -32,7 +32,6 @@ namespace Renderer {
 		return 0;
 	}
 
-
 	struct SCARLET_INTERFACE_API BufferElement
 	{
 	public:
@@ -52,17 +51,17 @@ namespace Renderer {
 		{
 			switch (Type)
 			{
-				case VertexAttributeTypes::Float:		return 1;
-				case VertexAttributeTypes::Float2:		return 2;
-				case VertexAttributeTypes::Float3:		return 3;
-				case VertexAttributeTypes::Float4:		return 4;
-				case VertexAttributeTypes::Mat3:		return 9;
-				case VertexAttributeTypes::Mat4:		return 16;
-				case VertexAttributeTypes::Int:			return 1;
-				case VertexAttributeTypes::Int2:		return 2;
-				case VertexAttributeTypes::Int3:		return 3;
-				case VertexAttributeTypes::Int4:		return 4;
-				case VertexAttributeTypes::Bool:		return 1;
+			case VertexAttributeTypes::Float:		return 1;
+			case VertexAttributeTypes::Float2:		return 2;
+			case VertexAttributeTypes::Float3:		return 3;
+			case VertexAttributeTypes::Float4:		return 4;
+			case VertexAttributeTypes::Mat3:		return 9;
+			case VertexAttributeTypes::Mat4:		return 16;
+			case VertexAttributeTypes::Int:			return 1;
+			case VertexAttributeTypes::Int2:		return 2;
+			case VertexAttributeTypes::Int3:		return 3;
+			case VertexAttributeTypes::Int4:		return 4;
+			case VertexAttributeTypes::Bool:		return 1;
 			}
 
 			SCARLET_INTERFACE_ASSERT(SCARLET_ERROR, "Unknown ShaderDataType!");

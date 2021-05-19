@@ -25,15 +25,11 @@ project "Scarlet-Renderer"
 		"%{wks.location}/Scarlet-Interface/Source",
 		"%{wks.location}/Scarlet-Interface/Vendor",
 		"%{wks.location}/Scarlet-Interface/Vendor/spdlog/include",
-
-		"%{wks.location}/Scarlet-Additions/Scarlet-OpenGL/Source",
-		"%{wks.location}/Scarlet-Additions/Scarlet-OpenGL/Vendor",
 	}
 
 	links
 	{
-		"Scarlet-Interface",
-		"Scarlet-OpenGL"
+		"Scarlet-Interface"
 	}
 
 	filter "system:windows"

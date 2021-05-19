@@ -29,7 +29,7 @@ namespace GLFW {
 
         EventDispatcher dispatcher(_Event);
         dispatcher.Dispatch<AppUpdateEvent>(SCARLET_INTERFACE_BIND_EVENT_FN(InterfaceGLFW::OnAppUpdate));
-        if (!_Event.Handled) Sleep(1000); return;
+        if (!_Event.Handled) return;
     }
 
     void InterfaceGLFW::OnLocal(Event& _Event)

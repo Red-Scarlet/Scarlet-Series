@@ -5,16 +5,16 @@
 
 namespace OpenGL {
 
-	OpenGLIndexBuffer::OpenGLIndexBuffer(const uint32& _Size, const uint32& _Count)
-		: m_Count(_Count)
+	OpenGLIndexBuffer::OpenGLIndexBuffer(const uint32& _Size)
+		: m_Count(_Size / sizeof(uint32))
 	{
 		glCreateBuffers(1, &m_RendererID);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_RendererID);
 		glBufferData(GL_ARRAY_BUFFER, _Size, nullptr, GL_STATIC_DRAW);
 	}
 
-	OpenGLIndexBuffer::OpenGLIndexBuffer(uint32* _Indices, const uint32& _Size, const uint32& _Count)
-		: m_Count(_Count)
+	OpenGLIndexBuffer::OpenGLIndexBuffer(uint32* _Indices, const uint32& _Size)
+		: m_Count(_Size / sizeof(uint32))
 	{
 		glCreateBuffers(1, &m_RendererID);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_RendererID);
@@ -26,14 +26,19 @@ namespace OpenGL {
 		glDeleteBuffers(1, &m_RendererID);
 	}
 
-	void OpenGLIndexBuffer::Bind()
+	void OpenGLIndexBuffer::Bind() const
 	{
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_RendererID);
 	}
 
-	void OpenGLIndexBuffer::Unbind()
+	void OpenGLIndexBuffer::Unbind() const
 	{
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+	}
+
+	const uint32& OpenGLIndexBuffer::GetCount() const
+	{
+		return m_Count;
 	}
 
 }

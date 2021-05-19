@@ -24,6 +24,8 @@ namespace Scarlet {
 		auto iter = m_Modules.find(name.c_str());
 		if (iter == m_Modules.end()) {
 			InterfaceModule* interfaceModule = InterfaceHandler::Instance().LoadInterface(_FilePath + "\\" + name);
+			if (!interfaceModule) return;
+
 			interfaceModule->m_Interface = m_InterfaceManager->CreateInterface();
 			interfaceModule->m_LoadedModule = true;
 			m_Modules.insert({ name, interfaceModule });
@@ -44,11 +46,13 @@ namespace Scarlet {
 			if (pair.second->m_LoadedModule)
 				InterfaceHandler::Instance().EventInterface(_Event, pair.second);
 			else pair.second->OnGlobal(_Event);
+
+			if (!_Event.Handled) return;
 		}
 
 		ProcessEvent(_Event);
 
-		if (_Event.Handled) return;
+		if (!_Event.Handled) return;
 	}
 
 	void ModuleManager::ProcessEvent(Event& _Event)
@@ -71,7 +75,7 @@ namespace Scarlet {
 			_Event.Pop();
 		}
 
-		if (_Event.Handled) return;
+		if (!_Event.Handled) return;
 	}
 
 	bool ModuleManager::OnInterfaceRequest(InterfaceRequestEvent& _Event)

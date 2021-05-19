@@ -3,39 +3,37 @@
 #pragma once
 
 #include <ScarletInterface.h>
-#include "OpenGLVertexBuffer.h"
-#include "OpenGLIndexBuffer.h"
+#include <ScarletRenderer.h>
 
 namespace OpenGL {
 
 	using namespace ScarletInterface;
 
-	class SCARLET_INTERFACE_API OpenGLVertexArray
+	class SCARLET_INTERFACE_API OpenGLVertexArray : public Renderer::VertexArray
 	{
 	public:
 		friend class OpenGLCommand;
 
 	public:
-		OpenGLVertexArray();
+		OpenGLVertexArray(const String& _Name);
 		virtual ~OpenGLVertexArray();
 
-		void AddVertexBuffer(const Ref<OpenGLVertexBuffer>& _VertexBuffer);
-		void SetIndexBuffer(const Ref<OpenGLIndexBuffer>& _IndexBuffer);
+		virtual void Bind() const override;
+		virtual void Unbind() const override;
 
-		void Bind();
-		void Unbind();
+		virtual void AddVertexBuffer(const Ref<Renderer::VertexBuffer>& _VertexBuffer) override;
+		virtual void SetIndexBuffer(const Ref<Renderer::IndexBuffer>& _IndexBuffer) override;
+
+		virtual Ref<Renderer::VertexBuffer> GetVertexBuffer(const uint32& _Index = 0) override;
+		virtual Ref<Renderer::IndexBuffer> GetIndexBuffer() override;
 
 	private:
+		String m_Name;
 		uint32 m_RendererID;
 		uint32 m_VertexBufferIndex = 0;
 
-		Vector<Ref<OpenGLVertexBuffer>> m_VertexBuffer;
-		Ref<OpenGLIndexBuffer> m_IndexBuffer;
-
-	public:
-		static Ref<OpenGLVertexArray> Create()
-		{ return CreateRef<OpenGLVertexArray>(); }
-
+		Vector<Ref<Renderer::VertexBuffer>> m_VertexBuffer;
+		Ref<Renderer::IndexBuffer> m_IndexBuffer;
 	};
 
 }

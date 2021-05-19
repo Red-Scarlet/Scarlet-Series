@@ -4,13 +4,9 @@
 
 #include <ScarletInterface.h>
 #include <Core/InterfaceEntrypoint.h>
+#include <Events/InterfaceEvent.h>
 
-// TRIANGLE
-#include "Graphics/OpenGLShader.h"
-#include "Graphics/OpenGLVertexBuffer.h"
-#include "Graphics/OpenGLIndexBuffer.h"
-#include "Graphics/OpenGLVertexArray.h"
-#include "Graphics/OpenGLCommand.h"
+#include "Components/OpenGLComponent.h"
 
 namespace OpenGL {
 
@@ -23,7 +19,7 @@ namespace OpenGL {
 
 	private:
 
-		bool m_Running = false, m_Initialized = false;
+		bool m_Initialized = false;
 	};
 
 }

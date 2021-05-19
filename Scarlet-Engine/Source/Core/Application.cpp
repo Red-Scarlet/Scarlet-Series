@@ -36,7 +36,7 @@ namespace Scarlet {
 			start_time = std::chrono::system_clock::now();
 			{
 				AppUpdateEvent appEvent(timestep);
-				m_EventCallback(appEvent); // Exit Scope Crashes
+				m_EventCallback(appEvent);
 			}
 			{
 				if (!FileUtils::CheckExist("Assets/Modules")) fs::create_directory("Assets/Modules");

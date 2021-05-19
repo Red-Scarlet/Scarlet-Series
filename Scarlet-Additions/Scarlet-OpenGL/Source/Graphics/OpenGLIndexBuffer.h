@@ -3,37 +3,30 @@
 #pragma once
 
 #include <ScarletInterface.h>
+#include <ScarletRenderer.h>
 
 namespace OpenGL {
 
 	using namespace ScarletInterface;
 
-	class SCARLET_INTERFACE_API OpenGLIndexBuffer
+	class SCARLET_INTERFACE_API OpenGLIndexBuffer : public Renderer::IndexBuffer
 	{
 	public:
 		friend class OpenGLVertexArray;
 
 	public:
-		OpenGLIndexBuffer(const uint32& _Size, const uint32& _Count);
-		OpenGLIndexBuffer(uint32* _Indices, const uint32& _Size, const uint32& _Count);
+		OpenGLIndexBuffer(const uint32& _Size);
+		OpenGLIndexBuffer(uint32* _Indices, const uint32& _Size);
 		virtual ~OpenGLIndexBuffer();
 
-		const uint32& GetCount() const { return m_Count; }
+		virtual void Bind() const override;
+		virtual void Unbind() const override;
+		virtual const uint32& GetCount() const override;
 
-		void Bind();
-		void Unbind();
 
 	private:
 		uint32 m_RendererID;
 		uint32 m_Count;
-
-	public:
-		static Ref<OpenGLIndexBuffer> Create(const uint32& _Size, const uint32& _Count)
-		{ return CreateRef<OpenGLIndexBuffer>(_Size, _Count); }
-
-		static Ref<OpenGLIndexBuffer> Create(uint32* _Indices, const uint32& _Size, const uint32& _Count)
-		{ return CreateRef<OpenGLIndexBuffer>(_Indices, _Size, _Count); }
-
 	};
 
 }

@@ -3,13 +3,13 @@
 #pragma once
 
 #include <ScarletInterface.h>
-#include "OpenGLBufferLayout.h"
+#include <ScarletRenderer.h>
 
 namespace OpenGL {
 
 	using namespace ScarletInterface;
 
-	class SCARLET_INTERFACE_API OpenGLVertexBuffer
+	class SCARLET_INTERFACE_API OpenGLVertexBuffer : public Renderer::VertexBuffer
 	{
 	public:
 		friend class OpenGLVertexArray;
@@ -19,22 +19,16 @@ namespace OpenGL {
 		OpenGLVertexBuffer(float32* _Vertices, const uint32& _Size);
 		virtual ~OpenGLVertexBuffer();
 
-		void SetData(const void* _Data, const uint32& _Size);
-		void SetLayout(const OpenGLBufferLayout& _Layout);
-		
-		void Bind();
-		void Unbind();
+		virtual void Bind() const override;
+		virtual void Unbind() const override;
+
+		virtual const Renderer::BufferLayout& GetLayout() const override;
+		virtual void SetLayout(const Renderer::BufferLayout& _Layout) override;
+		virtual void SetData(const void* _Data, const uint32& _Size) override;
 
 	private:
 		uint32 m_RendererID;
-		OpenGLBufferLayout m_Layout;
-
-	public:
-		static Ref<OpenGLVertexBuffer> Create(const uint32& _Size)
-		{ return CreateRef<OpenGLVertexBuffer>(_Size); }
-
-		static Ref<OpenGLVertexBuffer> Create(float32* _Vertices, const uint32& _Size)
-		{ return CreateRef<OpenGLVertexBuffer>(_Vertices, _Size); }
+		Renderer::BufferLayout m_Layout;
 	};
 
 }

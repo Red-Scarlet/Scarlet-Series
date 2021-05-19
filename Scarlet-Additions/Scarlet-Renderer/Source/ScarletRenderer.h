@@ -2,4 +2,9 @@
 // ScarletAudioFX.h 08/04/2021 - Include Header.
 #pragma once
 
-#include "Core/InterfaceRenderer.h"
+#include "Graphics/BufferLayout.h"
+#include "Graphics/IndexBuffer.h"
+#include "Graphics/RenderCommand.h"
+#include "Graphics/Shader.h"
+#include "Graphics/VertexArray.h"
+#include "Graphics/VertexBuffer.h"

@@ -24,25 +24,30 @@ namespace OpenGL {
 		glDeleteBuffers(1, &m_RendererID);
 	}
 
-	void OpenGLVertexBuffer::SetData(const void* _Data, const uint32& _Size)
+	void OpenGLVertexBuffer::Bind() const
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, m_RendererID);
-		glBufferSubData(GL_ARRAY_BUFFER, 0, _Size, _Data);
 	}
 
-	void OpenGLVertexBuffer::SetLayout(const OpenGLBufferLayout& _Layout)
+	void OpenGLVertexBuffer::Unbind() const
+	{
+		glBindBuffer(GL_ARRAY_BUFFER, 0);
+	}
+
+	const Renderer::BufferLayout& OpenGLVertexBuffer::GetLayout() const
+	{
+		return m_Layout;
+	}
+
+	void OpenGLVertexBuffer::SetLayout(const Renderer::BufferLayout& _Layout)
 	{
 		m_Layout = _Layout;
 	}
 
-	void OpenGLVertexBuffer::Bind()
+	void OpenGLVertexBuffer::SetData(const void* _Data, const uint32& _Size)
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, m_RendererID);
-	}
-
-	void OpenGLVertexBuffer::Unbind()
-	{
-		glBindBuffer(GL_ARRAY_BUFFER, 0);
+		glBufferSubData(GL_ARRAY_BUFFER, 0, _Size, _Data);
 	}
 
 }
