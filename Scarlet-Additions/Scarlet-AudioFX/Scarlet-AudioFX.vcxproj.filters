@@ -7,25 +7,47 @@
     <Filter Include="Core">
       <UniqueIdentifier>{2EB4837C-1AEB-840D-C3D7-6A10AFED000F}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{000BCD17-6C75-818E-B5B3-3234215D5FE3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Components\AudioFXComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Core\AudioFXContext.h">
+    <ClInclude Include="Source\Core\InterfaceAudioFX.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Core\InterfaceAFX.h">
-      <Filter>Core</Filter>
+    <ClInclude Include="Source\Resources\AudioBuffer.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Resources\AudioDevice.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Resources\AudioListener.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Resources\AudioSource.h">
+      <Filter>Resources</Filter>
     </ClInclude>
     <ClInclude Include="Source\ScarletAudioFX.h" />
+    <ClInclude Include="Source\Resources\CallbackTable.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\Core\AudioFXContext.cpp">
+    <ClCompile Include="Source\Core\InterfaceAudioFX.cpp">
       <Filter>Core</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Core\InterfaceAFX.cpp">
-      <Filter>Core</Filter>
+    <ClCompile Include="Source\Resources\AudioBuffer.cpp">
+      <Filter>Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Resources\AudioDevice.cpp">
+      <Filter>Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Resources\AudioListener.cpp">
+      <Filter>Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Resources\AudioSource.cpp">
+      <Filter>Resources</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

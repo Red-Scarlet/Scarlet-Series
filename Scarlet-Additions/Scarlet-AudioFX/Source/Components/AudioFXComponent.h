@@ -7,14 +7,11 @@ namespace AudioFX {
 
 	using namespace ScarletInterface;
 
-	struct AudioFXComponent
+	struct SCARLET_INTERFACE_API AudioFXComponent
 	{
 	public:
 		AudioFXComponent() = default;
 		AudioFXComponent(const AudioFXComponent&) = default;
-		//AudioFXComponent(void* _ProcAddress)
-		//{
-		//}
 	};
 
 }

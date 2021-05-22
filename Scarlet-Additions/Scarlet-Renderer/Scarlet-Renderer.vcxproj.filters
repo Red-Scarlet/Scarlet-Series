@@ -15,7 +15,19 @@
     <ClInclude Include="Source\Components\RendererComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Core\InterfaceRenderer.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\BufferLayout.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\CallbackTable.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
     <ClInclude Include="Source\Graphics\IndexBuffer.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\RenderCommand.h">
       <Filter>Graphics</Filter>
     </ClInclude>
     <ClInclude Include="Source\Graphics\Shader.h">
@@ -28,11 +40,15 @@
       <Filter>Graphics</Filter>
     </ClInclude>
     <ClInclude Include="Source\ScarletRenderer.h" />
-    <ClInclude Include="Source\Graphics\RenderCommand.h" />
-    <ClInclude Include="Source\Core\InterfaceRenderer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Core\InterfaceRenderer.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
     <ClCompile Include="Source\Graphics\IndexBuffer.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\RenderCommand.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
     <ClCompile Include="Source\Graphics\Shader.cpp">
@@ -44,9 +60,5 @@
     <ClCompile Include="Source\Graphics\VertexBuffer.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Graphics\BufferLayout.h" />
-    <ClCompile Include="Source\Graphics\RenderCommand.cpp" />
-    <ClCompile Include="Source\Graphics\CallbackTable.h" />
-    <ClCompile Include="Source\Core\InterfaceRenderer.cpp" />
   </ItemGroup>
 </Project>

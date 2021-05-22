@@ -186,6 +186,7 @@
     <ClInclude Include="Source\Mathematics\Mathematics.h" />
     <ClInclude Include="Source\Mathematics\Matrix3.h" />
     <ClInclude Include="Source\Mathematics\Matrix4.h" />
+    <ClInclude Include="Source\Mathematics\Quaternion.h" />
     <ClInclude Include="Source\Mathematics\Tensor3x3.h" />
     <ClInclude Include="Source\Mathematics\Vector2.h" />
     <ClInclude Include="Source\Mathematics\Vector3.h" />
@@ -582,6 +583,7 @@
     <ClCompile Include="Source\Mathematics\MathFunction.cpp" />
     <ClCompile Include="Source\Mathematics\Matrix3.cpp" />
     <ClCompile Include="Source\Mathematics\Matrix4.cpp" />
+    <ClCompile Include="Source\Mathematics\Quaternion.cpp" />
     <ClCompile Include="Source\Mathematics\Vector2.cpp" />
     <ClCompile Include="Source\Mathematics\Vector3.cpp" />
     <ClCompile Include="Source\Mathematics\Vector4.cpp" />

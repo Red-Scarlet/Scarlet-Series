@@ -39,9 +39,12 @@ namespace Scarlet {
 				m_EventCallback(appEvent);
 			}
 			{
-				if (!FileUtils::CheckExist("Assets/Modules")) fs::create_directory("Assets/Modules");
-				for (auto& p : fs::directory_iterator("Assets/Modules"))
-					m_ModuleManager->LoadModule(p.path().string());
+				if (m_Running)
+				{
+					if(!FileUtils::CheckExist("Assets/Modules")) fs::create_directory("Assets/Modules");
+					for (auto& p : fs::directory_iterator("Assets/Modules"))
+						m_ModuleManager->LoadModule(p.path().string());
+				}
 			}
 			end_time = std::chrono::system_clock::now();
 			timestep = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count();

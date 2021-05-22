@@ -2,4 +2,7 @@
 // ScarletAudioFX.h 08/04/2021 - Include Header.
 #pragma once
 
-#include "Core/InterfaceAFX.h"
+#include "Resources/AudioBuffer.h"
+#include "Resources/AudioDevice.h"
+#include "Resources/AudioListener.h"
+#include "Resources/AudioSource.h"

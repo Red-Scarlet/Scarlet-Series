@@ -183,6 +183,8 @@
   <ItemGroup>
     <ClInclude Include="Source\Components\RendererComponent.h" />
     <ClInclude Include="Source\Core\InterfaceRenderer.h" />
+    <ClInclude Include="Source\Graphics\BufferLayout.h" />
+    <ClInclude Include="Source\Graphics\CallbackTable.h" />
     <ClInclude Include="Source\Graphics\IndexBuffer.h" />
     <ClInclude Include="Source\Graphics\RenderCommand.h" />
     <ClInclude Include="Source\Graphics\Shader.h" />
@@ -192,8 +194,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Core\InterfaceRenderer.cpp" />
-    <ClCompile Include="Source\Graphics\BufferLayout.h" />
-    <ClCompile Include="Source\Graphics\CallbackTable.h" />
     <ClCompile Include="Source\Graphics\IndexBuffer.cpp" />
     <ClCompile Include="Source\Graphics\RenderCommand.cpp" />
     <ClCompile Include="Source\Graphics\Shader.cpp" />

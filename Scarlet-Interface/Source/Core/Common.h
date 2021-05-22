@@ -54,7 +54,7 @@ namespace ScarletInterface {
 
 	template<typename T>
 	using ParentRef = std::enable_shared_from_this<T>;
-
+	
 	template<typename T, typename ... Args>
 	constexpr Ref<T> CastRef(Args&& ... args)
 	{ return std::dynamic_pointer_cast<T>(std::forward<Args>(args)...); }

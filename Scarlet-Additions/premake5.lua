@@ -16,6 +16,6 @@ group "Scarlet-Additions"
 
 	include "Scarlet-Renderer"
 	include "Scarlet-Physics"
-	include "Scarlet-ECS"
+	include "Scarlet-SceneGraph"
 
 group ""
