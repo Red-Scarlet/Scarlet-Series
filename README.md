@@ -20,7 +20,7 @@ anyone can make modules (plugins) and load them as the engine software is runnin
 * Scarlet-AudioFX
 * Scarlet-OpenAL
 
-## Modules Todo
+### Modules Todo
 * Scarlet-Editor
 * Scarlet-Physics
 * Scarlet-Common
@@ -29,7 +29,7 @@ anyone can make modules (plugins) and load them as the engine software is runnin
 * Hot-swappable at runtime.
 * Fast Startup
 
-## Features Todo
+### Features Todo
 * Multithreading
 * Security
 * Module Version Info
