@@ -1,5 +1,5 @@
 # Scarlet-Series
-C++ Framework written around Module-ResourceComponentSystem
+C++ Framework written around Improved ECS Based Modular-Scriptable InterfaceComponentSystem
 
 ![Scarlet](/Scarlet-Resources/Scarlet.png?raw=true "Scarlet")
 
@@ -12,7 +12,11 @@ with modules that have scripting functionality wrapped around an interface layer
 This achievement will allow for hotswappable Rendering API's for example: Loading OpenGL by dragging in Scarlet-OpenGL.dll into the modules folder,
 anyone can make modules (plugins) and load them as the engine software is running (Without interruption).
 
-### Features
-* Module-ResourceComponentSystem [Near Complete]
-* Swapping In/Out Modules at Runtime [Work In Progress]
-* GLFW Window Library + OpenGL Window Library
+### Modules
+* Scarlet-Window
+* Scarlet-GLFW
+* Scarlet-Renderer
+* Scarlet-OpenGL
+* Scarlet-SceneGraph
+* Scarlet-AudioFX
+* Scarlet-OpenAL
