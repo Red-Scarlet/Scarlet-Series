@@ -3,24 +3,22 @@
 #pragma once
 
 #include <ScarletInterface.h>
-
-#include "Core/Window.h"
-#include "Core/GLFWContext.h"
+#include <ScarletWindow.h>
 
 namespace GLFW {
+
+	using namespace ScarletInterface;
 
 	struct SCARLET_INTERFACE_API GLFWComponent
 	{
 	public:
-		ScarletInterface::Ref<Window> Instance;
-		ScarletInterface::Ref<GLFWContext> Context;
+		Ref<Window::WindowContext> Instance;
 
 		GLFWComponent() = default;
 		GLFWComponent(const GLFWComponent&) = default;
-		GLFWComponent(const WindowProps& _Props)
+		GLFWComponent(const Window::WindowProps& _Props)
 		{ 
-			Instance = Window::Create(_Props);
-			Context = GLFWContext::Create((GLFWwindow*)Instance->GetNativeWindow());
+			Instance = Window::WindowContext::Create(_Props);
 		}
 	};
 

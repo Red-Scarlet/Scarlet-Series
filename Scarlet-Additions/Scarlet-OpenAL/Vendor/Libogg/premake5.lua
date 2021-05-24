@@ -1,4 +1,4 @@
-project "libogg"
+project "Libogg"
 	kind "SharedLib"
 	language "C"
 	staticruntime "on"

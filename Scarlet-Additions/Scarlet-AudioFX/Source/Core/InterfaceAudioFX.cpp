@@ -15,7 +15,7 @@ namespace AudioFX {
 			_Event.Push(new ComponentPushEvent(this))->Bind<AudioFXComponent>({});
 			_Event.Proceed(_Event);
 
-			m_Initialized = true, m_Running = true;
+			m_Running = true, m_Initialized = true;
 		}
 
 		EventDispatcher dispatcher(_Event);
@@ -25,11 +25,6 @@ namespace AudioFX {
 
 	bool InterfaceAudioFX::OnAppUpdate(AppUpdateEvent& _Event)
 	{
-		if (m_Running)
-		{
-
-		}
-
-		return true;
+		return m_Running;
 	}
 }

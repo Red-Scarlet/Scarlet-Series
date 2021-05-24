@@ -1,0 +1,2 @@
+B:\Projects\Visual Studio\Concealing-Engine\Concealing-Core\Vendor\yaml-cpp\bin\Debug-windows-x86_64\yaml-cpp\yaml-cpp.pdb
+B:\Projects\Visual Studio\Concealing-Engine\Concealing-Core\Vendor\yaml-cpp\bin-int\Debug-windows-x86_64\yaml-cpp\yaml-cpp.pdb

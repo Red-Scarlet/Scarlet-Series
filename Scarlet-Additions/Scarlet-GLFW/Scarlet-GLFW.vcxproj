@@ -99,7 +99,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_DLL;GLFW_INCLUDE_NONE;SCARLET_INTERFACE_EXPORT;SCARLET_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>Source;..\..\Scarlet-Interface\Source;..\..\Scarlet-Interface\Vendor;..\..\Scarlet-Interface\Vendor\spdlog\include;Vendor\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Source;..\..\Scarlet-Interface\Source;..\..\Scarlet-Interface\Vendor;..\..\Scarlet-Interface\Vendor\spdlog\include;..\Scarlet-Window\Source;..\Scarlet-Window\Vendor;Vendor\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <MinimalRebuild>false</MinimalRebuild>
@@ -121,7 +121,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_DLL;GLFW_INCLUDE_NONE;SCARLET_INTERFACE_EXPORT;SCARLET_DEBUG;SCARLET_PROFILE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>Source;..\..\Scarlet-Interface\Source;..\..\Scarlet-Interface\Vendor;..\..\Scarlet-Interface\Vendor\spdlog\include;Vendor\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Source;..\..\Scarlet-Interface\Source;..\..\Scarlet-Interface\Vendor;..\..\Scarlet-Interface\Vendor\spdlog\include;..\Scarlet-Window\Source;..\Scarlet-Window\Vendor;Vendor\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <MinimalRebuild>false</MinimalRebuild>
@@ -143,7 +143,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_DLL;GLFW_INCLUDE_NONE;SCARLET_INTERFACE_EXPORT;SCARLET_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>Source;..\..\Scarlet-Interface\Source;..\..\Scarlet-Interface\Vendor;..\..\Scarlet-Interface\Vendor\spdlog\include;Vendor\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Source;..\..\Scarlet-Interface\Source;..\..\Scarlet-Interface\Vendor;..\..\Scarlet-Interface\Vendor\spdlog\include;..\Scarlet-Window\Source;..\Scarlet-Window\Vendor;Vendor\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -168,7 +168,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_DLL;GLFW_INCLUDE_NONE;SCARLET_INTERFACE_EXPORT;SCARLET_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>Source;..\..\Scarlet-Interface\Source;..\..\Scarlet-Interface\Vendor;..\..\Scarlet-Interface\Vendor\spdlog\include;Vendor\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Source;..\..\Scarlet-Interface\Source;..\..\Scarlet-Interface\Vendor;..\..\Scarlet-Interface\Vendor\spdlog\include;..\Scarlet-Window\Source;..\Scarlet-Window\Vendor;Vendor\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -190,22 +190,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Source\Components\GLFWComponent.h" />
-    <ClInclude Include="Source\Core\GLFWContext.h" />
     <ClInclude Include="Source\Core\InterfaceGLFW.h" />
-    <ClInclude Include="Source\Core\Window.h" />
-    <ClInclude Include="Source\Events\WindowEvent.h" />
     <ClInclude Include="Source\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="Source\ScarletGLFW.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\Core\GLFWContext.cpp" />
     <ClCompile Include="Source\Core\InterfaceGLFW.cpp" />
-    <ClCompile Include="Source\Core\Window.cpp" />
     <ClCompile Include="Source\Platform\Windows\WindowsWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Scarlet-Interface\Scarlet-Interface.vcxproj">
       <Project>{91CC1B8E-FDE2-1924-465A-A545B2AFEAAB}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Scarlet-Window\Scarlet-Window.vcxproj">
+      <Project>{384772F5-2415-66FB-0DA9-D621F9154260}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

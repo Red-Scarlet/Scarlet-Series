@@ -1,7 +1,6 @@
 #pragma once
 
 #include <ScarletInterface.h>
-#include "CallbackTable.h"
 #include "VertexBuffer.h"
 #include "IndexBuffer.h"
 
@@ -23,10 +22,12 @@ namespace Renderer {
 		virtual Ref<VertexBuffer> GetVertexBuffer(const uint32& _Index = 0) = 0;
 		virtual Ref<IndexBuffer> GetIndexBuffer() = 0;
 
+	private:
+		static Ref<CallbackTable<VertexArray>> s_Callback;
+
 	public:
+		static void PushWrapper(const CallbackWrapper<VertexArray>& _Wrapper);
 		static Ref<VertexArray> Create(const String& _Name);
 	};
-
-	static Ref<CallbackTable<VertexArray>> VertexArrayCallback;
 
 }

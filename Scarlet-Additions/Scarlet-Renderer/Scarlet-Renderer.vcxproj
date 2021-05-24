@@ -184,7 +184,6 @@
     <ClInclude Include="Source\Components\RendererComponent.h" />
     <ClInclude Include="Source\Core\InterfaceRenderer.h" />
     <ClInclude Include="Source\Graphics\BufferLayout.h" />
-    <ClInclude Include="Source\Graphics\CallbackTable.h" />
     <ClInclude Include="Source\Graphics\IndexBuffer.h" />
     <ClInclude Include="Source\Graphics\RenderCommand.h" />
     <ClInclude Include="Source\Graphics\Shader.h" />

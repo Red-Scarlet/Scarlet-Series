@@ -1,7 +1,6 @@
 #pragma once
 
 #include <ScarletInterface.h>
-#include "CallbackTable.h"
 
 namespace AudioFX {
 

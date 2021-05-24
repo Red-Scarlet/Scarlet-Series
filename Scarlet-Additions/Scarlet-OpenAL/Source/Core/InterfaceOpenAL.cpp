@@ -22,7 +22,7 @@ namespace OpenAL {
             {
                 Function<Ref<AudioFX::AudioBuffer>(const String& _Name)> _AudioBuffer = [](const String& _Name) { return CreateRef<OpenALBuffer>(_Name); };
                 auto _AudioBufferBind = std::bind(_AudioBuffer, std::placeholders::_1);
-                AudioFX::CallbackWrapper<AudioFX::AudioBuffer> _AudioBufferWrapper;
+                CallbackWrapper<AudioFX::AudioBuffer> _AudioBufferWrapper;
                 _AudioBufferWrapper.Bind<decltype(_AudioBufferBind), const String&>(_AudioBufferBind);
                 AudioFX::AudioBuffer::PushWrapper(_AudioBufferWrapper);
             }
@@ -30,7 +30,7 @@ namespace OpenAL {
             {
                 Function<Ref<AudioFX::AudioDevice>(const String& _Name)> _AudioDevice = [](const String& _Name) { return CreateRef<OpenALDevice>(_Name); };
                 auto _AudioDeviceBind = std::bind(_AudioDevice, std::placeholders::_1);
-                AudioFX::CallbackWrapper<AudioFX::AudioDevice> _AudioDeviceWrapper;
+                CallbackWrapper<AudioFX::AudioDevice> _AudioDeviceWrapper;
                 _AudioDeviceWrapper.Bind<decltype(_AudioDeviceBind), const String&>(_AudioDeviceBind);
                 AudioFX::AudioDevice::PushWrapper(_AudioDeviceWrapper);
             }
@@ -38,7 +38,7 @@ namespace OpenAL {
             {
                 Function<Ref<AudioFX::AudioListener>(const Mathematics::Transform& _Transform)> _AudioListener = [](const Mathematics::Transform& _Transform) { return CreateRef<OpenALListener>(_Transform); };
                 auto _AudioListenerBind = std::bind(_AudioListener, std::placeholders::_1);
-                AudioFX::CallbackWrapper<AudioFX::AudioListener> _AudioListenerWrapper;
+                CallbackWrapper<AudioFX::AudioListener> _AudioListenerWrapper;
                 _AudioListenerWrapper.Bind<decltype(_AudioListenerBind), const Mathematics::Transform&>(_AudioListenerBind);
                 AudioFX::AudioListener::PushWrapper(_AudioListenerWrapper);
             }
@@ -46,15 +46,22 @@ namespace OpenAL {
             {
                 Function<Ref<AudioFX::AudioSource>(const Mathematics::Transform& _Transform)> _AudioSource = [](const Mathematics::Transform& _Transform) { return CreateRef<OpenALSource>(_Transform); };
                 auto _AudioSourceBind = std::bind(_AudioSource, std::placeholders::_1);
-                AudioFX::CallbackWrapper<AudioFX::AudioSource> _AudioSourceWrapper;
+                CallbackWrapper<AudioFX::AudioSource> _AudioSourceWrapper;
                 _AudioSourceWrapper.Bind<decltype(_AudioSourceBind), const Mathematics::Transform&>(_AudioSourceBind);
                 AudioFX::AudioSource::PushWrapper(_AudioSourceWrapper);
             }
 
-            m_Initialized = true;
+            m_Running = true, m_Initialized = true;
         }
 
+        EventDispatcher dispatcher(_Event);
+        dispatcher.Dispatch<AppUpdateEvent>(SCARLET_INTERFACE_BIND_EVENT_FN(InterfaceOpenAL::OnAppUpdate));
         if (!_Event.Handled) return;
+    }
+
+    bool InterfaceOpenAL::OnAppUpdate(AppUpdateEvent& _Event)
+    {
+        return m_Running;
     }
 
 }

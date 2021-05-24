@@ -4,7 +4,7 @@
 
 namespace ScarletInterface {
 
-	class Timestep
+	class SCARLET_INTERFACE_API Timestep
 	{
 	public:
 		Timestep(float32 _Time = 0.0f)

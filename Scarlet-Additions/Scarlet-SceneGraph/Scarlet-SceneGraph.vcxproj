@@ -183,6 +183,7 @@
   <ItemGroup>
     <ClInclude Include="Source\Components\SceneGraphComponent.h" />
     <ClInclude Include="Source\Core\InterfaceSceneGraph.h" />
+    <ClInclude Include="Source\ScarletSceneGraph.h" />
     <ClInclude Include="Source\SceneGraph\Backend\ComponentArray.h" />
     <ClInclude Include="Source\SceneGraph\Backend\ComponentManager.h" />
     <ClInclude Include="Source\SceneGraph\Backend\Coordinator.h" />

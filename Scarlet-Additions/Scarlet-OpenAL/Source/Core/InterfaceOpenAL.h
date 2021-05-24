@@ -16,7 +16,10 @@ namespace OpenAL {
 		virtual void OnGlobal(Event& _Event) override;
 
 	private:
-		bool m_Initialized = false;
+		bool OnAppUpdate(AppUpdateEvent& _Event);
+
+	private:
+		bool m_Running = false, m_Initialized = false;
 	};
 
 }

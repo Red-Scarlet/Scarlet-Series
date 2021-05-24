@@ -30,4 +30,4 @@ namespace ScarletInterface {                                                \
         g_x->OnGlobal(_Event);                                              \
     }                                                                       \
                                                                             \
-}                                                                           
+}                                       

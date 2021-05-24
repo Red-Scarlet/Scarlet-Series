@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="bin">
+      <UniqueIdentifier>{BE61880B-2A6B-887C-B3E6-9E7C1FEF937C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="bin\Debug-windows-x86_64">
+      <UniqueIdentifier>{28EF3B9B-1414-8B1B-3D5F-70AB29E38939}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="bin\Debug-windows-x86_64\Assimp">
+      <UniqueIdentifier>{24A9D46C-908C-E3AC-998F-11E905F2A9FD}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="bin\Release-windows-x86_64">
+      <UniqueIdentifier>{22F816D0-0E08-C3A0-77C1-27BF63F0B139}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="bin\Release-windows-x86_64\Assimp">
+      <UniqueIdentifier>{DE944004-4A03-9683-93EC-5083FF998B1F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="bin-int">
+      <UniqueIdentifier>{168B5978-826A-D813-8B82-63EAF7E03E75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="bin-int\Debug-windows-x86_64">
+      <UniqueIdentifier>{805FDA77-6C1A-CA23-15D2-426E016C14B4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="bin-int\Debug-windows-x86_64\Assimp">
+      <UniqueIdentifier>{7C46762F-E8FF-E0D9-715F-FBB3DD179749}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="bin-int\Debug-windows-x86_64\Assimp\Assimp.tlog">
+      <UniqueIdentifier>{3CD24533-A80D-A6F6-B102-23861DBD2A27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="bin-int\Release-windows-x86_64">
+      <UniqueIdentifier>{7ADE124E-6604-DDB4-4F4A-62803B0F0281}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="bin-int\Release-windows-x86_64\Assimp">
+      <UniqueIdentifier>{36E8BEF5-A2AC-BDE5-6B12-EEAFD795591B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="bin-int\Release-windows-x86_64\Assimp\Assimp.tlog">
+      <UniqueIdentifier>{F6DA9415-62A1-F131-ABFC-7F9417026096}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{89AF369E-F58E-B539-FEA6-40106A051C9B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\assimp">
+      <UniqueIdentifier>{8526CE41-71F4-C147-5A88-326E46F59DAC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\assimp\Compiler">
+      <UniqueIdentifier>{8F8B9273-FBC2-DA0A-04CD-3E2E70830104}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="libs">
+      <UniqueIdentifier>{2F149A7C-1B4B-9B0D-C437-8110B04D170F}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\assimp\Compiler\poppack1.h">
+      <Filter>include\assimp\Compiler</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assimp\Compiler\pstdint.h">
+      <Filter>include\assimp\Compiler</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assimp\Compiler\pushpack1.h">
+      <Filter>include\assimp\Compiler</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assimp\DefaultLogger.hpp">
+      <Filter>include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assimp\Exporter.hpp">
+      <Filter>include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assimp\IOStream.hpp">
+      <Filter>include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assimp\IOSystem.hpp">
+      <Filter>include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assimp\Importer.hpp">
+      <Filter>include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assimp\LogStream.hpp">
+      <Filter>include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assimp\Logger.hpp">
+      <Filter>include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assimp\NullLogger.hpp">
+      <Filter>include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assimp\ProgressHandler.hpp">
+      <Filter>include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assimp\ai_assert.h">
+      <Filter>include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assimp\anim.h">
+      <Filter>include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assimp\camera.h">
+      <Filter>include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assimp\cexport.h">
+      <Filter>include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assimp\cfileio.h">
+      <Filter>include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assimp\cimport.h">
+      <Filter>include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assimp\color4.h">
+      <Filter>include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assimp\color4.inl">
+      <Filter>include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assimp\config.h">
+      <Filter>include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assimp\defs.h">
+      <Filter>include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assimp\importer.h">
+      <Filter>include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assimp\importerdesc.h">
+      <Filter>include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assimp\light.h">
+      <Filter>include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assimp\material.h">
+      <Filter>include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assimp\material.inl">
+      <Filter>include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assimp\matrix3x3.h">
+      <Filter>include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assimp\matrix3x3.inl">
+      <Filter>include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assimp\matrix4x4.h">
+      <Filter>include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assimp\matrix4x4.inl">
+      <Filter>include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assimp\mesh.h">
+      <Filter>include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assimp\metadata.h">
+      <Filter>include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assimp\postprocess.h">
+      <Filter>include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assimp\quaternion.h">
+      <Filter>include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assimp\quaternion.inl">
+      <Filter>include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assimp\scene.h">
+      <Filter>include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assimp\texture.h">
+      <Filter>include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assimp\types.h">
+      <Filter>include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assimp\vector2.h">
+      <Filter>include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assimp\vector2.inl">
+      <Filter>include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assimp\vector3.h">
+      <Filter>include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assimp\vector3.inl">
+      <Filter>include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assimp\version.h">
+      <Filter>include\assimp</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ASSIMP.vcxproj" />
+    <None Include="ASSIMP.vcxproj.filters" />
+    <None Include="bin-int\Debug-windows-x86_64\Assimp\Assimp.Build.CppClean.log">
+      <Filter>bin-int\Debug-windows-x86_64\Assimp</Filter>
+    </None>
+    <None Include="bin-int\Debug-windows-x86_64\Assimp\Assimp.lib.recipe">
+      <Filter>bin-int\Debug-windows-x86_64\Assimp</Filter>
+    </None>
+    <None Include="bin-int\Debug-windows-x86_64\Assimp\Assimp.log">
+      <Filter>bin-int\Debug-windows-x86_64\Assimp</Filter>
+    </None>
+    <None Include="bin-int\Debug-windows-x86_64\Assimp\Assimp.tlog\Assimp.lastbuildstate">
+      <Filter>bin-int\Debug-windows-x86_64\Assimp\Assimp.tlog</Filter>
+    </None>
+    <None Include="bin-int\Debug-windows-x86_64\Assimp\Assimp.vcxproj.FileListAbsolute.txt">
+      <Filter>bin-int\Debug-windows-x86_64\Assimp</Filter>
+    </None>
+    <None Include="bin-int\Release-windows-x86_64\Assimp\Assimp.lib.recipe">
+      <Filter>bin-int\Release-windows-x86_64\Assimp</Filter>
+    </None>
+    <None Include="bin-int\Release-windows-x86_64\Assimp\Assimp.log">
+      <Filter>bin-int\Release-windows-x86_64\Assimp</Filter>
+    </None>
+    <None Include="bin-int\Release-windows-x86_64\Assimp\Assimp.tlog\Assimp.lastbuildstate">
+      <Filter>bin-int\Release-windows-x86_64\Assimp\Assimp.tlog</Filter>
+    </None>
+    <None Include="bin\Debug-windows-x86_64\Assimp\assimp.lib">
+      <Filter>bin\Debug-windows-x86_64\Assimp</Filter>
+    </None>
+    <None Include="bin\Release-windows-x86_64\Assimp\assimp.lib">
+      <Filter>bin\Release-windows-x86_64\Assimp</Filter>
+    </None>
+    <None Include="libs\assimp.lib">
+      <Filter>libs</Filter>
+    </None>
+    <None Include="premake5.lua" />
+  </ItemGroup>
+</Project>

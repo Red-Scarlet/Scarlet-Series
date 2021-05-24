@@ -28,6 +28,9 @@ project "Scarlet-GLFW"
 		"%{wks.location}/Scarlet-Interface/Vendor",
 		"%{wks.location}/Scarlet-Interface/Vendor/spdlog/include",
 
+		"%{wks.location}/Scarlet-Additions/Scarlet-Window/Source",
+		"%{wks.location}/Scarlet-Additions/Scarlet-Window/Vendor",
+
 		"%{wks.location}/Scarlet-Additions/Scarlet-GLFW/Vendor/GLFW/include"
 	}
 
@@ -39,6 +42,8 @@ project "Scarlet-GLFW"
 	links
 	{
 		"Scarlet-Interface",
+		"Scarlet-Window",
+
 		"glfw3",
 		"glfw3dll"
 	}

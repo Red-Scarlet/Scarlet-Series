@@ -4,7 +4,6 @@
 
 #include "Components/OpenGLComponent.h"
 
-#include "Graphics/OpenGLBufferLayout.h"
 #include "Graphics/OpenGLCommand.h"
 #include "Graphics/OpenGLShader.h"
 #include "Graphics/OpenGLVertexBuffer.h"

@@ -1,7 +1,6 @@
 #pragma once
 
 #include <ScarletInterface.h>
-#include "CallbackTable.h"
 #include "VertexArray.h"
 
 namespace Renderer {
@@ -55,9 +54,12 @@ namespace Renderer {
 		virtual void DrawArrays(const RendererDrawingFlag& _Flag, const Ref<VertexArray>& _VertexArray, const uint32& _IndexCount = 0) = 0;
 		virtual void DrawElements(const RendererDrawingFlag& _Flag, const Ref<VertexArray>& _VertexArray, const uint32& _IndexCount = 0) = 0;
 
+	private:
+		static Ref<CallbackTable<RenderCommand>> s_Callback;
+
+	public:
+		static void PushWrapper(const CallbackWrapper<RenderCommand>& _Wrapper);
 		static Ref<RenderCommand> Create(const String& _Name);
 	};
-
-	static Ref<CallbackTable<RenderCommand>> RenderCommandCallback;
 
 }

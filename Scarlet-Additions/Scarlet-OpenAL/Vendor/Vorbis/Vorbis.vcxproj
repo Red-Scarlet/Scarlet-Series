@@ -237,8 +237,8 @@
     <ClCompile Include="lib\window.c" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Libogg\libogg.vcxproj">
-      <Project>{99D86F0B-857A-9AE1-6E35-AE355A762132}</Project>
+    <ProjectReference Include="..\Libogg\Libogg.vcxproj">
+      <Project>{79C4CAC0-6566-F596-4E21-09EB3A627CE7}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

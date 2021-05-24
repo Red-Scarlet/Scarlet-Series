@@ -1,10 +1,7 @@
 #pragma once
 #include <ScarletInterface.h>
 #include <Core/InterfaceEntrypoint.h>
-
-#include "Core/Window.h"
-#include "Core/GLFWContext.h"
-#include "Events/WindowEvent.h"
+#include <ScarletWindow.h>
 
 namespace GLFW {
 
@@ -14,15 +11,14 @@ namespace GLFW {
 	{
 	public:
 		virtual void OnGlobal(Event& _Event) override;
-		virtual void OnLocal(Event& _Event) override;
 
 	private:
+		void OnLocal(Event& _Event);
 		bool OnAppUpdate(AppUpdateEvent& _Event);
-		bool OnWindowClose(WindowCloseEvent& _Event);
-		bool OnWindowResize(WindowResizeEvent& _Event);
+		bool OnWindowClose(Window::WindowCloseEvent& _Event);
 
 	private:
-		bool m_Running = false, m_Initialized = false, m_Minimized = false;
+		bool m_Running = false, m_Initialized = false;
 	};
 
 }

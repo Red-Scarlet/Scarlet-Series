@@ -30,9 +30,6 @@
     <ClInclude Include="Source\Resources\AudioSource.h">
       <Filter>Resources</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Resources\CallbackTable.h">
-      <Filter>Resources</Filter>
-    </ClInclude>
     <ClInclude Include="Source\ScarletAudioFX.h" />
   </ItemGroup>
   <ItemGroup>

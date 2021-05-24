@@ -15,8 +15,16 @@ namespace Renderer {
 			_Event.Push(new ComponentPushEvent(this))->Bind<RendererComponent>({});
 			_Event.Proceed(_Event);
 
-			m_Initialized = true, m_Running = true;
+			m_Running = true, m_Initialized = true;
 		}
 
+		EventDispatcher dispatcher(_Event);
+		dispatcher.Dispatch<AppUpdateEvent>(SCARLET_INTERFACE_BIND_EVENT_FN(InterfaceRenderer::OnAppUpdate));
+		if (!_Event.Handled) return;
+	}
+
+	bool InterfaceRenderer::OnAppUpdate(AppUpdateEvent& _Event)
+	{
+		return m_Running;
 	}
 }

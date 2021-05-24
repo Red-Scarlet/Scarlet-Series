@@ -192,6 +192,7 @@
     <ClInclude Include="Source\Mathematics\Vector3.h" />
     <ClInclude Include="Source\Mathematics\Vector4.h" />
     <ClInclude Include="Source\ScarletInterface.h" />
+    <ClInclude Include="Source\Utilities\CallbackTable.h" />
     <ClInclude Include="Source\Utilities\DirectoryTypes.h" />
     <ClInclude Include="Source\Utilities\FileUtils.h" />
     <ClInclude Include="Source\Utilities\Log.h" />

@@ -58,7 +58,6 @@ project "OpenAL-Soft"
 		symbols "on"
 		buildoptions "/MDd"
 
-
 	filter "configurations:Release"
 		runtime "Release"
 		optimize "on"

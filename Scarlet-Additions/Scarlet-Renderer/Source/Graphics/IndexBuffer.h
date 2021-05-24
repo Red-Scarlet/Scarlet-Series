@@ -1,7 +1,6 @@
 #pragma once
 
 #include <ScarletInterface.h>
-#include "CallbackTable.h"
 
 namespace Renderer {
 
@@ -16,11 +15,13 @@ namespace Renderer {
 		virtual void Unbind() const = 0;
 		virtual const uint32& GetCount() const = 0;
 
+	private:
+		static Ref<CallbackTable<IndexBuffer>> s_Callback;
+
 	public:
+		static void PushWrapper(const CallbackWrapper<IndexBuffer>& _Wrapper);
 		static Ref<IndexBuffer> Create(const uint32& _Size);
 		static Ref<IndexBuffer> Create(uint32* _Indices, const uint32& _Count);
 	};
-
-	static Ref<CallbackTable<IndexBuffer>> IndexBufferCallback;
 
 }

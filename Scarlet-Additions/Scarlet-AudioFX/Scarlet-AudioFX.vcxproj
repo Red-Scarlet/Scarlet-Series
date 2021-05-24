@@ -187,7 +187,6 @@
     <ClInclude Include="Source\Resources\AudioDevice.h" />
     <ClInclude Include="Source\Resources\AudioListener.h" />
     <ClInclude Include="Source\Resources\AudioSource.h" />
-    <ClInclude Include="Source\Resources\CallbackTable.h" />
     <ClInclude Include="Source\ScarletAudioFX.h" />
   </ItemGroup>
   <ItemGroup>

@@ -1,7 +1,6 @@
 #pragma once
 
 #include <ScarletInterface.h>
-#include "CallbackTable.h"
 #include "BufferLayout.h"
 
 namespace Renderer {
@@ -20,11 +19,13 @@ namespace Renderer {
 		virtual void SetLayout(const BufferLayout& _Layout) = 0;
 		virtual void SetData(const void* _Data, const uint32& _Size) = 0;
 
+	private:
+		static Ref<CallbackTable<VertexBuffer>> s_Callback;
+
 	public:
+		static void PushWrapper(const CallbackWrapper<VertexBuffer>& _Wrapper);
 		static Ref<VertexBuffer> Create(const uint32& _Size);
 		static Ref<VertexBuffer> Create(float* _Vertices, const uint32& _Size);
 	};
-
-	static Ref<CallbackTable<VertexBuffer>> VertexBufferCallback;
 
 }

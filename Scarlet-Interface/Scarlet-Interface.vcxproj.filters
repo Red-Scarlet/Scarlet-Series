@@ -96,6 +96,9 @@
     <ClInclude Include="Source\ScarletInterface.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Utilities\CallbackTable.h">
+      <Filter>Source\Utilities</Filter>
+    </ClInclude>
     <ClInclude Include="Source\Utilities\DirectoryTypes.h">
       <Filter>Source\Utilities</Filter>
     </ClInclude>

@@ -5,6 +5,15 @@
 
 namespace ScarletInterface {
 
+    struct SCARLET_INTERFACE_API InterfaceStruct
+    {
+    public:
+        String Name;
+        String Desc;
+        String Version;
+        Vector<String> Required;
+    };
+
     class SCARLET_INTERFACE_API InterfaceModule
     {
     public:
@@ -16,7 +25,6 @@ namespace ScarletInterface {
         virtual ~InterfaceModule();
 
         virtual void OnGlobal(Event& _Event) {}
-        virtual void OnLocal(Event& _Event) {}
 
         void SetName(const String& _Name);
         const String& GetName() const;

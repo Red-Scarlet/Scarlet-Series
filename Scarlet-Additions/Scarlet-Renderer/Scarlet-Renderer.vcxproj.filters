@@ -21,9 +21,6 @@
     <ClInclude Include="Source\Graphics\BufferLayout.h">
       <Filter>Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Graphics\CallbackTable.h">
-      <Filter>Graphics</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Graphics\IndexBuffer.h">
       <Filter>Graphics</Filter>
     </ClInclude>

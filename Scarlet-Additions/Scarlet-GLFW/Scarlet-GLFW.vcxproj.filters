@@ -7,9 +7,6 @@
     <Filter Include="Core">
       <UniqueIdentifier>{2EB4837C-1AEB-840D-C3D7-6A10AFED000F}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Events">
-      <UniqueIdentifier>{3A8963B1-262B-8E87-0FE6-A1DBFB2615D8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Platform">
       <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
     </Filter>
@@ -21,17 +18,8 @@
     <ClInclude Include="Source\Components\GLFWComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Core\GLFWContext.h">
-      <Filter>Core</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Core\InterfaceGLFW.h">
       <Filter>Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Core\Window.h">
-      <Filter>Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Events\WindowEvent.h">
-      <Filter>Events</Filter>
     </ClInclude>
     <ClInclude Include="Source\Platform\Windows\WindowsWindow.h">
       <Filter>Platform\Windows</Filter>
@@ -39,13 +27,7 @@
     <ClInclude Include="Source\ScarletGLFW.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\Core\GLFWContext.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Core\InterfaceGLFW.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Core\Window.cpp">
       <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="Source\Platform\Windows\WindowsWindow.cpp">

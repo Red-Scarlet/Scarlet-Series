@@ -1,7 +1,6 @@
 #pragma once
 
 #include <ScarletInterface.h>
-#include "CallbackTable.h"
 
 namespace Renderer {
 
@@ -24,9 +23,13 @@ namespace Renderer {
 
 		virtual const String& GetName() const = 0;
 
+	private:
+		static Ref<CallbackTable<Shader>> s_Callback;
+
+	public:
+		static void PushWrapper(const CallbackWrapper<Shader>& _Wrapper);
 		static Ref<Shader> Create(const String& _FilePath);
 		static Ref<Shader> Create(const String& _Name, const String& _VertexPath, const String& _FragPath);
 	};
 
-	static Ref<CallbackTable<Shader>> ShaderCallback;
 }

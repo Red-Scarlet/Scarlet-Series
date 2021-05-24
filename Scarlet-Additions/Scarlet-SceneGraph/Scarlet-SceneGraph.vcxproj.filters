@@ -45,6 +45,9 @@
     <ClInclude Include="Source\SceneGraph\Backend\SystemManager.h">
       <Filter>SceneGraph\Backend</Filter>
     </ClInclude>
+    <ClInclude Include="Source\SceneGraph\Components\NativeScriptComponent.h">
+      <Filter>SceneGraph\Components</Filter>
+    </ClInclude>
     <ClInclude Include="Source\SceneGraph\Components\TagComponent.h">
       <Filter>SceneGraph\Components</Filter>
     </ClInclude>
@@ -57,7 +60,7 @@
     <ClInclude Include="Source\SceneGraph\Scene.h">
       <Filter>SceneGraph</Filter>
     </ClInclude>
-    <ClInclude Include="Source\SceneGraph\Components\NativeScriptComponent.h" />
+    <ClInclude Include="Source\ScarletSceneGraph.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Core\InterfaceSceneGraph.cpp">

@@ -1,22 +1,21 @@
 #pragma once
+#include <ScarletInterface.h>
 
-// Finish SceneGraph
-	// TransformComponent
-	// NativeScriptComponent
-	// ScriptableSystem
-	// Scene Serilizer / Loader
+namespace SceneGraph {
 
-// Finish Renderer
-	// Camera Ortho, Perspective
-	// Batch Renderer2D
-	// Mesh Renderer
-	// Pipelining
+	using namespace ScarletInterface;
 
-// Window & GLFW Abstraction.
-	// Mouse Events
-	// Keyboard Events
-	// General Window Events
+	struct TransformComponent
+	{
+	public:
+		Mathematics::Transform Transform;
 
-// Level Editor w/ API Extensions
+		TransformComponent() = default;
+		TransformComponent(const TransformComponent&) = default;
+		TransformComponent(const Mathematics::Transform& _Transform)
+			: Transform(_Transform)
+		{
+		}
+	};
 
-// Unique Version Info & Module Idenifier
+}

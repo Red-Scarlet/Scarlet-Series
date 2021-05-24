@@ -1,8 +1,13 @@
 group "Dependencies"
+	include "Scarlet-SceneGraph/Vendor/Yaml-cpp"
+	include "Scarlet-Renderer/Vendor/Assimp"
+
 	include "Scarlet-OpenGL/Vendor/GLAD"
 	include "Scarlet-OpenAL/Vendor/OpenAL-Soft"
 	include "Scarlet-OpenAL/Vendor/Libogg"
 	include "Scarlet-OpenAL/Vendor/Vorbis"
+
+	include "Scarlet-Editor/Vendor/ImGui"
 
 group ""
 
@@ -20,5 +25,7 @@ group "Scarlet-Additions"
 	include "Scarlet-Renderer"
 	include "Scarlet-Physics"
 	include "Scarlet-SceneGraph"
+
+	include "Scarlet-Editor"
 
 group ""
