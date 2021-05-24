@@ -7,11 +7,6 @@
 #include "Matrix3.h"
 #include "Matrix4.h"
 
-#include "Tensor3x3.h"
+#include "Transform.h"
 
 #include "MathFunction.h"
-
-// VEC3 VEC3 + VEC2 MATRIX
-
-// VectorNxM + VectorA
-

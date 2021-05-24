@@ -16,6 +16,7 @@ project "Scarlet-OpenAL"
 	defines
 	{		
 		"_CRT_SECURE_NO_WARNINGS",
+		"AL_LIBTYPE_STATIC",
 		"SCARLET_INTERFACE_EXPORT"
 	}
 
@@ -29,7 +30,12 @@ project "Scarlet-OpenAL"
 		"%{wks.location}/Scarlet-Additions/Scarlet-AudioFX/Source",
 		"%{wks.location}/Scarlet-Additions/Scarlet-AudioFX/Vendor",
 
-		"%{wks.location}/Scarlet-Additions/Scarlet-OpenAL/Vendor/OpenAL/include"
+		"%{wks.location}/Scarlet-Additions/Scarlet-OpenAL/Vendor/OpenAL-Soft/include",
+		"%{wks.location}/Scarlet-Additions/Scarlet-OpenAL/Vendor/OpenAL-Soft/src",
+		"%{wks.location}/Scarlet-Additions/Scarlet-OpenAL/Vendor/OpenAL-Soft/src/Ccmmon",
+		"%{wks.location}/Scarlet-Additions/Scarlet-OpenAL/Vendor/Libogg/include",
+		"%{wks.location}/Scarlet-Additions/Scarlet-OpenAL/Vendor/Vorbis/include",
+		"%{wks.location}/Scarlet-Additions/Scarlet-OpenAL/Vendor/Minimp3",
 	}
 
 	links
@@ -37,7 +43,8 @@ project "Scarlet-OpenAL"
 		"Scarlet-Interface",
 		"Scarlet-AudioFX",
 
-		"OpenAL"
+		"OpenAL-Soft",
+		"Vorbis"
 	}
 
 	filter "system:windows"

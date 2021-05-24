@@ -43,7 +43,7 @@ namespace AudioFX {
 	public:
 		virtual ~CallbackTable() = default;
 
-		const bool& Empty() const
+		bool Empty()
 		{
 			return m_Callbacks.empty();
 		}

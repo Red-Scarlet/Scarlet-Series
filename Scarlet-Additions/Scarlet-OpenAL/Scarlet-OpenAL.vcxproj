@@ -98,8 +98,8 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;SCARLET_INTERFACE_EXPORT;SCARLET_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>Source;..\..\Scarlet-Interface\Source;..\..\Scarlet-Interface\Vendor;..\..\Scarlet-Interface\Vendor\spdlog\include;..\Scarlet-AudioFX\Source;..\Scarlet-AudioFX\Vendor;Vendor\OpenAL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;AL_LIBTYPE_STATIC;SCARLET_INTERFACE_EXPORT;SCARLET_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>Source;..\..\Scarlet-Interface\Source;..\..\Scarlet-Interface\Vendor;..\..\Scarlet-Interface\Vendor\spdlog\include;..\Scarlet-AudioFX\Source;..\Scarlet-AudioFX\Vendor;Vendor\OpenAL-Soft\include;Vendor\OpenAL-Soft\src;Vendor\OpenAL-Soft\src\Ccmmon;Vendor\Libogg\include;Vendor\Vorbis\include;Vendor\Minimp3;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <MinimalRebuild>false</MinimalRebuild>
@@ -111,7 +111,6 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>OpenAL.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\..\Scarlet-Bin\Debug-windows-x86_64\Scarlet-OpenAL\Scarlet-OpenAL.lib</ImportLibrary>
     </Link>
   </ItemDefinitionGroup>
@@ -119,8 +118,8 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;SCARLET_INTERFACE_EXPORT;SCARLET_DEBUG;SCARLET_PROFILE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>Source;..\..\Scarlet-Interface\Source;..\..\Scarlet-Interface\Vendor;..\..\Scarlet-Interface\Vendor\spdlog\include;..\Scarlet-AudioFX\Source;..\Scarlet-AudioFX\Vendor;Vendor\OpenAL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;AL_LIBTYPE_STATIC;SCARLET_INTERFACE_EXPORT;SCARLET_DEBUG;SCARLET_PROFILE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>Source;..\..\Scarlet-Interface\Source;..\..\Scarlet-Interface\Vendor;..\..\Scarlet-Interface\Vendor\spdlog\include;..\Scarlet-AudioFX\Source;..\Scarlet-AudioFX\Vendor;Vendor\OpenAL-Soft\include;Vendor\OpenAL-Soft\src;Vendor\OpenAL-Soft\src\Ccmmon;Vendor\Libogg\include;Vendor\Vorbis\include;Vendor\Minimp3;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <MinimalRebuild>false</MinimalRebuild>
@@ -132,7 +131,6 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>OpenAL.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\..\Scarlet-Bin\Profile-windows-x86_64\Scarlet-OpenAL\Scarlet-OpenAL.lib</ImportLibrary>
     </Link>
   </ItemDefinitionGroup>
@@ -140,8 +138,8 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;SCARLET_INTERFACE_EXPORT;SCARLET_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>Source;..\..\Scarlet-Interface\Source;..\..\Scarlet-Interface\Vendor;..\..\Scarlet-Interface\Vendor\spdlog\include;..\Scarlet-AudioFX\Source;..\Scarlet-AudioFX\Vendor;Vendor\OpenAL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;AL_LIBTYPE_STATIC;SCARLET_INTERFACE_EXPORT;SCARLET_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>Source;..\..\Scarlet-Interface\Source;..\..\Scarlet-Interface\Vendor;..\..\Scarlet-Interface\Vendor\spdlog\include;..\Scarlet-AudioFX\Source;..\Scarlet-AudioFX\Vendor;Vendor\OpenAL-Soft\include;Vendor\OpenAL-Soft\src;Vendor\OpenAL-Soft\src\Ccmmon;Vendor\Libogg\include;Vendor\Vorbis\include;Vendor\Minimp3;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -156,7 +154,6 @@
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>OpenAL.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\..\Scarlet-Bin\Release-windows-x86_64\Scarlet-OpenAL\Scarlet-OpenAL.lib</ImportLibrary>
     </Link>
   </ItemDefinitionGroup>
@@ -164,8 +161,8 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;SCARLET_INTERFACE_EXPORT;SCARLET_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>Source;..\..\Scarlet-Interface\Source;..\..\Scarlet-Interface\Vendor;..\..\Scarlet-Interface\Vendor\spdlog\include;..\Scarlet-AudioFX\Source;..\Scarlet-AudioFX\Vendor;Vendor\OpenAL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;AL_LIBTYPE_STATIC;SCARLET_INTERFACE_EXPORT;SCARLET_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>Source;..\..\Scarlet-Interface\Source;..\..\Scarlet-Interface\Vendor;..\..\Scarlet-Interface\Vendor\spdlog\include;..\Scarlet-AudioFX\Source;..\Scarlet-AudioFX\Vendor;Vendor\OpenAL-Soft\include;Vendor\OpenAL-Soft\src;Vendor\OpenAL-Soft\src\Ccmmon;Vendor\Libogg\include;Vendor\Vorbis\include;Vendor\Minimp3;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -180,7 +177,6 @@
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>OpenAL.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\..\Scarlet-Bin\Dist-windows-x86_64\Scarlet-OpenAL\Scarlet-OpenAL.lib</ImportLibrary>
     </Link>
   </ItemDefinitionGroup>
@@ -191,6 +187,7 @@
     <ClInclude Include="Source\Resources\OpenALDevice.h" />
     <ClInclude Include="Source\Resources\OpenALListener.h" />
     <ClInclude Include="Source\Resources\OpenALSource.h" />
+    <ClInclude Include="Source\Resources\alhelpers.h" />
     <ClInclude Include="Source\Scarlet-OpenAL.h" />
   </ItemGroup>
   <ItemGroup>
@@ -199,6 +196,7 @@
     <ClCompile Include="Source\Resources\OpenALDevice.cpp" />
     <ClCompile Include="Source\Resources\OpenALListener.cpp" />
     <ClCompile Include="Source\Resources\OpenALSource.cpp" />
+    <ClCompile Include="Source\Resources\alhelpers.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Scarlet-Interface\Scarlet-Interface.vcxproj">
@@ -206,6 +204,12 @@
     </ProjectReference>
     <ProjectReference Include="..\Scarlet-AudioFX\Scarlet-AudioFX.vcxproj">
       <Project>{10A08521-7C2B-F3E5-853C-76DAF1464FE6}</Project>
+    </ProjectReference>
+    <ProjectReference Include="Vendor\OpenAL-Soft\OpenAL-Soft.vcxproj">
+      <Project>{2D783691-992D-AF86-2222-A95D8ED6A58A}</Project>
+    </ProjectReference>
+    <ProjectReference Include="Vendor\Vorbis\Vorbis.vcxproj">
+      <Project>{DA7C93D8-C61E-BEAE-AFD9-D1029B1A45FF}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

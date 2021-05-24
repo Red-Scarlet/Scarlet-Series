@@ -12,10 +12,13 @@ namespace AudioFX {
 	public:
 		virtual ~AudioDevice() = default;
 
+		virtual void Play(const uint32& _SourceHandle) = 0;
+
+	private:
+		static Ref<CallbackTable<AudioDevice>> s_Callback;
+
 	public:
+		static void PushWrapper(const CallbackWrapper<AudioDevice>& _Wrapper);
 		static Ref<AudioDevice> Create(const String& _Name);
 	};
-
-	static Ref<CallbackTable<AudioDevice>> AudioDeviceCallback;
-
 }

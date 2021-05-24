@@ -10,11 +10,17 @@ namespace OpenAL {
 	class SCARLET_INTERFACE_API OpenALListener : public AudioFX::AudioListener
 	{
 	public:
-		OpenALListener(const String& _Name);
+		OpenALListener(const Mathematics::Transform& _Transform);
 		~OpenALListener();
 
-	private:
+		virtual void SetPosition(const Mathematics::Vector3& _Position) override;
+		virtual void SetVelocity(const Mathematics::Vector3& _Velocity) override;
+		virtual void SetOrientation(const Mathematics::Vector3& _Orientation) override;
+		virtual void SetGain(const float32& _Gain) override;
 
+	private:
+		Mathematics::Transform m_Transform;
+		float32 m_Gain;
 	};
 
 

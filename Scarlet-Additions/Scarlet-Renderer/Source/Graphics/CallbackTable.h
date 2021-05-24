@@ -41,9 +41,10 @@ namespace Renderer {
 	struct CallbackTable
 	{
 	public:
+		CallbackTable() = default;
 		virtual ~CallbackTable() = default;
 
-		const bool& Empty() const
+		bool Empty()
 		{
 			return m_Callbacks.empty();
 		}

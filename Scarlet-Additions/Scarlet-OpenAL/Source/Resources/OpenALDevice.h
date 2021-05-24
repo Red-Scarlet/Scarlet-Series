@@ -2,8 +2,9 @@
 
 #include <ScarletInterface.h>
 #include <ScarletAudioFX.h>
-#include <alc.h>
-#include <al.h>
+
+#include <AL/al.h>
+#include "alhelpers.h"
 
 namespace OpenAL {
 
@@ -15,9 +16,10 @@ namespace OpenAL {
 		OpenALDevice(const String& _Name);
 		~OpenALDevice();
 
+		virtual void Play(const uint32& _SourceHandle) override;
+
 	private:
-		ALCdevice* m_Device;
-		ALCcontext* m_Context;
+		ALCdevice* m_Device = nullptr;
 	};
 
 

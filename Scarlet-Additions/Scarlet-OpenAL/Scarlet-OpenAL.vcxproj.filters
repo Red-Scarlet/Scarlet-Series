@@ -30,6 +30,9 @@
     <ClInclude Include="Source\Resources\OpenALSource.h">
       <Filter>Resources</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Resources\alhelpers.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
     <ClInclude Include="Source\Scarlet-OpenAL.h" />
   </ItemGroup>
   <ItemGroup>
@@ -46,6 +49,9 @@
       <Filter>Resources</Filter>
     </ClCompile>
     <ClCompile Include="Source\Resources\OpenALSource.cpp">
+      <Filter>Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Resources\alhelpers.cpp">
       <Filter>Resources</Filter>
     </ClCompile>
   </ItemGroup>

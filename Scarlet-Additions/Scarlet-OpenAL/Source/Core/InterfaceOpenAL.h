@@ -4,9 +4,7 @@
 
 #include <ScarletInterface.h>
 #include <Core/InterfaceEntrypoint.h>
-#include <Events/InterfaceEvent.h>
-
-#include "Components/OpenALComponent.h"
+#include <ScarletAudioFX.h>
 
 namespace OpenAL {
 
@@ -18,7 +16,6 @@ namespace OpenAL {
 		virtual void OnGlobal(Event& _Event) override;
 
 	private:
-
 		bool m_Initialized = false;
 	};
 

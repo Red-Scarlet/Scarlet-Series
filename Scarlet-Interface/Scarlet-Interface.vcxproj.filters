@@ -81,7 +81,7 @@
     <ClInclude Include="Source\Mathematics\Quaternion.h">
       <Filter>Source\Mathematics</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Mathematics\Tensor3x3.h">
+    <ClInclude Include="Source\Mathematics\Transform.h">
       <Filter>Source\Mathematics</Filter>
     </ClInclude>
     <ClInclude Include="Source\Mathematics\Vector2.h">

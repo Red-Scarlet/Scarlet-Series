@@ -1,5 +1,8 @@
 group "Dependencies"
 	include "Scarlet-OpenGL/Vendor/GLAD"
+	include "Scarlet-OpenAL/Vendor/OpenAL-Soft"
+	include "Scarlet-OpenAL/Vendor/Libogg"
+	include "Scarlet-OpenAL/Vendor/Vorbis"
 
 group ""
 

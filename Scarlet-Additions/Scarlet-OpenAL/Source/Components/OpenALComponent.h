@@ -2,7 +2,6 @@
 // AudioFXComponent.h 08/04/2021 - Component Struct.
 #pragma once
 #include <ScarletInterface.h>
-#include "Core/OpenALContext.h"
 
 namespace OpenAL {
 

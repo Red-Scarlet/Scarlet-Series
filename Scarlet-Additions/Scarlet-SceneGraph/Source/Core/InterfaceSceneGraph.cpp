@@ -23,6 +23,11 @@ namespace SceneGraph {
 
 	bool InterfaceSceneGraph::OnAppUpdate(AppUpdateEvent& _Event)
 	{
+		if (m_Running)
+		{
+
+		}
+
 		return true;
 	}
 

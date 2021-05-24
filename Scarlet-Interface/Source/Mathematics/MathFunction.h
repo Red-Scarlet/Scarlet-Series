@@ -15,6 +15,7 @@ namespace ScarletInterface { namespace Mathematics {
 		static Matrix4 Rotation(const Vector3& _Rotate);
 		static Matrix4 Scale(const Vector3& _Scale);
 		static Matrix4 Inverse(const Matrix4& _Matrix);
+		//static Matrix4 Quat(const Quaternion& _Matrix);
 
 		static float32* ValuePtr(const Matrix4& _Matrix);
 

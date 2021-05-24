@@ -1,38 +1,44 @@
 #include "OpenALDevice.h"
 
+#include <stdio.h>
+#include <stdlib.h>
+
+#include <string>
+#include <thread>
+#include <filesystem>
+
+#include "common/albyte.h"
+
+#include "AL/al.h"
+#include "AL/alext.h"
+#include "alc/alcmain.h"
+#include "alhelpers.h"
+
+#include "Vorbis/codec.h"
+#include "Vorbis/vorbisfile.h"
+
 namespace OpenAL {
 
 	OpenALDevice::OpenALDevice(const String& _Name)
 	{
-		m_Device = alcOpenDevice(nullptr); // nullptr = get default device
-		if (!m_Device)
-			throw("failed to get sound device");
+		if (InitAL(m_Device, nullptr, 0) != 0)
+			std::cout << "Audio device error!\n";
 
-		m_Context = alcCreateContext(m_Device, nullptr);  // create context
-		if (!m_Context)
-			throw("Failed to set sound context");
-
-		if (!alcMakeContextCurrent(m_Context))   // make context current
-			throw("failed to make context current");
-
-		const ALCchar* name = nullptr;
-		if (alcIsExtensionPresent(m_Device, "ALC_ENUMERATE_ALL_EXT"))
-			name = alcGetString(m_Device, ALC_ALL_DEVICES_SPECIFIER);
-		if (!name || alcGetError(m_Device) != AL_NO_ERROR)
-			name = alcGetString(m_Device, ALC_DEVICE_SPECIFIER);
-		printf("Opened \"%s\"\n", name);
+		std::cout << "Audio Device Info:" << std::endl;
+		std::cout << "Name: " << m_Device->DeviceName << std::endl;
+		std::cout << "Sample Rate: " << m_Device->Frequency << std::endl;
+		std::cout << "Max Sources: " << m_Device->SourcesMax << std::endl;
+		std::cout << "Mono: " << m_Device->NumMonoSources << std::endl;
+		std::cout << "Stereo: " << m_Device->NumStereoSources << std::endl;
 	}
 
 	OpenALDevice::~OpenALDevice()
 	{
-		if (!alcMakeContextCurrent(nullptr))
-			throw("failed to set context to nullptr");
+		CloseAL();
+	}
 
-		alcDestroyContext(m_Context);
-		if (m_Context)
-			throw("failed to unset during close");
-
-		if (!alcCloseDevice(m_Device))
-			throw("failed to close sound device");
+	void OpenALDevice::Play(const uint32& _SourceHandle)
+	{
+		alSourcePlay(_SourceHandle);
 	}
 }
