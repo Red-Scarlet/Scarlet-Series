@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="examples">
+      <UniqueIdentifier>{84D830B1-70A5-8BBC-99BE-796485EAC04A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\example_allegro5">
+      <UniqueIdentifier>{994063B8-0503-9742-4EB3-25CFBAB46F20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\example_apple_metal">
+      <UniqueIdentifier>{C29E89B6-AE59-7962-5711-F2AC43ABC3F2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\example_apple_metal\Shared">
+      <UniqueIdentifier>{A89BCD78-1455-3823-9DB4-52FD096DEE92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\example_apple_metal\example_apple_metal.xcodeproj">
+      <UniqueIdentifier>{FCAE7180-E86E-0225-518C-EA2F3D6B1537}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\example_apple_metal\iOS">
+      <UniqueIdentifier>{BCBEFA0B-A80F-E64D-D173-D40FBD2379B7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\example_apple_metal\iOS\Base.lproj">
+      <UniqueIdentifier>{BBAE218B-2714-B511-B0EC-56EA1C51AA80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\example_apple_metal\macOS">
+      <UniqueIdentifier>{24EDF7F5-1029-FB5F-793B-13576596A37A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\example_apple_metal\macOS\Base.lproj">
+      <UniqueIdentifier>{230CA4BA-8F7C-A633-589B-20BCC4CADE34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\example_apple_opengl2">
+      <UniqueIdentifier>{E6390132-D25F-CB98-BBA5-5064A76AF064}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\example_apple_opengl2\example_apple_opengl2.xcodeproj">
+      <UniqueIdentifier>{C4592C59-B02F-B356-99D9-CDA9854EE6F7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\example_emscripten">
+      <UniqueIdentifier>{3861BCD7-A46E-EABD-2D55-E6A89961B674}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\example_glfw_metal">
+      <UniqueIdentifier>{80577A43-EC64-A829-754B-A414E15774E0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\example_glfw_opengl2">
+      <UniqueIdentifier>{241A03BE-9032-EAE7-59DF-7981C5B67E81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\example_glfw_opengl3">
+      <UniqueIdentifier>{251A03BE-9132-EAE7-5ADF-7981C6B67E81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\example_glfw_vulkan">
+      <UniqueIdentifier>{BE03E1C8-AABE-D074-5376-49BF3F101B05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\example_glut_opengl2">
+      <UniqueIdentifier>{10482C9D-7C60-13C7-450D-A360B1E4A760}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\example_marmalade">
+      <UniqueIdentifier>{4219E3F3-2E29-8FC4-97E2-F3E283117E5D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\example_marmalade\data">
+      <UniqueIdentifier>{0B343AC8-7717-4908-801A-7744EC7C0F59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\example_null">
+      <UniqueIdentifier>{596BC32C-C5D7-7E27-8ECB-1685FAF6A08F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\example_sdl_directx11">
+      <UniqueIdentifier>{D58186C4-C1A7-502B-AAED-D5F696B275F7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\example_sdl_metal">
+      <UniqueIdentifier>{7338E385-5F48-8F56-C801-F474B4307EEF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\example_sdl_opengl2">
+      <UniqueIdentifier>{D703283E-C3BE-17EA-6C76-90345810627A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\example_sdl_opengl3">
+      <UniqueIdentifier>{D803283E-C4BE-17EA-6D76-90345910627A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\example_sdl_vulkan">
+      <UniqueIdentifier>{11036658-7D10-943E-06F7-8F29720360F5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\example_win32_directx10">
+      <UniqueIdentifier>{44598166-30AA-6CA8-590E-5B6A45BEFF11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\example_win32_directx11">
+      <UniqueIdentifier>{45598166-31AA-6CA8-5A0E-5B6A46BEFF11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\example_win32_directx12">
+      <UniqueIdentifier>{46598166-32AA-6CA8-5B0E-5B6A47BEFF11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\example_win32_directx9">
+      <UniqueIdentifier>{9C867058-086A-7F98-116D-ADD47DCF45E9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\libs">
+      <UniqueIdentifier>{5D4FF000-C90F-6C37-924A-B5B4FEC9B013}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\libs\gl3w">
+      <UniqueIdentifier>{A93EF63A-9522-B790-FE82-B1E3EA85A112}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\libs\gl3w\GL">
+      <UniqueIdentifier>{6BFB9201-D767-4EFC-A05B-E6590C877064}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\libs\glfw">
+      <UniqueIdentifier>{3C45F63A-2829-B790-9189-B1E37D8CA112}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\libs\glfw\include">
+      <UniqueIdentifier>{AFE822A3-9BF8-CE73-04B2-3392F0E0BD0C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\libs\glfw\include\GLFW">
+      <UniqueIdentifier>{4E69E5B0-BA4C-F4F0-C34F-222D2FB2BA41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\libs\glfw\lib-vc2010-32">
+      <UniqueIdentifier>{1D361076-0987-FBB7-32EB-E9791E9B8E21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\libs\glfw\lib-vc2010-64">
+      <UniqueIdentifier>{82361076-6E87-FBB7-97EB-E979839B8E21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\libs\usynergy">
+      <UniqueIdentifier>{324D28DD-1E47-512F-07B4-E73FF34CB79B}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\ImGui\examples\example_allegro5\imconfig_allegro5.h">
+      <Filter>examples\example_allegro5</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ImGui\examples\example_apple_metal\Shared\AppDelegate.h">
+      <Filter>examples\example_apple_metal\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ImGui\examples\example_apple_metal\Shared\Renderer.h">
+      <Filter>examples\example_apple_metal\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ImGui\examples\example_apple_metal\Shared\ViewController.h">
+      <Filter>examples\example_apple_metal\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ImGui\examples\imgui_impl_allegro5.h">
+      <Filter>examples</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ImGui\examples\imgui_impl_dx10.h">
+      <Filter>examples</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ImGui\examples\imgui_impl_dx11.h">
+      <Filter>examples</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ImGui\examples\imgui_impl_dx12.h">
+      <Filter>examples</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ImGui\examples\imgui_impl_dx9.h">
+      <Filter>examples</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ImGui\examples\imgui_impl_glfw.h">
+      <Filter>examples</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ImGui\examples\imgui_impl_glut.h">
+      <Filter>examples</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ImGui\examples\imgui_impl_marmalade.h">
+      <Filter>examples</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ImGui\examples\imgui_impl_metal.h">
+      <Filter>examples</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ImGui\examples\imgui_impl_opengl2.h">
+      <Filter>examples</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ImGui\examples\imgui_impl_opengl3.h">
+      <Filter>examples</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ImGui\examples\imgui_impl_osx.h">
+      <Filter>examples</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ImGui\examples\imgui_impl_sdl.h">
+      <Filter>examples</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ImGui\examples\imgui_impl_vulkan.h">
+      <Filter>examples</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ImGui\examples\imgui_impl_win32.h">
+      <Filter>examples</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ImGui\examples\libs\gl3w\GL\gl3w.h">
+      <Filter>examples\libs\gl3w\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ImGui\examples\libs\gl3w\GL\glcorearb.h">
+      <Filter>examples\libs\gl3w\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ImGui\examples\libs\glfw\include\GLFW\glfw3.h">
+      <Filter>examples\libs\glfw\include\GLFW</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ImGui\examples\libs\glfw\include\GLFW\glfw3native.h">
+      <Filter>examples\libs\glfw\include\GLFW</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ImGui\examples\libs\usynergy\uSynergy.h">
+      <Filter>examples\libs\usynergy</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ImGui\imconfig.h" />
+    <ClInclude Include="include\ImGui\imgui.h" />
+    <ClInclude Include="include\ImGui\imgui_internal.h" />
+    <ClInclude Include="include\ImGui\imstb_rectpack.h" />
+    <ClInclude Include="include\ImGui\imstb_textedit.h" />
+    <ClInclude Include="include\ImGui\imstb_truetype.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="include\ImGui\examples\example_allegro5\main.cpp">
+      <Filter>examples\example_allegro5</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ImGui\examples\example_apple_metal\Shared\AppDelegate.m">
+      <Filter>examples\example_apple_metal\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ImGui\examples\example_apple_metal\Shared\Renderer.mm">
+      <Filter>examples\example_apple_metal\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ImGui\examples\example_apple_metal\Shared\ViewController.mm">
+      <Filter>examples\example_apple_metal\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ImGui\examples\example_apple_metal\Shared\main.m">
+      <Filter>examples\example_apple_metal\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ImGui\examples\example_apple_opengl2\main.mm">
+      <Filter>examples\example_apple_opengl2</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ImGui\examples\example_emscripten\main.cpp">
+      <Filter>examples\example_emscripten</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ImGui\examples\example_glfw_metal\main.mm">
+      <Filter>examples\example_glfw_metal</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ImGui\examples\example_glfw_opengl2\main.cpp">
+      <Filter>examples\example_glfw_opengl2</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ImGui\examples\example_glfw_opengl3\main.cpp">
+      <Filter>examples\example_glfw_opengl3</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ImGui\examples\example_glfw_vulkan\main.cpp">
+      <Filter>examples\example_glfw_vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ImGui\examples\example_glut_opengl2\main.cpp">
+      <Filter>examples\example_glut_opengl2</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ImGui\examples\example_marmalade\main.cpp">
+      <Filter>examples\example_marmalade</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ImGui\examples\example_null\main.cpp">
+      <Filter>examples\example_null</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ImGui\examples\example_sdl_directx11\main.cpp">
+      <Filter>examples\example_sdl_directx11</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ImGui\examples\example_sdl_metal\main.mm">
+      <Filter>examples\example_sdl_metal</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ImGui\examples\example_sdl_opengl2\main.cpp">
+      <Filter>examples\example_sdl_opengl2</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ImGui\examples\example_sdl_opengl3\main.cpp">
+      <Filter>examples\example_sdl_opengl3</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ImGui\examples\example_sdl_vulkan\main.cpp">
+      <Filter>examples\example_sdl_vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ImGui\examples\example_win32_directx10\main.cpp">
+      <Filter>examples\example_win32_directx10</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ImGui\examples\example_win32_directx11\main.cpp">
+      <Filter>examples\example_win32_directx11</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ImGui\examples\example_win32_directx12\main.cpp">
+      <Filter>examples\example_win32_directx12</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ImGui\examples\example_win32_directx9\main.cpp">
+      <Filter>examples\example_win32_directx9</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ImGui\examples\imgui_impl_allegro5.cpp">
+      <Filter>examples</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ImGui\examples\imgui_impl_dx10.cpp">
+      <Filter>examples</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ImGui\examples\imgui_impl_dx11.cpp">
+      <Filter>examples</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ImGui\examples\imgui_impl_dx12.cpp">
+      <Filter>examples</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ImGui\examples\imgui_impl_dx9.cpp">
+      <Filter>examples</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ImGui\examples\imgui_impl_glfw.cpp">
+      <Filter>examples</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ImGui\examples\imgui_impl_glut.cpp">
+      <Filter>examples</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ImGui\examples\imgui_impl_marmalade.cpp">
+      <Filter>examples</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ImGui\examples\imgui_impl_metal.mm">
+      <Filter>examples</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ImGui\examples\imgui_impl_opengl2.cpp">
+      <Filter>examples</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ImGui\examples\imgui_impl_opengl3.cpp">
+      <Filter>examples</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ImGui\examples\imgui_impl_osx.mm">
+      <Filter>examples</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ImGui\examples\imgui_impl_sdl.cpp">
+      <Filter>examples</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ImGui\examples\imgui_impl_vulkan.cpp">
+      <Filter>examples</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ImGui\examples\imgui_impl_win32.cpp">
+      <Filter>examples</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ImGui\examples\libs\gl3w\GL\gl3w.c">
+      <Filter>examples\libs\gl3w\GL</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ImGui\examples\libs\usynergy\uSynergy.c">
+      <Filter>examples\libs\usynergy</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ImGui\imgui.cpp" />
+    <ClCompile Include="include\ImGui\imgui_demo.cpp" />
+    <ClCompile Include="include\ImGui\imgui_draw.cpp" />
+    <ClCompile Include="include\ImGui\imgui_widgets.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="include\ImGui\examples\README.txt">
+      <Filter>examples</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_allegro5\README.md">
+      <Filter>examples\example_allegro5</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_allegro5\example_allegro5.vcxproj">
+      <Filter>examples\example_allegro5</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_allegro5\example_allegro5.vcxproj.filters">
+      <Filter>examples\example_allegro5</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_apple_metal\README.md">
+      <Filter>examples\example_apple_metal</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_apple_metal\example_apple_metal.xcodeproj\project.pbxproj">
+      <Filter>examples\example_apple_metal\example_apple_metal.xcodeproj</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_apple_metal\iOS\Base.lproj\Main.storyboard">
+      <Filter>examples\example_apple_metal\iOS\Base.lproj</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_apple_metal\iOS\Info-iOS.plist">
+      <Filter>examples\example_apple_metal\iOS</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_apple_metal\iOS\Launch Screen.storyboard">
+      <Filter>examples\example_apple_metal\iOS</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_apple_metal\macOS\Base.lproj\Main.storyboard">
+      <Filter>examples\example_apple_metal\macOS\Base.lproj</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_apple_metal\macOS\Info-macOS.plist">
+      <Filter>examples\example_apple_metal\macOS</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_apple_opengl2\example_apple_opengl2.xcodeproj\project.pbxproj">
+      <Filter>examples\example_apple_opengl2\example_apple_opengl2.xcodeproj</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_emscripten\Makefile">
+      <Filter>examples\example_emscripten</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_emscripten\README.md">
+      <Filter>examples\example_emscripten</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_emscripten\shell_minimal.html">
+      <Filter>examples\example_emscripten</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_glfw_metal\Makefile">
+      <Filter>examples\example_glfw_metal</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_glfw_opengl2\Makefile">
+      <Filter>examples\example_glfw_opengl2</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_glfw_opengl2\build_win32.bat">
+      <Filter>examples\example_glfw_opengl2</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_glfw_opengl2\example_glfw_opengl2.vcxproj">
+      <Filter>examples\example_glfw_opengl2</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_glfw_opengl2\example_glfw_opengl2.vcxproj.filters">
+      <Filter>examples\example_glfw_opengl2</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_glfw_opengl3\Makefile">
+      <Filter>examples\example_glfw_opengl3</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_glfw_opengl3\build_win32.bat">
+      <Filter>examples\example_glfw_opengl3</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_glfw_opengl3\example_glfw_opengl3.vcxproj">
+      <Filter>examples\example_glfw_opengl3</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_glfw_opengl3\example_glfw_opengl3.vcxproj.filters">
+      <Filter>examples\example_glfw_opengl3</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_glfw_vulkan\CMakeLists.txt">
+      <Filter>examples\example_glfw_vulkan</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_glfw_vulkan\build_win32.bat">
+      <Filter>examples\example_glfw_vulkan</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_glfw_vulkan\build_win64.bat">
+      <Filter>examples\example_glfw_vulkan</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_glfw_vulkan\example_glfw_vulkan.vcxproj">
+      <Filter>examples\example_glfw_vulkan</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_glfw_vulkan\example_glfw_vulkan.vcxproj.filters">
+      <Filter>examples\example_glfw_vulkan</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_glfw_vulkan\gen_spv.sh">
+      <Filter>examples\example_glfw_vulkan</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_glfw_vulkan\glsl_shader.frag">
+      <Filter>examples\example_glfw_vulkan</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_glfw_vulkan\glsl_shader.vert">
+      <Filter>examples\example_glfw_vulkan</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_glut_opengl2\Makefile">
+      <Filter>examples\example_glut_opengl2</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_glut_opengl2\example_glut_opengl2.vcxproj">
+      <Filter>examples\example_glut_opengl2</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_glut_opengl2\example_glut_opengl2.vcxproj.filters">
+      <Filter>examples\example_glut_opengl2</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_marmalade\data\app.icf">
+      <Filter>examples\example_marmalade\data</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_marmalade\marmalade_example.mkb">
+      <Filter>examples\example_marmalade</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_null\Makefile">
+      <Filter>examples\example_null</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_null\build_win32.bat">
+      <Filter>examples\example_null</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_sdl_directx11\build_win32.bat">
+      <Filter>examples\example_sdl_directx11</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_sdl_directx11\example_sdl_directx11.vcxproj">
+      <Filter>examples\example_sdl_directx11</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_sdl_directx11\example_sdl_directx11.vcxproj.filters">
+      <Filter>examples\example_sdl_directx11</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_sdl_metal\Makefile">
+      <Filter>examples\example_sdl_metal</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_sdl_opengl2\Makefile">
+      <Filter>examples\example_sdl_opengl2</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_sdl_opengl2\README.md">
+      <Filter>examples\example_sdl_opengl2</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_sdl_opengl2\build_win32.bat">
+      <Filter>examples\example_sdl_opengl2</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_sdl_opengl2\example_sdl_opengl2.vcxproj">
+      <Filter>examples\example_sdl_opengl2</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_sdl_opengl2\example_sdl_opengl2.vcxproj.filters">
+      <Filter>examples\example_sdl_opengl2</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_sdl_opengl3\Makefile">
+      <Filter>examples\example_sdl_opengl3</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_sdl_opengl3\README.md">
+      <Filter>examples\example_sdl_opengl3</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_sdl_opengl3\build_win32.bat">
+      <Filter>examples\example_sdl_opengl3</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_sdl_opengl3\example_sdl_opengl3.vcxproj">
+      <Filter>examples\example_sdl_opengl3</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_sdl_opengl3\example_sdl_opengl3.vcxproj.filters">
+      <Filter>examples\example_sdl_opengl3</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_sdl_vulkan\example_sdl_vulkan.vcxproj">
+      <Filter>examples\example_sdl_vulkan</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_sdl_vulkan\example_sdl_vulkan.vcxproj.filters">
+      <Filter>examples\example_sdl_vulkan</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_win32_directx10\build_win32.bat">
+      <Filter>examples\example_win32_directx10</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_win32_directx10\example_win32_directx10.vcxproj">
+      <Filter>examples\example_win32_directx10</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_win32_directx10\example_win32_directx10.vcxproj.filters">
+      <Filter>examples\example_win32_directx10</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_win32_directx11\build_win32.bat">
+      <Filter>examples\example_win32_directx11</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_win32_directx11\example_win32_directx11.vcxproj">
+      <Filter>examples\example_win32_directx11</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_win32_directx11\example_win32_directx11.vcxproj.filters">
+      <Filter>examples\example_win32_directx11</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_win32_directx12\build_win32.bat">
+      <Filter>examples\example_win32_directx12</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_win32_directx12\example_win32_directx12.vcxproj">
+      <Filter>examples\example_win32_directx12</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_win32_directx12\example_win32_directx12.vcxproj.filters">
+      <Filter>examples\example_win32_directx12</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_win32_directx9\build_win32.bat">
+      <Filter>examples\example_win32_directx9</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_win32_directx9\example_win32_directx9.vcxproj">
+      <Filter>examples\example_win32_directx9</Filter>
+    </None>
+    <None Include="include\ImGui\examples\example_win32_directx9\example_win32_directx9.vcxproj.filters">
+      <Filter>examples\example_win32_directx9</Filter>
+    </None>
+    <None Include="include\ImGui\examples\imgui_examples.sln">
+      <Filter>examples</Filter>
+    </None>
+    <None Include="include\ImGui\examples\libs\glfw\COPYING.txt">
+      <Filter>examples\libs\glfw</Filter>
+    </None>
+    <None Include="include\ImGui\examples\libs\glfw\lib-vc2010-32\glfw3.lib">
+      <Filter>examples\libs\glfw\lib-vc2010-32</Filter>
+    </None>
+    <None Include="include\ImGui\examples\libs\glfw\lib-vc2010-64\glfw3.lib">
+      <Filter>examples\libs\glfw\lib-vc2010-64</Filter>
+    </None>
+    <None Include="include\ImGui\examples\libs\usynergy\README.txt">
+      <Filter>examples\libs\usynergy</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="include\ImGui\examples\example_apple_metal\iOS\Default-568h@2x.png">
+      <Filter>examples\example_apple_metal\iOS</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

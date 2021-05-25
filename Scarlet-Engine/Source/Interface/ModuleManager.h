@@ -20,7 +20,8 @@ namespace Scarlet {
 		void LoadModule(const String& _FilePath);
 		void OnEvent(Event& _Event);
 		
-		void ProcessEvent(Event& _Event);
+		bool ProcessEvent(Event& _Event);
+		bool OnInterfaceRequirement(InterfaceRequirementEvent& _Event);
 		bool OnInterfaceRequest(InterfaceRequestEvent& _Event);
 		bool OnInterfacePush(InterfacePushEvent& _Event);
 		bool OnInterfacePop(InterfacePopEvent& _Event);

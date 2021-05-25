@@ -1,7 +1,7 @@
 project "ImGui"
 	kind "SharedLib"
 	language "C++"
-	cppdialect "C++17"
+	cppdialect "C++14"
 	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")

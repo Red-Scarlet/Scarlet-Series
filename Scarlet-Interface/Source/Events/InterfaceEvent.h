@@ -11,16 +11,40 @@
 
 namespace ScarletInterface {
 
-	#define InterfaceRequest uint16(0x0002)
-	#define InterfacePush uint16(0x0004)
-	#define InterfacePop uint16(0x0008)
-	#define SignaturePush uint16(0x0010)
-	#define SignaturePop uint16(0x0020)
-	#define ComponentPush uint16(0x0040)
-	#define ComponentPop uint16(0x0080)
-	#define ComponentCompute uint16(0x0100)
+	#define InterfaceRequirements uint16(0x0002)
+	#define InterfaceRequest uint16(0x0004)
+	#define InterfacePush uint16(0x0008)
+	#define InterfacePop uint16(0x0010)
+	#define SignaturePush uint16(0x0020)
+	#define SignaturePop uint16(0x0040)
+	#define ComponentPush uint16(0x0080)
+	#define ComponentPop uint16(0x0100)
+	#define ComponentCompute uint16(0x0200)
 
 	#define EventCategoryInterface uint16(0x01)
+
+	class SCARLET_INTERFACE_API InterfaceRequirementEvent : public Event
+	{
+	public:
+		InterfaceRequirementEvent(InterfaceModule* _Module)
+		{
+
+			m_Module = _Module;
+		}
+
+		InterfaceModule* GetModule() { return m_Module; }
+
+		void Set(const Vector<String>& _Requirement)
+		{
+			m_Module->m_Info.Requirements = _Requirement;
+		}
+
+		EVENT_CLASS_TYPE(InterfaceRequirements)
+		EVENT_CLASS_CATEGORY(EventCategoryInterface)
+
+	private:
+		InterfaceModule* m_Module = nullptr;
+	};
 
 	class SCARLET_INTERFACE_API InterfaceRequestEvent : public Event
 	{

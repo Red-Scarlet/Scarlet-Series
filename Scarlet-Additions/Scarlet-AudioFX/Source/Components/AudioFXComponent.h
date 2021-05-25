@@ -10,8 +10,14 @@ namespace AudioFX {
 	struct SCARLET_INTERFACE_API AudioFXComponent
 	{
 	public:
+		String API = "None";
+
 		AudioFXComponent() = default;
 		AudioFXComponent(const AudioFXComponent&) = default;
+		AudioFXComponent(const String& _API)
+			: API(_API)
+		{
+		}
 	};
 
 }

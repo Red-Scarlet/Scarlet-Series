@@ -1,7 +1,6 @@
 // Copyright 2016-2021 Scarlet-OpenGL / Red-Scarlet. All rights reserved.
 // OpenGLContext.cpp 03/04/2021 - Functional Class.
 #include "OpenGLContext.h"
-
 #include <glad/glad.h>
 
 namespace OpenGL {

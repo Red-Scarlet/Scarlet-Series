@@ -26,6 +26,9 @@ project "Scarlet-Editor"
 		"%{wks.location}/Scarlet-Interface/Vendor",
 		"%{wks.location}/Scarlet-Interface/Vendor/spdlog/include",
 		
+		"%{wks.location}/Scarlet-Additions/Scarlet-Window/Source",
+		"%{wks.location}/Scarlet-Additions/Scarlet-Window/Vendor",
+
 		"%{wks.location}/Scarlet-Additions/Scarlet-SceneGraph/Source",
 		"%{wks.location}/Scarlet-Additions/Scarlet-SceneGraph/Vendor",
 
@@ -41,6 +44,8 @@ project "Scarlet-Editor"
 	links
 	{
 		"Scarlet-Interface",
+
+		"Scarlet-Window",
 		"Scarlet-SceneGraph",
 		"Scarlet-Renderer",
 		"Scarlet-AudioFX",

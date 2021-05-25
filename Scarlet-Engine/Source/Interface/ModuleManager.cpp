@@ -27,7 +27,13 @@ namespace Scarlet {
 			if (!interfaceModule) return;
 
 			interfaceModule->m_Interface = m_InterfaceManager->CreateInterface();
-			interfaceModule->m_LoadedModule = true;
+			interfaceModule->m_Info.Name = name;
+
+			bool Ready = true;
+			for (String required : interfaceModule->m_Info.Requirements)
+				Ready = m_Modules.find(required.c_str()) != m_Modules.end();
+
+			interfaceModule->m_ReadyModule = Ready;
 			m_Modules.insert({ name, interfaceModule });
 			SCARLET_CORE_INFO("Module Loaded: {0}", name);
 		}
@@ -43,39 +49,58 @@ namespace Scarlet {
 		{
 			if (pair.second == nullptr) SCARLET_CORE_ASSERT(SCARLET_ERROR, "Module was Nullptr!");
 
-			if (pair.second->m_LoadedModule)
+			if (pair.second->m_ReadyModule)
 				InterfaceHandler::Instance().EventInterface(_Event, pair.second);
 			else pair.second->OnGlobal(_Event);
-
-			if (!_Event.Handled) return;
 		}
 
-		ProcessEvent(_Event);
-
-		if (!_Event.Handled) return;
+		if (ProcessEvent(_Event) == false) return;
 	}
 
-	void ModuleManager::ProcessEvent(Event& _Event)
+	bool ModuleManager::ProcessEvent(Event& _Event)
 	{
+		uint32 HandleCount = _Event.Count();
+
 		while (!_Event.Empty())
 		{
 			Event* nextEvent = _Event.Back();
 			if (nextEvent)
 			{
 				EventDispatcher dispatcher(*nextEvent);
-				dispatcher.Dispatch<InterfaceRequestEvent>(SCARLET_BIND_EVENT_FN(ModuleManager::OnInterfaceRequest));
-				dispatcher.Dispatch<InterfacePushEvent>(SCARLET_BIND_EVENT_FN(ModuleManager::OnInterfacePush));
-				dispatcher.Dispatch<InterfacePopEvent>(SCARLET_BIND_EVENT_FN(ModuleManager::OnInterfacePop));
-				dispatcher.Dispatch<SignaturePushEvent>(SCARLET_BIND_EVENT_FN(ModuleManager::OnSignaturePush));
-				dispatcher.Dispatch<SignaturePopEvent>(SCARLET_BIND_EVENT_FN(ModuleManager::OnSignaturePop));
-				dispatcher.Dispatch<ComponentPushEvent>(SCARLET_BIND_EVENT_FN(ModuleManager::OnComponentPush));
-				dispatcher.Dispatch<ComponentPopEvent>(SCARLET_BIND_EVENT_FN(ModuleManager::OnComponentPop));
-				dispatcher.Dispatch<ComponentComputeEvent>(SCARLET_BIND_EVENT_FN(ModuleManager::OnComponentCompute));
+				HandleCount -= (uint32)dispatcher.Dispatch<InterfaceRequirementEvent>(SCARLET_BIND_EVENT_FN(ModuleManager::OnInterfaceRequirement));
+				HandleCount -= (uint32)dispatcher.Dispatch<InterfaceRequestEvent>(SCARLET_BIND_EVENT_FN(ModuleManager::OnInterfaceRequest));
+				HandleCount -= (uint32)dispatcher.Dispatch<InterfacePushEvent>(SCARLET_BIND_EVENT_FN(ModuleManager::OnInterfacePush));
+				HandleCount -= (uint32)dispatcher.Dispatch<InterfacePopEvent>(SCARLET_BIND_EVENT_FN(ModuleManager::OnInterfacePop));
+				HandleCount -= (uint32)dispatcher.Dispatch<SignaturePushEvent>(SCARLET_BIND_EVENT_FN(ModuleManager::OnSignaturePush));
+				HandleCount -= (uint32)dispatcher.Dispatch<SignaturePopEvent>(SCARLET_BIND_EVENT_FN(ModuleManager::OnSignaturePop));
+				HandleCount -= (uint32)dispatcher.Dispatch<ComponentPushEvent>(SCARLET_BIND_EVENT_FN(ModuleManager::OnComponentPush));
+				HandleCount -= (uint32)dispatcher.Dispatch<ComponentPopEvent>(SCARLET_BIND_EVENT_FN(ModuleManager::OnComponentPop));
+				HandleCount -= (uint32)dispatcher.Dispatch<ComponentComputeEvent>(SCARLET_BIND_EVENT_FN(ModuleManager::OnComponentCompute));
 			}
 			_Event.Pop();
 		}
 
-		if (!_Event.Handled) return;
+		return HandleCount == 0 ? true : false;
+	}
+
+	bool ModuleManager::OnInterfaceRequirement(InterfaceRequirementEvent& _Event)
+	{
+		SCARLET_PROFILE_FUNCTION();
+
+		bool ReadyModule = false;
+		InterfaceModule* interfaceModule = _Event.GetModule();
+		if (interfaceModule)
+		{
+			uint32 ReadyIndex = 0;
+			uint32 RequirementSize = interfaceModule->m_Info.Requirements.size();
+			for (String required : interfaceModule->m_Info.Requirements) 
+				if (m_Modules.find(required.c_str()) != m_Modules.end()) ReadyIndex++;
+			interfaceModule->m_Info.Requirements.clear();
+			interfaceModule->m_ReadyModule = ReadyIndex == RequirementSize ? true : false;
+			ReadyModule = interfaceModule->m_ReadyModule;
+		}
+
+		return ReadyModule;
 	}
 
 	bool ModuleManager::OnInterfaceRequest(InterfaceRequestEvent& _Event)
@@ -97,10 +122,10 @@ namespace Scarlet {
 		
 		if (interfaceModule)
 		{
-			interfaceModule->m_Name = _Event.m_Name;
+			interfaceModule->m_Info.Name = _Event.m_Name;
 			interfaceModule->m_Interface = m_InterfaceManager->CreateInterface();
-			m_Modules.insert({ interfaceModule->m_Name, interfaceModule });
-			SCARLET_CORE_INFO("Module Loaded: {0}", interfaceModule->m_Name);
+			m_Modules.insert({ interfaceModule->m_Info.Name, interfaceModule });
+			SCARLET_CORE_INFO("Module Loaded: {0}", interfaceModule->m_Info.Name);
 		}
 
 		return true;
@@ -114,7 +139,7 @@ namespace Scarlet {
 
 		if (interfaceModule) 
 		{
-			String name = interfaceModule->GetName();
+			String name = interfaceModule->m_Info.Name;
 			InterfaceHandler::Instance().UnloadInterface(interfaceModule);
 			m_Modules.erase(name);
 		}
@@ -132,9 +157,9 @@ namespace Scarlet {
 			// This will check for contained Signature in Signatures, If failed added it, if success update it.
 			InterfaceSignature signature;
 			signature.set(_Event.m_Function(m_ComponentManager), true);
-			auto iter = m_Signatures.find(interfaceModule->GetName());
+			auto iter = m_Signatures.find(interfaceModule->m_Info.Name);
 			if (iter == m_Signatures.end())
-				m_Signatures.insert({ interfaceModule->GetName(), signature });
+				m_Signatures.insert({ interfaceModule->m_Info.Name, signature });
 			else iter->second = signature;
 
 			// Loop through every module, 
@@ -146,6 +171,7 @@ namespace Scarlet {
 
 				if ((third & signature) != 0 && second->m_Interface != interfaceModule->m_Interface) 
 					interfaceModule->m_Set.insert(second->m_Interface);
+				else interfaceModule->m_Set.erase(second->m_Interface);
 			}
 		}
 

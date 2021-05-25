@@ -6,3 +6,5 @@
 #include "Resources/AudioDevice.h"
 #include "Resources/AudioListener.h"
 #include "Resources/AudioSource.h"
+
+#include "Components/AudioFXComponent.h"

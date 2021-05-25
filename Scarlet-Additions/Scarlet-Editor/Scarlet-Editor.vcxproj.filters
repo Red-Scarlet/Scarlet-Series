@@ -15,9 +15,6 @@
     <ClInclude Include="Source\Components\EditorComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Core\ImGuiContext.h">
-      <Filter>Core</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Core\InterfaceEditor.h">
       <Filter>Core</Filter>
     </ClInclude>
@@ -32,9 +29,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\Core\ImGuiContext.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Core\InterfaceEditor.cpp">
       <Filter>Core</Filter>
     </ClCompile>

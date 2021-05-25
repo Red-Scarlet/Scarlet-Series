@@ -1,8 +1,8 @@
 #include "InterfaceGLFW.h"
 
 #include <Events/InterfaceEvent.h>
-#include "Components/GLFWComponent.h"
 #include "Platform/Windows/WindowsWindow.h"
+#include "Components/GLFWComponent.h"
 
 namespace GLFW {
 
@@ -11,8 +11,23 @@ namespace GLFW {
     {
         if (!m_Initialized)
         {
-            _Event.Push(new SignaturePushEvent(this))->Bind<GLFWComponent>();
-            _Event.Proceed(_Event);
+            {
+                _Event.Push(new SignaturePushEvent(this))->Bind<Window::WindowComponent>();
+                _Event.Proceed(_Event);
+
+                for (Interface i : m_Set)
+                {
+                    Window::WindowComponent* component = {};
+                    _Event.Push(new ComponentComputeEvent(i))->Retrieve<Window::WindowComponent>(&component);
+                    _Event.Proceed(_Event);
+
+                    if (component) component->API = "GLFW";
+                }
+
+                _Event.Push(new SignaturePopEvent(this))->Bind<Window::WindowComponent>();
+                _Event.Push(new SignaturePushEvent(this))->Bind<GLFWComponent>();
+                _Event.Proceed(_Event);
+            }
 
             {
                 Function<Ref<Window::WindowContext>(const Window::WindowProps& _Props)> _WindowContext = [](const Window::WindowProps& _Props) { return CreateRef<WindowsWindow>(_Props); };

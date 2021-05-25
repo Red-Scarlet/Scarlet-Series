@@ -5,35 +5,35 @@
 
 namespace ScarletInterface {
 
-    struct SCARLET_INTERFACE_API InterfaceStruct
+    struct SCARLET_INTERFACE_API InterfaceInfo
     {
     public:
-        String Name;
-        String Desc;
-        String Version;
-        Vector<String> Required;
+        String Name = "Default";
+        String Desc = "Description";
+        String Version = "1.0.0";
+        Vector<String> Requirements;
     };
 
     class SCARLET_INTERFACE_API InterfaceModule
     {
     public:
         friend class ModuleManager;
+        friend class InterfaceRequirementEvent;
 
     public:
-        InterfaceModule();
-        InterfaceModule(const String& _Name);
+        InterfaceModule(const InterfaceInfo& _Info = InterfaceInfo());
         virtual ~InterfaceModule();
 
-        virtual void OnGlobal(Event& _Event) {}
+        virtual void OnGlobal(Event& _Event);
 
-        void SetName(const String& _Name);
-        const String& GetName() const;
+        const InterfaceInfo& GetInfo() const;
+        const bool& IsReady() const;
 
     public:
-        String m_Name;
+        InterfaceInfo m_Info;
         Interface m_Interface;
         Set<Interface> m_Set;
-        bool m_LoadedModule = false;
+        bool m_ReadyModule = false;
     };
 
 }

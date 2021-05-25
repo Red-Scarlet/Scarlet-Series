@@ -8,11 +8,19 @@ namespace Renderer {
 
 	using namespace ScarletInterface;
 
-	struct RendererComponent
+	struct SCARLET_INTERFACE_API RendererComponent
 	{
 	public:
+		String API = "None";
+
 		RendererComponent() = default;
 		RendererComponent(const RendererComponent&) = default;
+		RendererComponent(const String& _API)
+			: API(_API)
+		{
+
+		}
+
 	};
 
 }

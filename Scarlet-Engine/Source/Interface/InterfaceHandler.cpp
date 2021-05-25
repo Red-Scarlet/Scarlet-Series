@@ -69,7 +69,7 @@ namespace Scarlet {
                 if (CreateInterface != nullptr)  {
                     interfaceModule = CreateInterface();
                     if (interfaceModule != nullptr) {
-                        interfaceModule->SetName(name);
+                        interfaceModule->m_Info.Name = name;
                         m_Implementation->m_Plugins.insert(PluginMap::value_type(name, interfaceModule));
                         m_Implementation->m_Libs.insert(LibraryMap::value_type(name, hModule ));
                     } else FreeLibrary(hModule);
@@ -88,15 +88,15 @@ namespace Scarlet {
 
         if (_Interface != nullptr)
         {
-            LibraryMap::iterator iter = m_Implementation->m_Libs.find(_Interface->GetName() );
+            LibraryMap::iterator iter = m_Implementation->m_Libs.find(_Interface->GetInfo().Name);
             if( iter != m_Implementation->m_Libs.end() )
             {
-                m_Implementation->m_Plugins.erase(_Interface->GetName());
+                m_Implementation->m_Plugins.erase(_Interface->GetInfo().Name);
             
                 HMODULE hModule = iter->second;
                 fnDestroyInterface DestroyInterface = (fnDestroyInterface)GetProcAddress(hModule, "DestroyInterface");
                 if (DestroyInterface != nullptr) DestroyInterface();
-                else std::cout << "ERROR: Unable to find symbol \"DestroyPlugin\" in library \"" << _Interface->GetName() << std::endl;
+                else std::cout << "ERROR: Unable to find symbol \"DestroyPlugin\" in library \"" << _Interface->GetInfo().Name << std::endl;
                 FreeLibrary(hModule);
                 m_Implementation->m_Libs.erase(iter);
             }
@@ -112,13 +112,13 @@ namespace Scarlet {
 
         if (_Interface != nullptr)
         {
-            LibraryMap::iterator iter = m_Implementation->m_Libs.find(_Interface->GetName());
+            LibraryMap::iterator iter = m_Implementation->m_Libs.find(_Interface->GetInfo().Name);
             if (iter != m_Implementation->m_Libs.end())
             {
                 HMODULE hModule = iter->second;
                 fnEventInterface EventInterface = (fnEventInterface)GetProcAddress(hModule, "EventInterface");
                 if (EventInterface != nullptr) EventInterface(_Event);
-                else std::cout << "ERROR: Unable to find symbol \"EventPlugin\" in library \"" << _Interface->GetName() << std::endl;
+                else std::cout << "ERROR: Unable to find symbol \"EventPlugin\" in library \"" << _Interface->GetInfo().Name << std::endl;
             }else std::cout << "WARNING: Trying to unload a plugin that is already unloaded or has never been loaded." << std::endl;
         }
     }

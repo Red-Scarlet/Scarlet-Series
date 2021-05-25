@@ -11,8 +11,14 @@ namespace Window {
 	struct SCARLET_INTERFACE_API WindowComponent
 	{
 	public:
+		String API = "None";
+
 		WindowComponent() = default;
 		WindowComponent(const WindowComponent&) = default;
+		WindowComponent(const String& _API)
+			: API(_API)
+		{
+		}
 	};
 
 }

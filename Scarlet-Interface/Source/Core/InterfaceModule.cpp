@@ -2,12 +2,8 @@
 
 namespace ScarletInterface {
 
-    InterfaceModule::InterfaceModule()
-    {
-    }
-
-    InterfaceModule::InterfaceModule(const String& _Name)
-        : m_Name(_Name)
+    InterfaceModule::InterfaceModule(const InterfaceInfo& _Info)
+        : m_Info(_Info)
     {
     }
 
@@ -15,14 +11,19 @@ namespace ScarletInterface {
     {
     }
 
-    void InterfaceModule::SetName(const String& _Name)
+    void InterfaceModule::OnGlobal(Event& _Event)
     {
-        m_Name = _Name;
     }
 
-    const String& InterfaceModule::GetName() const
+    const InterfaceInfo& InterfaceModule::GetInfo() const
     {
-        return m_Name;
+        return m_Info;
     }
+
+    const bool& InterfaceModule::IsReady() const
+    {
+        return m_ReadyModule;
+    }
+
 
 }

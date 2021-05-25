@@ -8,3 +8,5 @@
 #include "Graphics/Shader.h"
 #include "Graphics/VertexArray.h"
 #include "Graphics/VertexBuffer.h"
+
+#include "Components/RendererComponent.h"

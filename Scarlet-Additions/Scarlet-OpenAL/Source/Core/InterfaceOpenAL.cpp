@@ -15,8 +15,26 @@ namespace OpenAL {
     {
         if (!m_Initialized)
         {
+            {
+                _Event.Push(new SignaturePushEvent(this))->Bind<AudioFX::AudioFXComponent>();
+                _Event.Proceed(_Event);
+
+                for (Interface i : m_Set)
+                {
+                    AudioFX::AudioFXComponent* component = {};
+                    _Event.Push(new ComponentComputeEvent(i))->Retrieve<AudioFX::AudioFXComponent>(&component);
+                    _Event.Proceed(_Event);
+
+                    if (component) component->API = "OpenAL";
+                }
+
+                _Event.Push(new SignaturePopEvent(this))->Bind<AudioFX::AudioFXComponent>();
+                _Event.Push(new SignaturePushEvent(this))->Bind<OpenALComponent>();
+                _Event.Push(new ComponentPushEvent(this))->Bind<OpenALComponent>({});
+                _Event.Proceed(_Event);
+            }
+
             _Event.Push(new SignaturePushEvent(this))->Bind<OpenALComponent>();
-            _Event.Push(new ComponentPushEvent(this))->Bind<OpenALComponent>({});
             _Event.Proceed(_Event);
             
             {

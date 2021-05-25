@@ -64,7 +64,7 @@ namespace Scarlet {
 
 		m_ModuleManager->OnEvent(_Event);
 
-		if (!_Event.Handled) { Stop(); return; }
+		if (!_Event.Handled) return;
 	}
 
 }

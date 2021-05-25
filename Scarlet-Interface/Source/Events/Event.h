@@ -21,7 +21,7 @@ namespace ScarletInterface {
 	class SCARLET_INTERFACE_API Event
 	{
 	public:
-		using EventCallbackFn = std::function<void(Event&)>;
+		using EventCallbackFn = std::function<bool(Event&)>;
 
 	public:
 		virtual ~Event() = default;
@@ -40,13 +40,14 @@ namespace ScarletInterface {
 		Event* Back() { return m_Events.back(); }
 		void Pop() { delete m_Events.back(); m_Events.pop_back(); }
 		bool Empty() { return m_Events.empty(); }
+		uint32 Count() { return m_Events.size(); }
 
 		void SetCallback(const EventCallbackFn& _Callback)
 		{ m_Callback = _Callback; m_CallbackSet = true; }
 
-		void Proceed(Event& _Event)
+		bool Proceed(Event& _Event)
 		{
-			m_Callback(_Event);
+			return m_Callback(_Event);
 		}
 		
 		bool HasCallback() { return m_CallbackSet; }
@@ -69,10 +70,7 @@ namespace ScarletInterface {
 		bool Dispatch(const F& func)
 		{
 			if (m_Event.GetEventType() == T::GetStaticType())
-			{
-				m_Event.Handled |= func(static_cast<T&>(m_Event));
-				return true;
-			}
+				return m_Event.Handled |= func(static_cast<T&>(m_Event));
 			return false;
 		}
 

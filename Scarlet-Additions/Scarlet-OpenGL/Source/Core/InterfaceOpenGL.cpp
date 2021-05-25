@@ -14,9 +14,24 @@ namespace OpenGL {
     {
         if (!m_Initialized)
         {
-            _Event.Push(new ComponentPushEvent(this))->Bind<OpenGLComponent>(nullptr);
-            _Event.Push(new SignaturePushEvent(this))->Bind<OpenGLComponent>();
-            _Event.Proceed(_Event);
+            {
+                _Event.Push(new SignaturePushEvent(this))->Bind<Renderer::RendererComponent>();
+                _Event.Proceed(_Event);
+
+                for (Interface i : m_Set)
+                {
+                    Renderer::RendererComponent* component = {};
+                    _Event.Push(new ComponentComputeEvent(i))->Retrieve<Renderer::RendererComponent>(&component);
+                    _Event.Proceed(_Event);
+
+                    if (component) component->API = "OpenGL";
+                }
+
+                _Event.Push(new SignaturePopEvent(this))->Bind<Renderer::RendererComponent>();
+                _Event.Push(new SignaturePushEvent(this))->Bind<OpenGLComponent>();
+                _Event.Push(new ComponentPushEvent(this))->Bind<OpenGLComponent>(nullptr);
+                _Event.Proceed(_Event);
+            }
             
             {
                 Function<Ref<Renderer::RenderCommand>(const String& _Name)> _RenderCommand = [](const String& _Name) { return CreateRef<OpenGLCommand>(_Name); };
