@@ -7,11 +7,18 @@
 #include "Graphics/OpenGLVertexBuffer.h"
 #include "Graphics/OpenGLIndexBuffer.h"
 
+#include <ScarletWindow.h>
+
 namespace OpenGL {
 
     // Can Handle Engine/Module Manager Events.
     void InterfaceOpenGL::OnGlobal(Event& _Event)
-    {
+    {       
+        _Event.Push(new InterfaceRequirementEvent(this))->Set({
+            "Scarlet-Renderer"
+        });
+        if (_Event.Proceed(_Event) == false) return;
+
         if (!m_Initialized)
         {
             {
@@ -28,8 +35,39 @@ namespace OpenGL {
                 }
 
                 _Event.Push(new SignaturePopEvent(this))->Bind<Renderer::RendererComponent>();
+                _Event.Proceed(_Event);
+            }
+
+            {
+                void* procAddess = nullptr;
+                _Event.Push(new SignaturePushEvent(this))->Bind<Window::WindowComponent>();
+                _Event.Proceed(_Event);
+
+                for (Interface i : m_Set)
+                {
+                    Window::WindowComponent* component = {};
+                    _Event.Push(new ComponentComputeEvent(i))->Retrieve<Window::WindowComponent>(&component);
+                    _Event.Proceed(_Event);
+
+                    if (component)
+                    {
+                        if (component->Instance)
+                        {
+                            component->Instance->SetCurrent();
+                            procAddess = component->Instance->GetProcAddress();
+                        }
+                        else
+                        {
+                            _Event.Push(new SignaturePopEvent(this))->Bind<Window::WindowComponent>();
+                            _Event.Proceed(_Event);
+                            return;
+                        }
+                    }
+                }
+
+                _Event.Push(new SignaturePopEvent(this))->Bind<Window::WindowComponent>();
                 _Event.Push(new SignaturePushEvent(this))->Bind<OpenGLComponent>();
-                _Event.Push(new ComponentPushEvent(this))->Bind<OpenGLComponent>(nullptr);
+                _Event.Push(new ComponentPushEvent(this))->Bind<OpenGLComponent>(procAddess);
                 _Event.Proceed(_Event);
             }
             
@@ -95,6 +133,7 @@ namespace OpenGL {
                 Renderer::IndexBuffer::PushWrapper(_IndexBufferWrapper);
             }
 
+            m_RenderCommand = Renderer::RenderCommand::Create("BasicCommmand");
             m_Running = true, m_Initialized = true;
         }
 
@@ -105,6 +144,9 @@ namespace OpenGL {
 
     bool InterfaceOpenGL::OnAppUpdate(AppUpdateEvent& _Event)
     {
+        //m_RenderCommand->SetClearBuffer(Renderer::RendererClearFlag::RendererColor | Renderer::RendererClearFlag::RendererDepth);
+        //m_RenderCommand->SetClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+
         return m_Running;
     }
 

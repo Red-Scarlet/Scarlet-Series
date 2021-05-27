@@ -13,6 +13,11 @@ namespace OpenAL {
     // Can Handle Engine/Module Manager Events.
     void InterfaceOpenAL::OnGlobal(Event& _Event)
     {
+        _Event.Push(new InterfaceRequirementEvent(this))->Set({
+            "Scarlet-AudioFX"
+        });
+        if (_Event.Proceed(_Event) == false) return;
+
         if (!m_Initialized)
         {
             {

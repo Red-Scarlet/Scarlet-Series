@@ -17,11 +17,6 @@ workspace "Scarlet-Series"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
-group "Scarlet-Core"
-	include "Scarlet-Engine"
-	include "Scarlet-Interface"
-
-group ""
-
+include "Scarlet-Core"
+include "Scarlet-Projects"
 include "Scarlet-Additions"
-include "Scarlet-Sandbox"

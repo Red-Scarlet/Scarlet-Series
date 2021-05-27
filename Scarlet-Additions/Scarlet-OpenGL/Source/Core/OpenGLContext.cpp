@@ -22,9 +22,10 @@ namespace OpenGL {
 	OpenGLContext::OpenGLContext(void* _ProcAddress)
 	{
 		ScarletInterface::int32 status = 0;
-		if (_ProcAddress == nullptr)
-			status = gladLoadGL();
-		else status = gladLoadGLLoader((GLADloadproc)_ProcAddress);
+		//if (_ProcAddress == nullptr)
+		//	status = gladLoadGL();
+		//else 
+		status = gladLoadGLLoader((GLADloadproc)_ProcAddress);
 
 		if(status == -1) std::cout << "Failed to initialize OpenGL context" << std::endl;
 

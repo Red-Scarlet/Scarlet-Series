@@ -10,7 +10,20 @@ namespace GLFW {
     void InterfaceGLFW::OnGlobal(Event& _Event)
     {
         if (!m_Initialized)
-        {
+        {       
+            _Event.Push(new InterfaceRequirementEvent(this))->Set({
+                "Scarlet-Window"
+            });
+            if (_Event.Proceed(_Event) == false) return;
+
+            {
+                Function<Ref<Window::WindowContext>(const Window::WindowProps& _Props)> _WindowContext = [](const Window::WindowProps& _Props) { return CreateRef<WindowsWindow>(_Props); };
+                auto _WindowContextBind = std::bind(_WindowContext, std::placeholders::_1);
+                CallbackWrapper<Window::WindowContext> _WindowContextWrapper;
+                _WindowContextWrapper.Bind<decltype(_WindowContextBind), const Window::WindowProps&>(_WindowContextBind);
+                Window::WindowContext::PushWrapper(_WindowContextWrapper);
+            }
+
             {
                 _Event.Push(new SignaturePushEvent(this))->Bind<Window::WindowComponent>();
                 _Event.Proceed(_Event);
@@ -21,7 +34,16 @@ namespace GLFW {
                     _Event.Push(new ComponentComputeEvent(i))->Retrieve<Window::WindowComponent>(&component);
                     _Event.Proceed(_Event);
 
-                    if (component) component->API = "GLFW";
+                    if (component)
+                    {
+                        Window::WindowProps WindowProperties;
+                        WindowProperties.Title = "ScarletGLFW";
+
+                        component->API = "Scarlet-GLFW";
+                        component->Instance = Window::WindowContext::Create(WindowProperties);
+                        component->Instance->SetEventCallback(SCARLET_INTERFACE_BIND_EVENT_FN(InterfaceGLFW::OnLocal));
+                    }
+                    
                 }
 
                 _Event.Push(new SignaturePopEvent(this))->Bind<Window::WindowComponent>();
@@ -29,22 +51,7 @@ namespace GLFW {
                 _Event.Proceed(_Event);
             }
 
-            {
-                Function<Ref<Window::WindowContext>(const Window::WindowProps& _Props)> _WindowContext = [](const Window::WindowProps& _Props) { return CreateRef<WindowsWindow>(_Props); };
-                auto _WindowContextBind = std::bind(_WindowContext, std::placeholders::_1);
-                CallbackWrapper<Window::WindowContext> _WindowContextWrapper;
-                _WindowContextWrapper.Bind<decltype(_WindowContextBind), const Window::WindowProps&>(_WindowContextBind);
-                Window::WindowContext::PushWrapper(_WindowContextWrapper);
-            }
-
-            Window::WindowProps WindowProperties;
-            WindowProperties.Title = "ScarletGLFW";
-
-            GLFWComponent component = {};
-            component.Instance = Window::WindowContext::Create(WindowProperties);
-            component.Instance->SetEventCallback(SCARLET_INTERFACE_BIND_EVENT_FN(InterfaceGLFW::OnLocal));
-
-            _Event.Push(new ComponentPushEvent(this))->Bind<GLFWComponent>(component);
+            _Event.Push(new ComponentPushEvent(this))->Bind<GLFWComponent>({});
             _Event.Proceed(_Event);
 
             m_Running = true, m_Initialized = true;
@@ -53,6 +60,15 @@ namespace GLFW {
         EventDispatcher dispatcher(_Event);
         dispatcher.Dispatch<AppUpdateEvent>(SCARLET_INTERFACE_BIND_EVENT_FN(InterfaceGLFW::OnAppUpdate));
         if (!_Event.Handled) return;
+
+        // Example
+        //OnEditor();
+    }
+
+    // This just comes after the global
+    void InterfaceGLFW::OnEditor(Event& _Event)
+    {
+        //_Event.Push(new EditorDrawEvent(this))->Bind(m_FrameRateLabel);
     }
 
     void InterfaceGLFW::OnLocal(Event& _Event)
@@ -65,21 +81,43 @@ namespace GLFW {
     {
         if (m_Running)
         {
-            GLFWComponent* component = {};
-            _Event.Push(new ComponentComputeEvent(this))->Retrieve<GLFWComponent>(&component);
+            _Event.Push(new SignaturePopEvent(this))->Bind<GLFWComponent>();
+            _Event.Push(new SignaturePushEvent(this))->Bind<Window::WindowComponent>();
             _Event.Proceed(_Event);
 
-            component->Instance->OnUpdate();
-        }
+            for (Interface i : m_Set)
+            {
+                Window::WindowComponent* component = {};
+                _Event.Push(new ComponentComputeEvent(i))->Retrieve<Window::WindowComponent>(&component);
+                _Event.Proceed(_Event);
 
-        if (!m_Running)
+                if (component) component->Instance->OnUpdate();
+            }
+
+            _Event.Push(new SignaturePopEvent(this))->Bind<Window::WindowComponent>();
+            _Event.Push(new SignaturePushEvent(this))->Bind<GLFWComponent>();
+            _Event.Proceed(_Event);
+        }
+        else
         {
-            GLFWComponent* component = {};
-            _Event.Push(new ComponentComputeEvent(this))->Retrieve<GLFWComponent>(&component);
+            _Event.Push(new SignaturePopEvent(this))->Bind<GLFWComponent>();
+            _Event.Push(new SignaturePushEvent(this))->Bind<Window::WindowComponent>();
             _Event.Proceed(_Event);
 
-            component->Instance.reset();
+            for (Interface i : m_Set)
+            {
+                Window::WindowComponent* component = {};
+                _Event.Push(new ComponentComputeEvent(i))->Retrieve<Window::WindowComponent>(&component);
+                _Event.Proceed(_Event);
+
+                if (component) component->Instance.reset();
+            }
+
+            _Event.Push(new SignaturePopEvent(this))->Bind<Window::WindowComponent>();
+            _Event.Push(new SignaturePushEvent(this))->Bind<GLFWComponent>();
+            _Event.Proceed(_Event);
         }
+
 
         return m_Running;
     }

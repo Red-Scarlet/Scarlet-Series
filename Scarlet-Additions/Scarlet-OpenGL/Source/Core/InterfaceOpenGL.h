@@ -7,6 +7,7 @@
 #include <Events/InterfaceEvent.h>
 
 #include "Components/OpenGLComponent.h"
+#include <ScarletRenderer.h>
 
 namespace OpenGL {
 
@@ -22,6 +23,7 @@ namespace OpenGL {
 
 	private:
 		bool m_Running = false, m_Initialized = false;
+		Ref<Renderer::RenderCommand> m_RenderCommand;
 	};
 
 }

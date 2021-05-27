@@ -16,7 +16,7 @@ project "Scarlet-GLFW"
 	defines
 	{
 		"_CRT_SECURE_NO_WARNINGS",
-		"GLFW_DLL",
+		--"GLFW_DLL",
 		"GLFW_INCLUDE_NONE",
 		"SCARLET_INTERFACE_EXPORT"
 	}
@@ -24,9 +24,9 @@ project "Scarlet-GLFW"
 	includedirs
 	{ 		
 		"Source",
-		"%{wks.location}/Scarlet-Interface/Source",
-		"%{wks.location}/Scarlet-Interface/Vendor",
-		"%{wks.location}/Scarlet-Interface/Vendor/spdlog/include",
+		"%{wks.location}/Scarlet-Core/Scarlet-Interface/Source",
+		"%{wks.location}/Scarlet-Core/Scarlet-Interface/Vendor",
+		"%{wks.location}/Scarlet-Core/Scarlet-Interface/Vendor/spdlog/include",
 
 		"%{wks.location}/Scarlet-Additions/Scarlet-Window/Source",
 		"%{wks.location}/Scarlet-Additions/Scarlet-Window/Vendor",
@@ -36,7 +36,7 @@ project "Scarlet-GLFW"
 
 	libdirs 
 	{ 
-		"%{wks.location}/Scarlet-Additions/Scarlet-GLFW/Vendor/GLFW/lib-vc2019"
+		"%{wks.location}/Scarlet-Additions/Scarlet-GLFW/Vendor/GLFW/bin/Debug-windows-x86_64/GLFW"
 	}
 
 	links
@@ -44,8 +44,9 @@ project "Scarlet-GLFW"
 		"Scarlet-Interface",
 		"Scarlet-Window",
 
-		"glfw3",
-		"glfw3dll"
+		"GLFW"
+		--"glfw3",
+		--"glfw3dll"
 	}
 
 	filter "system:windows"

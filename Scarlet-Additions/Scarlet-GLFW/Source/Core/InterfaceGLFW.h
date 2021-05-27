@@ -11,6 +11,7 @@ namespace GLFW {
 	{
 	public:
 		virtual void OnGlobal(Event& _Event) override;
+		virtual void OnEditor(Event& _Event) override;
 
 	private:
 		void OnLocal(Event& _Event);

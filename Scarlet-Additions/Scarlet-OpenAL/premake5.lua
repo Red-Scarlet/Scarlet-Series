@@ -23,16 +23,16 @@ project "Scarlet-OpenAL"
 	includedirs
 	{ 		
 		"Source",
-		"%{wks.location}/Scarlet-Interface/Source",
-		"%{wks.location}/Scarlet-Interface/Vendor",
-		"%{wks.location}/Scarlet-Interface/Vendor/spdlog/include",
+		"%{wks.location}/Scarlet-Core/Scarlet-Interface/Source",
+		"%{wks.location}/Scarlet-Core/Scarlet-Interface/Vendor",
+		"%{wks.location}/Scarlet-Core/Scarlet-Interface/Vendor/spdlog/include",
 		
 		"%{wks.location}/Scarlet-Additions/Scarlet-AudioFX/Source",
 		"%{wks.location}/Scarlet-Additions/Scarlet-AudioFX/Vendor",
 
 		"%{wks.location}/Scarlet-Additions/Scarlet-OpenAL/Vendor/OpenAL-Soft/include",
 		"%{wks.location}/Scarlet-Additions/Scarlet-OpenAL/Vendor/OpenAL-Soft/src",
-		"%{wks.location}/Scarlet-Additions/Scarlet-OpenAL/Vendor/OpenAL-Soft/src/Ccmmon",
+		"%{wks.location}/Scarlet-Additions/Scarlet-OpenAL/Vendor/OpenAL-Soft/src/Common",
 		"%{wks.location}/Scarlet-Additions/Scarlet-OpenAL/Vendor/Libogg/include",
 		"%{wks.location}/Scarlet-Additions/Scarlet-OpenAL/Vendor/Vorbis/include",
 		"%{wks.location}/Scarlet-Additions/Scarlet-OpenAL/Vendor/Minimp3",

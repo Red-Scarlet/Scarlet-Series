@@ -1,5 +1,5 @@
 project "Scarlet-Physics"
-	kind "StaticLib"
+	kind "SharedLib"
 	language "C++"
 	cppdialect "C++17"
 	staticruntime "on"
@@ -13,12 +13,18 @@ project "Scarlet-Physics"
 		"Source/**.cpp"
 	}
 
+	defines
+	{
+		"_CRT_SECURE_NO_WARNINGS",
+		"SCARLET_INTERFACE_EXPORT"
+	}
+
 	includedirs
 	{ 		
 		"Source",
-		"%{wks.location}/Scarlet-Interface/Source",
-		"%{wks.location}/Scarlet-Interface/Vendor",
-		"%{wks.location}/Scarlet-Interface/Vendor/spdlog/include"
+		"%{wks.location}/Scarlet-Core/Scarlet-Interface/Source",
+		"%{wks.location}/Scarlet-Core/Scarlet-Interface/Vendor",
+		"%{wks.location}/Scarlet-Core/Scarlet-Interface/Vendor/spdlog/include"
 	}
 
 	links
@@ -33,10 +39,12 @@ project "Scarlet-Physics"
 		runtime "Debug"
 		symbols "on"
 		defines "SCARLET_DEBUG"
+		buildoptions "/MDd"
 
 	filter "configurations:Profile"
 		runtime "Debug"
 		symbols "on"
+		buildoptions "/MDd"
 		defines
 		{ 
 			"SCARLET_DEBUG",
@@ -47,8 +55,10 @@ project "Scarlet-Physics"
 		runtime "Release"
 		optimize "on"
 		defines "SCARLET_RELEASE"
+		buildoptions "/MDd"
 
 	filter "configurations:Dist"
 		runtime "Release"
 		optimize "on"		
 		defines "SCARLET_DIST"
+		buildoptions "/MDd"

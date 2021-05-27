@@ -30,12 +30,15 @@ namespace Window {
 		virtual ~WindowContext() = default;
 
 		virtual void OnUpdate() = 0;
+		virtual void SetCurrent() = 0;
 		virtual void SetTitle(const String& _Title) = 0;
 		virtual void SetEventCallback(const EventCallbackFn& callback) = 0;
 
 		virtual const uint32& GetWidth() const = 0;
 		virtual const uint32& GetHeight() const = 0;
+
 		virtual void* GetNativeWindow() const = 0;
+		virtual void* GetProcAddress() const = 0;
 
 	private:
 		static Ref<CallbackTable<WindowContext>> s_Callback;

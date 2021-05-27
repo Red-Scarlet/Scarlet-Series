@@ -20,6 +20,7 @@ namespace GLFW {
 
 		glfwWindowHint(GLFW_VISIBLE, GLFW_TRUE);
 		m_MainWindow = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
+		glfwMakeContextCurrent(m_MainWindow);
 		glfwSetWindowUserPointer(m_MainWindow, &m_Data);
 
 		glfwSetWindowSizeCallback(m_MainWindow, [](GLFWwindow* window, int width, int height) {
@@ -38,7 +39,6 @@ namespace GLFW {
 			data.EventCallback(closeEvent);
 		});
 
-		glfwMakeContextCurrent(m_MainWindow);
 		glfwSwapInterval(0);
 	}
 
@@ -53,10 +53,20 @@ namespace GLFW {
 		glfwPollEvents();
 	}
 
+	void WindowsWindow::SetCurrent()
+	{
+		glfwMakeContextCurrent(m_MainWindow);
+	}
+
 	void WindowsWindow::SetTitle(const String& _Title)
 	{
 		m_Data.Title = _Title;
 		glfwSetWindowTitle(m_MainWindow, m_Data.Title.c_str());
+	}
+
+	void* WindowsWindow::GetProcAddress() const
+	{
+		return glfwGetProcAddress;
 	}
 
 }

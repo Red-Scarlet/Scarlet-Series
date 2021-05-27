@@ -12,12 +12,12 @@ namespace GLFW {
 	struct SCARLET_INTERFACE_API GLFWComponent
 	{
 	public:
-		Ref<Window::WindowContext> Instance;
-
 		GLFWComponent() = default;
 		GLFWComponent(const GLFWComponent&) = default;
 		GLFWComponent(const Window::WindowProps& _Props)
-		{ 
+		{
+			Ref<Window::WindowContext> Instance;
+
 			Instance = Window::WindowContext::Create(_Props);
 		}
 	};

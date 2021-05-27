@@ -99,7 +99,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;SCARLET_INTERFACE_EXPORT;SCARLET_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>Source;..\..\Scarlet-Interface\Source;..\..\Scarlet-Interface\Vendor;..\..\Scarlet-Interface\Vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Source;..\..\Scarlet-Core\Scarlet-Interface\Source;..\..\Scarlet-Core\Scarlet-Interface\Vendor;..\..\Scarlet-Core\Scarlet-Interface\Vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <MinimalRebuild>false</MinimalRebuild>
@@ -119,7 +119,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;SCARLET_INTERFACE_EXPORT;SCARLET_DEBUG;SCARLET_PROFILE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>Source;..\..\Scarlet-Interface\Source;..\..\Scarlet-Interface\Vendor;..\..\Scarlet-Interface\Vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Source;..\..\Scarlet-Core\Scarlet-Interface\Source;..\..\Scarlet-Core\Scarlet-Interface\Vendor;..\..\Scarlet-Core\Scarlet-Interface\Vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <MinimalRebuild>false</MinimalRebuild>
@@ -139,7 +139,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;SCARLET_INTERFACE_EXPORT;SCARLET_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>Source;..\..\Scarlet-Interface\Source;..\..\Scarlet-Interface\Vendor;..\..\Scarlet-Interface\Vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Source;..\..\Scarlet-Core\Scarlet-Interface\Source;..\..\Scarlet-Core\Scarlet-Interface\Vendor;..\..\Scarlet-Core\Scarlet-Interface\Vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -162,7 +162,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;SCARLET_INTERFACE_EXPORT;SCARLET_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>Source;..\..\Scarlet-Interface\Source;..\..\Scarlet-Interface\Vendor;..\..\Scarlet-Interface\Vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Source;..\..\Scarlet-Core\Scarlet-Interface\Source;..\..\Scarlet-Core\Scarlet-Interface\Vendor;..\..\Scarlet-Core\Scarlet-Interface\Vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -200,7 +200,7 @@
     <ClCompile Include="Source\Graphics\VertexBuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Scarlet-Interface\Scarlet-Interface.vcxproj">
+    <ProjectReference Include="..\..\Scarlet-Core\Scarlet-Interface\Scarlet-Interface.vcxproj">
       <Project>{91CC1B8E-FDE2-1924-465A-A545B2AFEAAB}</Project>
     </ProjectReference>
   </ItemGroup>

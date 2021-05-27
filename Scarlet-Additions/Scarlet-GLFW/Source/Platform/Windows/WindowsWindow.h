@@ -17,13 +17,16 @@ namespace GLFW {
 		WindowsWindow(const Window::WindowProps& props);
 		virtual ~WindowsWindow();
 
-		void OnUpdate() override;
+		virtual void OnUpdate() override;
+		virtual void SetCurrent() override;
 		virtual void SetTitle(const String& _Title) override;
 		virtual void SetEventCallback(const EventCallbackFn& _Callback) override { m_Data.EventCallback = _Callback; }
 
 		const uint32& GetWidth() const override { return m_Data.Width; }
 		const uint32& GetHeight() const override { return m_Data.Height; }
+
 		virtual void* GetNativeWindow() const { return m_MainWindow; }
+		virtual void* GetProcAddress() const;
 
 	private:
 		GLFWwindow* m_MainWindow;

@@ -22,9 +22,9 @@ project "Scarlet-SceneGraph"
 	includedirs
 	{ 		
 		"Source",
-		"%{wks.location}/Scarlet-Interface/Source",
-		"%{wks.location}/Scarlet-Interface/Vendor",
-		"%{wks.location}/Scarlet-Interface/Vendor/spdlog/include"
+		"%{wks.location}/Scarlet-Core/Scarlet-Interface/Source",
+		"%{wks.location}/Scarlet-Core/Scarlet-Interface/Vendor",
+		"%{wks.location}/Scarlet-Core/Scarlet-Interface/Vendor/spdlog/include"
 	}
 
 	links

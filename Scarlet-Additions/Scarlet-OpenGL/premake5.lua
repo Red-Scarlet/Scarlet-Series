@@ -23,28 +23,29 @@ project "Scarlet-OpenGL"
 	includedirs
 	{ 		
 		"Source",
-		"%{wks.location}/Scarlet-Interface/Source",
-		"%{wks.location}/Scarlet-Interface/Vendor",
-		"%{wks.location}/Scarlet-Interface/Vendor/spdlog/include",
+		"%{wks.location}/Scarlet-Core/Scarlet-Interface/Source",
+		"%{wks.location}/Scarlet-Core/Scarlet-Interface/Vendor",
+		"%{wks.location}/Scarlet-Core/Scarlet-Interface/Vendor/spdlog/include",
 
-		"%{wks.location}/Scarlet-Additions/Scarlet-GLFW/Source",
-		"%{wks.location}/Scarlet-Additions/Scarlet-GLFW/Vendor",
+		"%{wks.location}/Scarlet-Additions/Scarlet-Window/Source",
+		"%{wks.location}/Scarlet-Additions/Scarlet-Window/Vendor",
 
 		"%{wks.location}/Scarlet-Additions/Scarlet-Renderer/Source",
 		"%{wks.location}/Scarlet-Additions/Scarlet-Renderer/Vendor",
 
-		"%{wks.location}/Scarlet-Additions/Scarlet-OpenGL/Vendor/GLAD/include"
+		"%{wks.location}/Scarlet-Additions/Scarlet-OpenGL/Vendor/GLAD/include",
+
 	}
 
 	libdirs 
 	{ 
-		"%{wks.location}/Scarlet-Additions/Scarlet-OpenGL/Vendor/GLAD/lib"
+		"%{wks.location}/Scarlet-Additions/Scarlet-OpenGL/Vendor/GLAD/lib",
 	}
 
 	links
 	{
 		"Scarlet-Interface",
-		"Scarlet-GLFW",
+		"Scarlet-Window",
 		"Scarlet-Renderer",
 
 		"GLAD",

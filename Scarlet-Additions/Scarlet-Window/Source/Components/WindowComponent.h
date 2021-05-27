@@ -3,6 +3,7 @@
 #pragma once
 
 #include <ScarletInterface.h>
+#include "Core/WindowContext.h"
 
 namespace Window {
 
@@ -11,6 +12,7 @@ namespace Window {
 	struct SCARLET_INTERFACE_API WindowComponent
 	{
 	public:
+		Ref<Window::WindowContext> Instance;
 		String API = "None";
 
 		WindowComponent() = default;
