@@ -28,6 +28,15 @@
     <Filter Include="bin-int\Debug-windows-x86_64\Assimp\Assimp.tlog">
       <UniqueIdentifier>{3CD24533-A80D-A6F6-B102-23861DBD2A27}</UniqueIdentifier>
     </Filter>
+    <Filter Include="bin-int\Dist-windows-x86_64">
+      <UniqueIdentifier>{0D3A62C7-7947-90AD-022E-8C986E3A5C64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="bin-int\Dist-windows-x86_64\Assimp">
+      <UniqueIdentifier>{6920A710-555C-AA7A-BE6E-C271AAC95295}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="bin-int\Dist-windows-x86_64\Assimp\Assimp.tlog">
+      <UniqueIdentifier>{A9F77F66-9575-D0FF-7E6D-8E976A8A1228}</UniqueIdentifier>
+    </Filter>
     <Filter Include="bin-int\Release-windows-x86_64">
       <UniqueIdentifier>{7ADE124E-6604-DDB4-4F4A-62803B0F0281}</UniqueIdentifier>
     </Filter>
@@ -201,6 +210,15 @@
     </None>
     <None Include="bin-int\Debug-windows-x86_64\Assimp\Assimp.vcxproj.FileListAbsolute.txt">
       <Filter>bin-int\Debug-windows-x86_64\Assimp</Filter>
+    </None>
+    <None Include="bin-int\Dist-windows-x86_64\Assimp\Assimp.lib.recipe">
+      <Filter>bin-int\Dist-windows-x86_64\Assimp</Filter>
+    </None>
+    <None Include="bin-int\Dist-windows-x86_64\Assimp\Assimp.log">
+      <Filter>bin-int\Dist-windows-x86_64\Assimp</Filter>
+    </None>
+    <None Include="bin-int\Dist-windows-x86_64\Assimp\Assimp.tlog\Assimp.lastbuildstate">
+      <Filter>bin-int\Dist-windows-x86_64\Assimp\Assimp.tlog</Filter>
     </None>
     <None Include="bin-int\Release-windows-x86_64\Assimp\Assimp.lib.recipe">
       <Filter>bin-int\Release-windows-x86_64\Assimp</Filter>

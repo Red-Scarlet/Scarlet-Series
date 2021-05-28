@@ -144,9 +144,6 @@ namespace OpenGL {
 
     bool InterfaceOpenGL::OnAppUpdate(AppUpdateEvent& _Event)
     {
-        //m_RenderCommand->SetClearBuffer(Renderer::RendererClearFlag::RendererColor | Renderer::RendererClearFlag::RendererDepth);
-        //m_RenderCommand->SetClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-
         return m_Running;
     }
 

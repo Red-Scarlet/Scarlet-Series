@@ -108,9 +108,6 @@
     <ClInclude Include="Source\UI\CheckboxUI.h">
       <Filter>Source\UI</Filter>
     </ClInclude>
-    <ClInclude Include="Source\UI\DockspaceUI.h">
-      <Filter>Source\UI</Filter>
-    </ClInclude>
     <ClInclude Include="Source\UI\ImageUI.h">
       <Filter>Source\UI</Filter>
     </ClInclude>
@@ -1287,6 +1284,7 @@
     <ClInclude Include="Vendor\glm\glm\vector_relational.hpp">
       <Filter>Vendor\glm\glm</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Events\UIEvent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Core\InterfaceModule.cpp">
@@ -1317,9 +1315,6 @@
       <Filter>Source\UI</Filter>
     </ClCompile>
     <ClCompile Include="Source\UI\CheckboxUI.cpp">
-      <Filter>Source\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\UI\DockspaceUI.cpp">
       <Filter>Source\UI</Filter>
     </ClCompile>
     <ClCompile Include="Source\UI\ImageUI.cpp">

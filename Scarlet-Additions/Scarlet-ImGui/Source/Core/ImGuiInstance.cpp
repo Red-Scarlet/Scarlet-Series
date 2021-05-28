@@ -1,5 +1,7 @@
 #include "ImGuiInstance.h"
 #include <ImGui/imgui.h>
+#include <ScarletWindow.h>
+#include <Events/InterfaceEvent.h>
 
 namespace ScarletImGui {
 
@@ -11,7 +13,7 @@ namespace ScarletImGui {
 	{
 	}
 
-	void ImGuiInstance::OnInit(Event& _Event)
+	void ImGuiInstance::OnInit(Event& _Event, const Interface& _Interface)
 	{
 		IMGUI_CHECKVERSION();
 		m_Context = ImGui::CreateContext();
@@ -20,8 +22,8 @@ namespace ScarletImGui {
 		io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
 		io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
 
-		//io.Fonts->AddFontFromFileTTF("Assets/Fonts/OpenSans/OpenSans-Bold.ttf", 18.0f);
-		//io.FontDefault = io.Fonts->AddFontFromFileTTF("Assets/Fonts/OpenSans/OpenSans-Regular.ttf", 18.0f);
+		io.Fonts->AddFontFromFileTTF("Assets/Fonts/OpenSans/OpenSans-Bold.ttf", 18.0f);
+		io.FontDefault = io.Fonts->AddFontFromFileTTF("Assets/Fonts/OpenSans/OpenSans-Regular.ttf", 18.0f);
 
 		ImGui::StyleColorsDark();
 
@@ -41,7 +43,7 @@ namespace ScarletImGui {
 				std::get<CallbackFn>(pair)(_Event, m_Context);
 	}
 
-	void ImGuiInstance::OnShutdown(Event& _Event)
+	void ImGuiInstance::OnShutdown(Event& _Event, const Interface& _Interface)
 	{
 		for (auto pair : m_FirstCallbacks)
 			if (std::get<String>(pair) == "OnShutdown")
@@ -54,7 +56,7 @@ namespace ScarletImGui {
 		ImGui::DestroyContext();
 	}
 
-	void ImGuiInstance::OnBegin(Event& _Event)
+	void ImGuiInstance::OnBegin(Event& _Event, const Interface& _Interface)
 	{
 		for (auto pair : m_FirstCallbacks)
 			if (std::get<String>(pair) == "OnBegin")
@@ -69,11 +71,10 @@ namespace ScarletImGui {
 		}
 	}
 
-	void ImGuiInstance::OnEnd(Event& _Event)
+	void ImGuiInstance::OnEnd(Event& _Event, const Interface& _Interface)
 	{
 		ImGuiIO& io = ImGui::GetIO();
 		io.DisplaySize = ImVec2((float32)1600, (float32)900);
-
 		ImGui::Render();
 
 		for (auto pair : m_FirstCallbacks)
@@ -92,7 +93,7 @@ namespace ScarletImGui {
 
 	void ImGuiInstance::PushSecondCallback(const String& _Name, const CallbackFn& _Callback)
 	{
-		m_SecondCallbacks.push_back({ _Name, _Callback });
+		m_SecondCallbacks.push_back({ _Name, std::move(_Callback) });
 	}
 
 	Ref<ImGuiInstance> ImGuiInstance::Create()

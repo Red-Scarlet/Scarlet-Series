@@ -15,10 +15,10 @@ namespace ScarletImGui {
 		ImGuiInstance();
 		~ImGuiInstance();
 
-		void OnInit(Event& _Event);
-		void OnShutdown(Event& _Event);
-		void OnBegin(Event& _Event);
-		void OnEnd(Event& _Event);
+		void OnInit(Event& _Event, const Interface& _Interface);
+		void OnShutdown(Event& _Event, const Interface& _Interface);
+		void OnBegin(Event& _Event, const Interface& _Interface);
+		void OnEnd(Event& _Event, const Interface& _Interface);
 
 		void PushFirstCallback(const String& _Name, const CallbackFn& _Callback);
 		void PushSecondCallback(const String& _Name, const CallbackFn& _Callback);

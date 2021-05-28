@@ -27,8 +27,16 @@ namespace ScarletImGui {
 		if (!_Event.Handled) return;
 	}
 
+	void InterfaceImGui::OnEditor(Event& _Event)
+	{
+		EventDispatcher dispatcher(_Event);
+		dispatcher.Dispatch<AppUpdateEvent>(SCARLET_INTERFACE_BIND_EVENT_FN(InterfaceImGui::OnEditorEvent));
+		if (!_Event.Handled) return;
+	}
+
 	bool InterfaceImGui::OnEditorEvent(AppUpdateEvent& _Event)
 	{
+		Interface windowInterface = uint64_max;
 		ImGuiComponent* component = {};
 		_Event.Push(new ComponentComputeEvent(this))->Retrieve<ScarletImGui::ImGuiComponent>(&component);
 		_Event.Proceed(_Event);
@@ -38,46 +46,43 @@ namespace ScarletImGui {
 			if (component->WindowAPI == "None" || component->RendererAPI == "None") return false;
 			if (component->Initialized == false) 
 			{
-				_Event.Push(new SignaturePopEvent(this))->Bind<ImGuiComponent>();
-				_Event.Push(new SignaturePushEvent(this))->Bind<Window::WindowComponent>();
-				_Event.Proceed(_Event);
-
-				for (Interface i : m_Set)
+				if (windowInterface == uint64_max)
 				{
-					Window::WindowComponent* component = {};
-					_Event.Push(new ComponentComputeEvent(i))->Retrieve<Window::WindowComponent>(&component);
+					_Event.Push(new SignaturePopEvent(this))->Bind<ImGuiComponent>();
+					_Event.Push(new SignaturePushEvent(this))->Bind<Window::WindowComponent>();
 					_Event.Proceed(_Event);
-					if (component)
+
+					for (Interface i : m_Set)
 					{
-						if (component->Instance)
-							component->Instance->SetCurrent();
-						else
-						{
-							_Event.Push(new SignaturePopEvent(this))->Bind<Window::WindowComponent>();
-							_Event.Proceed(_Event);
-							return true;
-						}
+						Window::WindowComponent* component = {};
+						_Event.Push(new ComponentComputeEvent(i))->Retrieve<Window::WindowComponent>(&component);
+						_Event.Proceed(_Event);
+
+						if (component) { windowInterface = i; break; }
 					}
+
+					_Event.Push(new SignaturePopEvent(this))->Bind<Window::WindowComponent>();
+					_Event.Push(new SignaturePushEvent(this))->Bind<ImGuiComponent>();
+					_Event.Proceed(_Event);
 				}
 
-				_Event.Push(new SignaturePopEvent(this))->Bind<Window::WindowComponent>();
-				_Event.Push(new SignaturePushEvent(this))->Bind<ImGuiComponent>();
-				_Event.Proceed(_Event);
-
-				component->Instance->OnInit(_Event);
+				component->Instance->OnInit(_Event, windowInterface);
 				component->Initialized = true; 
 			}
 
-			component->Instance->OnBegin(_Event);
+			component->Instance->OnBegin(_Event, windowInterface);
 			{
+
+				// Invoke a dispatcher 
+
 				ImGui::ShowDemoWindow((bool*)true);
 			}
-			component->Instance->OnEnd(_Event);
+			component->Instance->OnEnd(_Event, windowInterface);
 		}
 
 		if (!m_Running)
 		{
-			component->Instance->OnShutdown(_Event);
+			component->Instance->OnShutdown(_Event, windowInterface);
 		}
 
 		return m_Running;

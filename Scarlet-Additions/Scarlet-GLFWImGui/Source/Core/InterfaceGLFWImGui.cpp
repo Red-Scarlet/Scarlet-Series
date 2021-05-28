@@ -67,7 +67,7 @@ namespace ScarletGLFWImGui {
 					if (component)
 					{
 						component->WindowAPI = "Scarlet-GLFW";
-						Function<void(uint64 _i, GLFWwindow* _Window, Event& _Event, ImGuiContext* _Context)> _OnInit = [](uint64 _i, GLFWwindow* _Window, Event& _Event, ImGuiContext* _Context) {
+						Function<void(Interface _i, GLFWwindow* _Window, Event& _Event, ImGuiContext* _Context)> _OnInit = [](Interface _i, GLFWwindow* _Window, Event& _Event, ImGuiContext* _Context) {
 							Window::WindowComponent* component = {};
 							_Event.Push(new ComponentComputeEvent(_i))->Retrieve<Window::WindowComponent>(&component);
 							_Event.Proceed(_Event);
@@ -94,20 +94,33 @@ namespace ScarletGLFWImGui {
 							ImGui_ImplGlfw_NewFrame();
 						};
 
-						Function<void(Event& _Event, ImGuiContext* _Context)> _OnEnd = [](Event& _Event, ImGuiContext* _Context) {
+						Function<void(Interface _i, Event& _Event, ImGuiContext* _Context)> _OnEnd = [](Interface _i, Event& _Event, ImGuiContext* _Context) {
 							ImGui::SetCurrentContext(_Context);
 							ImGuiIO& io = ImGui::GetIO();
 							if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
 							{
 								ImGui::UpdatePlatformWindows();
 								ImGui::RenderPlatformWindowsDefault();
+							
+								Window::WindowComponent* component = {};
+								_Event.Push(new ComponentComputeEvent(_i))->Retrieve<Window::WindowComponent>(&component);
+								_Event.Proceed(_Event);
+
+								if (component)
+								{
+									if (component->Instance)
+									{
+										component->Instance->SetCurrent();
+									}
+								}
+
 							}
 						};
 
 						component->Instance->PushFirstCallback("OnInit", std::bind(_OnInit, windowID, nativeWindow, std::placeholders::_1, std::placeholders::_2));
 						component->Instance->PushSecondCallback("OnShutdown", std::bind(_OnShutdown, std::placeholders::_1, std::placeholders::_2));
 						component->Instance->PushSecondCallback("OnBegin", std::bind(_OnBegin, std::placeholders::_1, std::placeholders::_2));
-						component->Instance->PushSecondCallback("OnEnd", std::bind(_OnEnd, std::placeholders::_1, std::placeholders::_2));
+						component->Instance->PushSecondCallback("OnEnd", std::bind(_OnEnd, windowID, std::placeholders::_1, std::placeholders::_2));
 					}
 				}
 

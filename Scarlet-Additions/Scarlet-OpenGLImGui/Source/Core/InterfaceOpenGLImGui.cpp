@@ -28,7 +28,7 @@ namespace ScarletOpenGLImGui {
 			{
 				_Event.Push(new SignaturePushEvent(this))->Bind<Window::WindowComponent>();
 				_Event.Proceed(_Event);
-
+				
 				for (Interface i : m_Set)
 				{
 					Window::WindowComponent* component = {};
@@ -46,7 +46,7 @@ namespace ScarletOpenGLImGui {
 						}
 					}
 				}
-
+				
 				_Event.Push(new SignaturePopEvent(this))->Bind<Window::WindowComponent>();
 				_Event.Push(new SignaturePushEvent(this))->Bind<ScarletImGui::ImGuiComponent>();
 				_Event.Proceed(_Event);
