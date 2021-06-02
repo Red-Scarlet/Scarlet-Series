@@ -25,16 +25,20 @@ namespace ScarletInterface {
         virtual ~InterfaceModule();
 
         virtual void OnGlobal(Event& _Event);
-        virtual void OnEditor(Event& _Event);   // CHANGE EDITOR EVETNS
+        virtual void OnEditor(Event& _Event);
 
         const InterfaceInfo& GetInfo() const;
         const bool& IsReady() const;
+
+    public: // TODO: Engine side
+        void SetCallbacks(Event& _Event);
 
     public:
         InterfaceInfo m_Info;
         Interface m_Interface;
         Set<Interface> m_Set;
         bool m_ReadyModule = false;
+        bool m_SetCallbacks = false;
     };
 
 }

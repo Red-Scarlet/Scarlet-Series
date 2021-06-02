@@ -16,10 +16,10 @@ namespace Renderer {
 		virtual const uint32& GetCount() const = 0;
 
 	private:
-		static Ref<CallbackTable<IndexBuffer>> s_Callback;
+		static Ref<CallbackTable> s_Callback;
 
 	public:
-		static void PushWrapper(const CallbackWrapper<IndexBuffer>& _Wrapper);
+		static void PushWrapper(const CallbackWrapper& _Wrapper);
 		static Ref<IndexBuffer> Create(const uint32& _Size);
 		static Ref<IndexBuffer> Create(uint32* _Indices, const uint32& _Count);
 	};

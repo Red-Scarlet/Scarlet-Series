@@ -1,25 +1,33 @@
 #pragma once
 
 #include "Core/Common.h"
-#include "UI/BaseUI.h"
+#include "UI/BaseComponentUI.h"
 #include "Utilities/CallbackTable.h"
+
+namespace Scarlet { class ModuleManager; }
 
 namespace ScarletInterface {
 
-	class SCARLET_INTERFACE_API SliderUI : public BaseUI
+	class SCARLET_INTERFACE_API SliderUI : public BaseComponentUI
 	{
 	public:
+		friend class Scarlet::ModuleManager;
+		friend class InterfaceModule;
+
+	public:		
+		SliderUI() = default;
 		virtual ~SliderUI() = default;
 
-	private:
+		virtual void SetName(const String& _Name) = 0;
+		virtual const String& GetName() = 0;
 		virtual void Draw() = 0;
 
 	private:
-		static Ref<CallbackTable<SliderUI>> s_Callback;
+		static Ref<CallbackTable> s_Callback;
 
 	public:
-		static void PushWrapper(const CallbackWrapper<SliderUI>& _Wrapper);
-		static Ref<SliderUI> Create();
+		static void PushWrapper(const CallbackWrapper& _Wrapper);
+		static Ref<SliderUI> Create(const String& _Name);
 	};
 
 }

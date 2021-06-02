@@ -19,8 +19,8 @@ namespace GLFW {
             {
                 Function<Ref<Window::WindowContext>(const Window::WindowProps& _Props)> _WindowContext = [](const Window::WindowProps& _Props) { return CreateRef<WindowsWindow>(_Props); };
                 auto _WindowContextBind = std::bind(_WindowContext, std::placeholders::_1);
-                CallbackWrapper<Window::WindowContext> _WindowContextWrapper;
-                _WindowContextWrapper.Bind<decltype(_WindowContextBind), const Window::WindowProps&>(_WindowContextBind);
+                CallbackWrapper _WindowContextWrapper;
+                _WindowContextWrapper.Bind<Window::WindowContext, decltype(_WindowContextBind), const Window::WindowProps&>(_WindowContextBind);
                 Window::WindowContext::PushWrapper(_WindowContextWrapper);
             }
 

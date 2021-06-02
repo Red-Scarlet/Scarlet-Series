@@ -18,6 +18,7 @@
 #include <variant>
 #include <iterator>
 #include <typeinfo>
+#include <typeindex>
 
 #include "Utilities/Log.h"
 

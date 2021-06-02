@@ -13,12 +13,14 @@ namespace SceneGraph {
 	{
 	public:
 		virtual void OnGlobal(Event& _Event) override;
+		virtual void OnEditor(Event& _Event) override;
 
 	private:
 		bool OnAppUpdate(AppUpdateEvent& _Event);
 
 	private:
-		bool m_Running = false, m_Initialized = false;
+		bool m_Running = false, m_Initialized = false, m_EditorInitialized = false;
+		Ref<PanelUI> m_Panel = nullptr;
 	};
 
 }

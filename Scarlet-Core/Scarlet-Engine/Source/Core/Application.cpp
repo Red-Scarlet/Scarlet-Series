@@ -3,6 +3,8 @@
 #include "Utilities/FileUtils.h"
 #include <filesystem>
 
+#include <UI/PanelUI.h>
+
 namespace Scarlet {
 
 	#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
@@ -15,43 +17,45 @@ namespace Scarlet {
 
 		SCARLET_CORE_ASSERT(!s_Instance, "Application already exists!");
 		this->s_Instance = this;
-		this->SetEventCallback(SCARLET_BIND_EVENT_FN(Application::OnEvent));
+		this->m_EventCallback = SCARLET_BIND_EVENT_FN(Application::OnEvent);
 		m_ModuleManager = CreateRef<ModuleManager>();
 		m_NumThreads = std::thread::hardware_concurrency() - 1;
 		m_Running = true;
 
+		// Todo: Change to unique system to identify if module has been dropped.
 		if (!FileUtils::CheckExist("Assets/Modules")) fs::create_directory("Assets/Modules");
 		for (auto& p : fs::directory_iterator("Assets/Modules"))
 			m_ModuleManager->LoadModule(p.path().string());
 	}
 
-	void Application::Run()
+	void Application::OnRun()
 	{
 		SCARLET_PROFILE_FUNCTION();
 
 		Timestep timestep = 0.0f;
-		std::chrono::time_point<std::chrono::system_clock> start_time, end_time;
+		std::chrono::time_point<std::chrono::system_clock> StartTime, EndTime;
 		while (m_Running)
 		{
-			start_time = std::chrono::system_clock::now();
+			StartTime = std::chrono::system_clock::now();
 			{
-				AppUpdateEvent appEvent(timestep);
-				m_EventCallback(appEvent);
-			}
-			{
+				// Todo: Change to unique system to identify if module has been dropped.
 				if (m_Running)
 				{
-					if(!FileUtils::CheckExist("Assets/Modules")) fs::create_directory("Assets/Modules");
+					if (!FileUtils::CheckExist("Assets/Modules")) fs::create_directory("Assets/Modules");
 					for (auto& p : fs::directory_iterator("Assets/Modules"))
 						m_ModuleManager->LoadModule(p.path().string());
 				}
 			}
-			end_time = std::chrono::system_clock::now();
-			timestep = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count();
+			{
+				AppUpdateEvent appEvent(timestep);
+				m_EventCallback(appEvent);
+			}
+			EndTime = std::chrono::system_clock::now();
+			timestep = std::chrono::duration_cast<std::chrono::milliseconds>(EndTime - StartTime).count();
 		}
 	}
 
-	void Application::Stop()
+	void Application::OnStop()
 	{
 		SCARLET_PROFILE_FUNCTION();
 

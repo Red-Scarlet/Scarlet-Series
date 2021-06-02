@@ -185,10 +185,26 @@
     <ClInclude Include="Source\Core\ImGuiInstance.h" />
     <ClInclude Include="Source\Core\InterfaceImGui.h" />
     <ClInclude Include="Source\ScarletImGui.h" />
+    <ClInclude Include="Source\UI\ImButtonUI.h" />
+    <ClInclude Include="Source\UI\ImCheckboxUI.h" />
+    <ClInclude Include="Source\UI\ImImageUI.h" />
+    <ClInclude Include="Source\UI\ImLabelUI.h" />
+    <ClInclude Include="Source\UI\ImPanelUI.h" />
+    <ClInclude Include="Source\UI\ImScrollablePanelUI.h" />
+    <ClInclude Include="Source\UI\ImSliderUI.h" />
+    <ClInclude Include="Source\UI\ImTextboxUI.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Core\ImGuiInstance.cpp" />
     <ClCompile Include="Source\Core\InterfaceImGui.cpp" />
+    <ClCompile Include="Source\UI\ImButtonUI.cpp" />
+    <ClCompile Include="Source\UI\ImCheckboxUI.cpp" />
+    <ClCompile Include="Source\UI\ImImageUI.cpp" />
+    <ClCompile Include="Source\UI\ImLabelUI.cpp" />
+    <ClCompile Include="Source\UI\ImPanelUI.cpp" />
+    <ClCompile Include="Source\UI\ImScrollablePanelUI.cpp" />
+    <ClCompile Include="Source\UI\ImSliderUI.cpp" />
+    <ClCompile Include="Source\UI\ImTextboxUI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Scarlet-Core\Scarlet-Interface\Scarlet-Interface.vcxproj">

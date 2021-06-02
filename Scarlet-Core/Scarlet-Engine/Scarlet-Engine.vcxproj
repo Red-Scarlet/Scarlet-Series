@@ -177,9 +177,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Components\ModuleCounterComponent.h" />
     <ClInclude Include="Source\Core\Application.h" />
+    <ClInclude Include="Source\Core\CommandSystem.h" />
     <ClInclude Include="Source\Core\Common.h" />
     <ClInclude Include="Source\Core\Entrypoint.h" />
+    <ClInclude Include="Source\Core\ModuleLoader.h" />
     <ClInclude Include="Source\Interface\InterfaceHandler.h" />
     <ClInclude Include="Source\Interface\InterfaceManager.h" />
     <ClInclude Include="Source\Interface\ModuleManager.h" />
@@ -191,6 +194,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Core\Application.cpp" />
+    <ClCompile Include="Source\Core\CommandSystem.cpp" />
+    <ClCompile Include="Source\Core\ModuleLoader.cpp" />
     <ClCompile Include="Source\Interface\InterfaceHandler.cpp" />
     <ClCompile Include="Source\Interface\InterfaceManager.cpp" />
     <ClCompile Include="Source\Interface\ModuleManager.cpp" />

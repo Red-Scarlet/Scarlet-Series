@@ -22,11 +22,11 @@ int main(int argc, char** argv)
     SCARLET_PROFILE_END_SESSION();
 
     SCARLET_PROFILE_BEGIN_SESSION("Runtime", "ScarletProfile-Runtime.json");
-    app->Run();
+    app->OnRun();
     SCARLET_PROFILE_END_SESSION();
 
     SCARLET_PROFILE_BEGIN_SESSION("Shutdown", "ScarletProfile-Shutdown.json");
-    app->Stop();
+    app->OnStop();
     SCARLET_PROFILE_END_SESSION();
 
     Scarlet::Log::Shutdown();

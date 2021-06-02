@@ -2,9 +2,9 @@
 
 namespace Window {
 
-	Ref<CallbackTable<WindowContext>> WindowContext::s_Callback = CallbackTable<WindowContext>::Create();
+	Ref<CallbackTable> WindowContext::s_Callback = CallbackTable::Create();
 
-	void WindowContext::PushWrapper(const CallbackWrapper<WindowContext>& _Wrapper)
+	void WindowContext::PushWrapper(const CallbackWrapper& _Wrapper)
 	{
 		s_Callback->Push(_Wrapper);
 	}
@@ -12,7 +12,7 @@ namespace Window {
 	Ref<WindowContext> WindowContext::Create(const WindowProps& _Props)
 	{
 		if (s_Callback->Empty()) return nullptr;
-		return s_Callback->Create(_Props);
+		return s_Callback->Make<WindowContext>(_Props);
 	}
 
 }

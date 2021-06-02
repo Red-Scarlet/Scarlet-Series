@@ -1,25 +1,33 @@
 #pragma once
 
 #include "Core/Common.h"
-#include "UI/BaseUI.h"
+#include "UI/BaseComponentUI.h"
 #include "Utilities/CallbackTable.h"
+
+namespace Scarlet { class ModuleManager; }
 
 namespace ScarletInterface {
 
-	class SCARLET_INTERFACE_API TextboxUI : public BaseUI
+	class SCARLET_INTERFACE_API TextboxUI : public BaseComponentUI
 	{
 	public:
+		friend class Scarlet::ModuleManager;
+		friend class InterfaceModule;
+
+	public:
+		TextboxUI() = default;
 		virtual ~TextboxUI() = default;
 
-	private:
+		virtual void SetName(const String& _Name) = 0;
+		virtual const String& GetName() = 0;
 		virtual void Draw() = 0;
 
 	private:
-		static Ref<CallbackTable<TextboxUI>> s_Callback;
+		static Ref<CallbackTable> s_Callback;
 
 	public:
-		static void PushWrapper(const CallbackWrapper<TextboxUI>& _Wrapper);
-		static Ref<TextboxUI> Create();
+		static void PushWrapper(const CallbackWrapper& _Wrapper);
+		static Ref<TextboxUI> Create(const String& _Name);
 	};
 
 }

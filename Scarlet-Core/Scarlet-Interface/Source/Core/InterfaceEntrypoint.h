@@ -3,31 +3,37 @@
 #include "Core/Common.h"
 #include "Core/InterfaceModule.h"
 #include "Events/Event.h"
+#include "Events/UIEvent.h"
 
-#define INTERFACE_ENTRYPOINT(x)                                             \
-namespace ScarletInterface {                                                \
-                                                                            \
-    extern "C" SCARLET_INTERFACE_API InterfaceModule* CreateInterface();    \
-    extern "C" SCARLET_INTERFACE_API void DestroyInterface();               \
-    extern "C" SCARLET_INTERFACE_API void EventInterface(Event& _Event);    \
-                                                                            \
-    x* g_x = nullptr;                                                       \
-                                                                            \
-    extern "C" SCARLET_INTERFACE_API InterfaceModule* CreateInterface()     \
-    {                                                                       \
-        g_x = new x();                                                      \
-        return g_x;                                                         \
-    }                                                                       \
-                                                                            \
-    extern "C" SCARLET_INTERFACE_API void DestroyInterface()                \
-    {                                                                       \
-        delete g_x;                                                         \
-        g_x = nullptr;                                                      \
-    }                                                                       \
-                                                                            \
-    extern "C" SCARLET_INTERFACE_API void EventInterface(Event& _Event)     \
-    {                                                                       \
-        g_x->OnGlobal(_Event);                                              \
-    }                                                                       \
-                                                                            \
+#define INTERFACE_ENTRYPOINT(x)                                                         \
+namespace ScarletInterface {                                                            \
+                                                                                        \
+    extern "C" SCARLET_INTERFACE_API InterfaceModule* CreateInterface();                \
+    extern "C" SCARLET_INTERFACE_API void DestroyInterface();                           \
+    extern "C" SCARLET_INTERFACE_API void EventInterface(Event& _Event);                \
+                                                                                        \
+    x* g_x = nullptr;                                                                   \
+                                                                                        \
+    extern "C" SCARLET_INTERFACE_API InterfaceModule* CreateInterface()                 \
+    {                                                                                   \
+        g_x = new x();                                                                  \
+        return g_x;                                                                     \
+    }                                                                                   \
+                                                                                        \
+    extern "C" SCARLET_INTERFACE_API void DestroyInterface()                            \
+    {                                                                                   \
+        delete g_x;                                                                     \
+        g_x = nullptr;                                                                  \
+    }                                                                                   \
+                                                                                        \
+    extern "C" SCARLET_INTERFACE_API void EventInterface(Event& _Event)                 \
+    {                                                                                   \
+        g_x->OnGlobal(_Event);                                                          \
+        bool* value = new bool(false);                                                  \
+        _Event.Push(new EditorInterfaceCheckEvent(g_x))->Bind(&value);                  \
+        _Event.Proceed(_Event);                                                         \
+        if(*value == true) g_x->OnEditor(_Event);                                       \
+        delete value;                                                                   \
+    }                                                                                   \
+                                                                                        \
 }                                       

@@ -99,7 +99,7 @@
     <ClInclude Include="Source\ScarletInterface.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="Source\UI\BaseUI.h">
+    <ClInclude Include="Source\UI\BasePanelUI.h">
       <Filter>Source\UI</Filter>
     </ClInclude>
     <ClInclude Include="Source\UI\ButtonUI.h">
@@ -1285,6 +1285,7 @@
       <Filter>Vendor\glm\glm</Filter>
     </ClInclude>
     <ClInclude Include="Source\Events\UIEvent.h" />
+    <ClInclude Include="Source\Components\CallbackComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Core\InterfaceModule.cpp">
@@ -1341,5 +1342,6 @@
     <ClCompile Include="Source\Utilities\VirtualFileSystem.cpp">
       <Filter>Source\Utilities</Filter>
     </ClCompile>
+    <ClCompile Include="Source\UI\BaseComponentUI.h" />
   </ItemGroup>
 </Project>

@@ -17,28 +17,24 @@ namespace Scarlet {
 	class Application
 	{
 	public:
-		using EventCallbackFn = std::function<void(Event&)>;
+		using EventCallbackFn = Function<void(Event&)>;
 
 	public:
 		Application(const String& _ApplicationTitle = "ScarletApplication");
 		virtual ~Application() = default;
 
-		void Run();
-		void Stop();
-		void OnEvent(Event& e);
-		void SetEventCallback(const EventCallbackFn& _Callback) { m_EventCallback = _Callback; }
+		void OnRun();
+		void OnStop();
+		void OnEvent(Event& _Event);
 
 	private:
-		bool OnAppUpdate(AppUpdateEvent& _Event);
+		EventCallbackFn m_EventCallback = {};
+		Ref<ModuleManager> m_ModuleManager = {};
 
-	private:
-		EventCallbackFn m_EventCallback;
-		Ref<ModuleManager> m_ModuleManager;
-
-		String m_Title;
-		uint32 m_NumThreads;
-		float32 m_LastFrameTime;
-		bool m_Running;
+		String m_Title = {};
+		uint32 m_NumThreads = {};
+		float32 m_LastFrameTime = {};
+		bool m_Running = {};
 
 	private:
 		static Application* s_Instance;

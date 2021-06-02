@@ -29,4 +29,4 @@
   singledocparser.cpp
   stream.cpp
   tag.cpp
-  yaml-cpp.vcxproj -> B:\Projects\Visual Studio\Concealing-Engine\Concealing-Core\Vendor\yaml-cpp\bin\Debug-windows-x86_64\yaml-cpp\yaml-cpp.lib
+  yaml-cpp.vcxproj -> C:\Users\Scarlet-Red\Projects\Visual Studio\Scarlet-Series\Scarlet-Additions\Scarlet-SceneGraph\Vendor\Yaml-cpp\bin\Debug-windows-x86_64\yaml-cpp\yaml-cpp.lib

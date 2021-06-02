@@ -23,10 +23,10 @@ namespace Renderer {
 		virtual Ref<IndexBuffer> GetIndexBuffer() = 0;
 
 	private:
-		static Ref<CallbackTable<VertexArray>> s_Callback;
+		static Ref<CallbackTable> s_Callback;
 
 	public:
-		static void PushWrapper(const CallbackWrapper<VertexArray>& _Wrapper);
+		static void PushWrapper(const CallbackWrapper& _Wrapper);
 		static Ref<VertexArray> Create(const String& _Name);
 	};
 

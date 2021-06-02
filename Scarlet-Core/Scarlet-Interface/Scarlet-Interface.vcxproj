@@ -173,6 +173,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Components\CallbackComponent.h" />
     <ClInclude Include="Source\Core\Common.h" />
     <ClInclude Include="Source\Core\ComponentArray.h" />
     <ClInclude Include="Source\Core\ComponentManager.h" />
@@ -193,7 +194,7 @@
     <ClInclude Include="Source\Mathematics\Vector3.h" />
     <ClInclude Include="Source\Mathematics\Vector4.h" />
     <ClInclude Include="Source\ScarletInterface.h" />
-    <ClInclude Include="Source\UI\BaseUI.h" />
+    <ClInclude Include="Source\UI\BasePanelUI.h" />
     <ClInclude Include="Source\UI\ButtonUI.h" />
     <ClInclude Include="Source\UI\CheckboxUI.h" />
     <ClInclude Include="Source\UI\ImageUI.h" />
@@ -598,6 +599,7 @@
     <ClCompile Include="Source\Mathematics\Vector2.cpp" />
     <ClCompile Include="Source\Mathematics\Vector3.cpp" />
     <ClCompile Include="Source\Mathematics\Vector4.cpp" />
+    <ClCompile Include="Source\UI\BaseComponentUI.h" />
     <ClCompile Include="Source\UI\ButtonUI.cpp" />
     <ClCompile Include="Source\UI\CheckboxUI.cpp" />
     <ClCompile Include="Source\UI\ImageUI.cpp" />

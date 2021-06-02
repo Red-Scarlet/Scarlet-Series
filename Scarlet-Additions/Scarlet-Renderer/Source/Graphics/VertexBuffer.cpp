@@ -2,9 +2,9 @@
 
 namespace Renderer {
 	
-	Ref<CallbackTable<VertexBuffer>> VertexBuffer::s_Callback = CallbackTable<VertexBuffer>::Create();
+	Ref<CallbackTable> VertexBuffer::s_Callback = CallbackTable::Create();
 
-	void VertexBuffer::PushWrapper(const CallbackWrapper<VertexBuffer>& _Wrapper)
+	void VertexBuffer::PushWrapper(const CallbackWrapper& _Wrapper)
 	{
 		s_Callback->Push(_Wrapper);
 	}
@@ -12,13 +12,13 @@ namespace Renderer {
 	Ref<VertexBuffer> VertexBuffer::Create(const uint32& _Size)
 	{
 		if (s_Callback->Empty()) return nullptr;
-		return s_Callback->Create(_Size);
+		return s_Callback->Make<VertexBuffer>(_Size);
 	}
 
 	Ref<VertexBuffer> VertexBuffer::Create(float* _Vertices, const uint32& _Size)
 	{
 		if (s_Callback->Empty()) return nullptr;
-		return s_Callback->Create(_Vertices, _Size);
+		return s_Callback->Make<VertexBuffer>(_Vertices, _Size);
 	}
 
 }

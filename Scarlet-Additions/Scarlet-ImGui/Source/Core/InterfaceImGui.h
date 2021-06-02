@@ -14,14 +14,15 @@ namespace ScarletImGui {
 	{
 	public:
 		virtual void OnGlobal(Event& _Event) override;
-		virtual void OnEditor(Event& _Event) override;
 
 	private:
-		bool OnEditorEvent(AppUpdateEvent& _Event);
+		bool OnEditorPanelDraw(EditorPanelDrawEvent& _Event);
+		bool OnAppUpdate(AppUpdateEvent& _Event);
 
 	private:
-		bool m_Running = false, m_Initialized = false;
-		bool m_Ready = false;
+		bool m_Running = false, m_Initialized = false, m_Ready = false;
+		Vector<Ref<BasePanelUI>> m_UIComponents;
+
 	};
 
 }

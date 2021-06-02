@@ -2,17 +2,19 @@
 
 namespace ScarletInterface {
 
-	Ref<CallbackTable<ImageUI>> ImageUI::s_Callback = CallbackTable<ImageUI>::Create();
+	Ref<CallbackTable> ImageUI::s_Callback = CallbackTable::Create();
 
-	void ImageUI::PushWrapper(const CallbackWrapper<ImageUI>& _Wrapper)
+	void ImageUI::PushWrapper(const CallbackWrapper& _Wrapper)
 	{
+		if (!s_Callback) return;
 		s_Callback->Push(_Wrapper);
 	}
 
-	Ref<ImageUI> ImageUI::Create()
+	Ref<ImageUI> ImageUI::Create(const String& _Name)
 	{
-		if (s_Callback->Empty()) return nullptr;
-		return s_Callback->Create("");
+		if (!s_Callback || s_Callback->Empty())
+			return nullptr;
+		return s_Callback->Make<ImageUI>(_Name);
 	}
 
 }

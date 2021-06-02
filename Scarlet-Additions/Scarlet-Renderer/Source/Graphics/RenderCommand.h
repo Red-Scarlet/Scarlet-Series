@@ -55,10 +55,10 @@ namespace Renderer {
 		virtual void DrawElements(const RendererDrawingFlag& _Flag, const Ref<VertexArray>& _VertexArray, const uint32& _IndexCount = 0) = 0;
 
 	private:
-		static Ref<CallbackTable<RenderCommand>> s_Callback;
+		static Ref<CallbackTable> s_Callback;
 
 	public:
-		static void PushWrapper(const CallbackWrapper<RenderCommand>& _Wrapper);
+		static void PushWrapper(const CallbackWrapper& _Wrapper);
 		static Ref<RenderCommand> Create(const String& _Name);
 	};
 

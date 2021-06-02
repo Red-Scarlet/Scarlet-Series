@@ -41,10 +41,10 @@ namespace Window {
 		virtual void* GetProcAddress() const = 0;
 
 	private:
-		static Ref<CallbackTable<WindowContext>> s_Callback;
+		static Ref<CallbackTable> s_Callback;
 
 	public:
-		static void PushWrapper(const CallbackWrapper<WindowContext>& _Wrapper);
+		static void PushWrapper(const CallbackWrapper& _Wrapper);
 		static Ref<WindowContext> Create(const WindowProps& _Props);
 	};
 

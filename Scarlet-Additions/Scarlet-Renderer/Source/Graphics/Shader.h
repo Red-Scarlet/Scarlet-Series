@@ -24,10 +24,10 @@ namespace Renderer {
 		virtual const String& GetName() const = 0;
 
 	private:
-		static Ref<CallbackTable<Shader>> s_Callback;
+		static Ref<CallbackTable> s_Callback;
 
 	public:
-		static void PushWrapper(const CallbackWrapper<Shader>& _Wrapper);
+		static void PushWrapper(const CallbackWrapper& _Wrapper);
 		static Ref<Shader> Create(const String& _FilePath);
 		static Ref<Shader> Create(const String& _Name, const String& _VertexPath, const String& _FragPath);
 	};

@@ -47,6 +47,8 @@ namespace ScarletInterface {
 
 		bool Proceed(Event& _Event)
 		{
+			if (m_CallbackSet == false) return false;
+
 			return m_Callback(_Event);
 		}
 		

@@ -29,6 +29,7 @@ namespace ScarletGLFWImGui {
 				_Event.Push(new SignaturePushEvent(this))->Bind<Window::WindowComponent>();
 				_Event.Proceed(_Event);
 
+				if (m_Set.size() == 0) return;
 				for (Interface i : m_Set)
 				{
 					Window::WindowComponent* component = {};

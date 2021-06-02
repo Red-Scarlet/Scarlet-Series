@@ -3,6 +3,7 @@
 #include "Core/Common.h"
 #include <ScarletInterface.h>
 #include <Events/InterfaceEvent.h>
+#include <Events/UIEvent.h>
 
 #include "InterfaceHandler.h"
 #include "InterfaceManager.h"
@@ -13,6 +14,9 @@ namespace Scarlet {
 
 	class ModuleManager
 	{
+	public:
+		using EditorCallbackFn = Function<bool(EditorPanelDrawEvent&)>;
+
 	public:
 		ModuleManager();
 		~ModuleManager();
@@ -31,6 +35,10 @@ namespace Scarlet {
 		bool OnComponentPop(ComponentPopEvent& _Event);
 		bool OnComponentCompute(ComponentComputeEvent& _Event);
 
+		bool OnEditorHook(EditorHookEvent& _Event);
+		bool OnEditorPanelBind(EditorPanelBindEvent& _Event);
+		bool OnEditorInterfaceCheck(EditorInterfaceCheckEvent& _Event);
+
 	private:
 		void InterfaceSignatureChanged(const Interface& _Interface, const InterfaceSignature& _InterfaceSignature);
 
@@ -40,6 +48,9 @@ namespace Scarlet {
 
 		Ref<InterfaceManager> m_InterfaceManager;
 		Ref<ComponentManager> m_ComponentManager;
+
+		InterfaceModule* m_EditorInterface = nullptr;
+		EditorCallbackFn m_EditorCallback;
 	};
 
 }

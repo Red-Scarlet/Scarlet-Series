@@ -2,9 +2,9 @@
 
 namespace Renderer {
 
-	Ref<CallbackTable<RenderCommand>> RenderCommand::s_Callback = CallbackTable<RenderCommand>::Create();
+	Ref<CallbackTable> RenderCommand::s_Callback = CallbackTable::Create();
 
-	void RenderCommand::PushWrapper(const CallbackWrapper<RenderCommand>& _Wrapper)
+	void RenderCommand::PushWrapper(const CallbackWrapper& _Wrapper)
 	{
 		s_Callback->Push(_Wrapper);
 	}
@@ -12,7 +12,7 @@ namespace Renderer {
 	Ref<RenderCommand> RenderCommand::Create(const String& _Name)
 	{
 		if (s_Callback->Empty()) return nullptr;
-		return s_Callback->Create(_Name);
+		return s_Callback->Make<RenderCommand>(_Name);
 	}
 
 }
