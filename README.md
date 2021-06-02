@@ -31,7 +31,7 @@ anyone can make modules (plugins) and load them as the engine software is runnin
 * Scarlet-Vulkan
 
 ## Features
-* Hot-swappable at runtime.
+* Hot-swappable during runtime.
 * Fast Startup
 
 ### Features Todo
