@@ -19,7 +19,6 @@ anyone can make modules (plugins) and load them as the engine software is runnin
 * Scarlet-SceneGraph
 * Scarlet-AudioFX
 * Scarlet-OpenAL
-
 * Scarlet-ImGui
 * Scarlet-OpenGLImGui
 * Scarlet-GLFWImGui
