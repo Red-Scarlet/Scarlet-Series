@@ -20,10 +20,16 @@ anyone can make modules (plugins) and load them as the engine software is runnin
 * Scarlet-AudioFX
 * Scarlet-OpenAL
 
+* Scarlet-ImGui
+* Scarlet-OpenGLImGui
+* Scarlet-GLFWImGui
+
 ### Modules Todo
-* Scarlet-Editor
-* Scarlet-Physics
 * Scarlet-Common
+* Scarlet-Physics
+* Scarlet-PhysX
+* Scarlet-DirectX
+* Scarlet-Vulkan
 
 ## Features
 * Hot-swappable at runtime.
