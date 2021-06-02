@@ -37,8 +37,11 @@ anyone can make modules (plugins) and load them as the engine software is runnin
 ### Features Todo
 * Multithreading
 * Security
-* Module Version Info
-* Module Requirements Info
+* Console System
+* Trayicon / Appicon
+* Module Unloading
+* Module Stacking (Scarlet-Vulkan + Scarlet-OpenGL) || (Scarlet-GLFW x8)
+* Framework Transfer
 
 ## APIs
 * GLFW
